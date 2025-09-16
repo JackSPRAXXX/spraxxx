@@ -3,27 +3,25 @@
 <head>
   <!-- Base -->
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <title>SPRAXXX — Own your name. Lock your inbox. Vanish your footprints.</title>
   <meta name="description" content="Identity, dignity, and privacy tools. Verified identity, private email, and a human-first VPN without trackers or bloat.">
 
   <!-- Privacy + UX -->
-  <meta name="referrer" content="no-referrer"> <!-- stop leaking referrers -->
+  <meta name="referrer" content="no-referrer">
   <meta name="color-scheme" content="dark light">
   <meta name="format-detection" content="telephone=no, email=no, address=no">
 
   <!-- Robots -->
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
-  <link rel="canonical" href="https://spraxxx.tv/">
+  <link rel="canonical" href="https://spraxxx.com/">
 
   <!-- Social -->
   <meta property="og:title" content="SPRAXXX">
   <meta property="og:description" content="Own your name. Lock your inbox. Vanish your footprints.">
-  <meta property="og:url" content="https://spraxxx.tv/">
+  <meta property="og:url" content="https://spraxxx.com/">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://spraxxx.tv/static/og-cover.jpg">
+  <meta property="og:image" content="/static/og-cover.jpg">
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- Icons -->
@@ -31,51 +29,52 @@
   <link rel="icon" href="/static/icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/static/apple-touch-icon.png">
 
-  <!-- Critical CSS (no external CSS to avoid tracking; keep tiny) -->
+  <!-- Critical CSS -->
   <style>
-    :root{--w:920px;--pad:clamp(16px,3vw,28px);--radius:12px;font-synthesis-weight:none;text-rendering:optimizeLegibility}
+    :root{--w:980px;--pad:clamp(16px,3vw,28px);--radius:12px;font-synthesis-weight:none;text-rendering:optimizeLegibility}
     *{box-sizing:border-box}
     html,body{margin:0;height:100%}
-    body{font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,sans-serif;background:#0a0b0d;color:#e7e9ee}
-    a{color:inherit;text-decoration:underline;text-decoration-thickness:from-font}
+    body{font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,sans-serif;background:#0a0b0d;color:#e7e9ee}
+    a{color:inherit;text-decoration:underline}
     a:focus-visible,button:focus-visible{outline:2px solid #8ae;outline-offset:2px}
     header,main,footer{display:block}
     .wrap{max-width:var(--w);margin:0 auto;padding:0 var(--pad)}
     .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
-    .brand{display:flex;gap:10px;align-items:center;font-weight:700;letter-spacing:.3px}
+    .brand{display:flex;gap:10px;align-items:center;font-weight:800;letter-spacing:.3px}
     .brand img{width:28px;height:28px}
     .menu a{margin-left:18px;text-decoration:none;padding:8px 10px;border-radius:8px}
     .menu a[aria-current="page"]{background:#15171b}
     .hero{padding:clamp(40px,8vw,110px) 0}
     .hero h1{font-size:clamp(28px,5vw,48px);line-height:1.1;margin:0 0 12px}
-    .hero p{font-size:clamp(16px,2.4vw,22px);opacity:.9;margin:0 0 22px;max-width:62ch}
+    .hero p{font-size:clamp(16px,2.4vw,22px);opacity:.92;margin:0 0 22px;max-width:62ch}
     .cta{display:flex;gap:12px;flex-wrap:wrap}
     .btn{display:inline-flex;align-items:center;gap:8px;border:1px solid #2a2e36;background:#121419;padding:12px 16px;border-radius:10px;text-decoration:none}
     .btn.primary{background:#2363eb;border-color:#2363eb}
     .btn:hover{filter:brightness(1.05)}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin:28px 0 10px}
+    .section{padding:48px 0}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
     .card{background:#0f1115;border:1px solid #1b2027;border-radius:var(--radius);padding:18px}
     .card h3{margin:0 0 8px;font-size:18px}
-    .muted{opacity:.8}
-    .section{padding:48px 0}
-    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
+    .muted{opacity:.82}
     .kicker{letter-spacing:.12em;text-transform:uppercase;font-size:12px;opacity:.7;margin-bottom:8px}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
     .footer{border-top:1px solid #1b2027;padding:28px 0 50px;margin-top:36px;font-size:14px}
-    /* Respect motion settings */
-    @media (prefers-reduced-motion: reduce){*{scroll-behavior:auto} .btn{transition:none}}
+    .tile a{display:flex;align-items:center;justify-content:space-between;text-decoration:none}
+    .ext{font-size:12px;opacity:.75}
+    @media (prefers-reduced-motion: reduce){.btn{transition:none}}
   </style>
 
-  <!-- OPTIONAL: Meta CSP (use real HTTP header for production). If you keep this, give your inline <script> a nonce. -->
-  <!-- Replace NONCE_VALUE server-side. For dev only. -->
+  <!-- CSP (send as HTTP header in prod; meta is a dev stopgap). Replace NONCE_VALUE at runtime. -->
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
     img-src 'self' data:;
     font-src 'self';
     style-src 'self' 'unsafe-inline';
-    script-src 'self' 'nonce-NONCE_VALUE';
-    connect-src 'self';
+    script-src 'self' 'nonce-NONCE_VALUE' https://js.stripe.com;
+    connect-src 'self' https://api.stripe.com;
+    frame-src https://js.stripe.com https://hooks.stripe.com;
     base-uri 'none';
-    form-action 'self';
+    form-action 'self' https://checkout.stripe.com;
     frame-ancestors 'none';
     upgrade-insecure-requests;
   ">
@@ -90,11 +89,10 @@
   <header class="wrap" role="banner">
     <nav class="nav" aria-label="Primary">
       <a class="brand" href="/" aria-label="SPRAXXX home">
-        <img src="/static/logo.svg" alt="" role="presentation">
-        <span>SPRAXXX</span>
+        <img src="/static/logo.svg" alt="" role="presentation"><span>SPRAXXX</span>
       </a>
       <div class="menu" role="navigation">
-        <a href="/products" >Products</a>
+        <a href="/products">Products</a>
         <a href="/pricing">Pricing</a>
         <a href="/status" rel="nofollow">Status</a>
         <a href="/docs">Docs</a>
@@ -108,43 +106,96 @@
     <section class="hero" aria-label="Intro">
       <p class="kicker">Identity • Dignity • Finance</p>
       <h1>Own your name. Lock your inbox. Vanish your footprints.</h1>
-      <p>Verified identity, private email, and a human-first VPN. No trackers. No pixels. Just tools that put <em>you</em> in control.</p>
+      <p>
+        Verified identity, private email, and a human-first VPN. No trackers. No pixels. Just tools that put <em>you</em> in control.
+      </p>
       <div class="cta">
         <a class="btn primary" href="/join">Join the waitlist</a>
         <a class="btn" href="/whitepaper">Read how it works</a>
       </div>
     </section>
 
+    <!-- NETWORK: the three properties -->
+    <section class="section" aria-label="SPRAXXX Network">
+      <div class="card">
+        <h3 class="mono" style="margin-top:0">The SPRAXXX Network</h3>
+        <p class="muted">One brand • three properties. Same dignity-first philosophy.</p>
+        <div class="grid">
+          <article class="card tile" aria-labelledby="tv">
+            <h3 id="tv">spraxx.tv</h3>
+            <p class="muted">Broadcasts, drops, and live programming.</p>
+            <p class="ext"><a href="https://spraxx.tv" target="_blank" rel="noopener noreferrer">Visit spraxx.tv →</a></p>
+          </article>
+          <article class="card tile" aria-labelledby="ai">
+            <h3 id="ai">spraxx.ai</h3>
+            <p class="muted">IAM companions, GDI, and the Divine Court engine.</p>
+            <p class="ext"><a href="https://spraxx.ai" target="_blank" rel="noopener noreferrer">Visit spraxx.ai →</a></p>
+          </article>
+          <article class="card tile" aria-labelledby="net">
+            <h3 id="net">spraxx.net</h3>
+            <p class="muted">Infra, status pages, and transparency map hosting.</p>
+            <p class="ext"><a href="https://spraxx.net" target="_blank" rel="noopener noreferrer">Visit spraxx.net →</a></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCT HIGHLIGHTS (unchanged spirit; tightened copy) -->
     <section class="section" aria-label="Highlights">
       <div class="grid">
         <article class="card" aria-labelledby="idv">
-          <h3 id="idv">Verified Identity (You, on your terms)</h3>
-          <p class="muted">ID proofs as revocable credentials. Store proofs, not docs. We can’t leak what we don’t hold.</p>
+          <h3 id="idv">Verified Identity (on your terms)</h3>
+          <p class="muted">Revocable credentials and proofs — not document dumps. We can’t leak what we don’t hold.</p>
         </article>
         <article class="card" aria-labelledby="mail">
           <h3 id="mail">Private Email Wallet</h3>
-          <p class="muted">One inbox, burner aliases, no tracking pixels, SPF/DKIM/DMARC by default. Your address, your rules.</p>
+          <p class="muted">One inbox, burner aliases, no tracking pixels, SPF/DKIM/DMARC by default.</p>
         </article>
         <article class="card" aria-labelledby="vpn">
           <h3 id="vpn">Human-First VPN</h3>
-          <p class="muted">Transparent node map with jurisdiction notes and zero-activity logging. Open audits, published incidents.</p>
+          <p class="muted">Transparent node map with jurisdiction notes and zero-activity logging. Audits + incident history.</p>
         </article>
         <article class="card" aria-labelledby="court">
           <h3 id="court">Divine Court</h3>
-          <p class="muted">Testimony → harm → remedy on a public ledger. Due-process guardrails. No doxxing, no dogpiles.</p>
+          <p class="muted">Testimony → harm → remedy with due-process guardrails. No doxxing, no mobbing.</p>
         </article>
       </div>
     </section>
 
+    <!-- TRUST -->
     <section class="section" aria-label="Trust & Transparency">
       <div class="card">
         <h3 class="mono">Trust, by design</h3>
         <ul>
           <li>🔒 Zero-knowledge where possible; revocation built-in.</li>
           <li>🗺️ <a href="/transparency">Transparency Map</a>: node locations & applicable laws.</li>
-          <li>📜 <a href="/policy/privacy">Privacy Policy</a> • <a href="/policy/terms">Terms</a> • <a href="/gdpr">Data Requests</a></li>
-          <li>🪲 <a href="/security">Security</a> & <a href="/bounty">Bug bounty</a> with disclosure policy.</li>
+          <li>📜 <a href="/policy/privacy">Privacy</a> • <a href="/policy/terms">Terms</a> • <a href="/gdpr">Data Requests</a></li>
+          <li>🪲 <a href="/security">Security</a> & <a href="/bounty">Bug bounty</a> (responsible disclosure).</li>
         </ul>
+      </div>
+    </section>
+
+    <!-- STRIPE: keep your existing integration; these are hooks only -->
+    <section class="section" aria-label="Plans">
+      <div class="card">
+        <h3 class="mono">Choose your plan</h3>
+        <div class="grid">
+          <div class="card">
+            <h3>Starter</h3>
+            <p class="muted">Free · Essential tools</p>
+            <button class="btn" id="plan-starter" data-price="price_STARTER">Get started</button>
+          </div>
+          <div class="card">
+            <h3>Member</h3>
+            <p class="muted">$5/mo · More control</p>
+            <button class="btn primary" id="plan-member" data-price="price_MEMBER">Subscribe</button>
+          </div>
+          <div class="card">
+            <h3>Pro</h3>
+            <p class="muted">$15/mo · All features</p>
+            <button class="btn" id="plan-pro" data-price="price_PRO">Level up</button>
+          </div>
+        </div>
       </div>
     </section>
   </main>
@@ -155,12 +206,20 @@
         <strong>SPRAXXX</strong><br>
         <span class="muted">Canada-based. Global-minded.</span>
       </div>
+      <nav class="card" aria-label="Network">
+        <h3 class="mono">Network</h3>
+        <ul>
+          <li><a href="https://spraxx.tv" target="_blank" rel="noopener noreferrer">spraxx.tv</a></li>
+          <li><a href="https://spraxx.ai" target="_blank" rel="noopener noreferrer">spraxx.ai</a></li>
+          <li><a href="https://spraxx.net" target="_blank" rel="noopener noreferrer">spraxx.net</a></li>
+        </ul>
+      </nav>
       <nav class="card" aria-label="Legal">
         <h3 class="mono">Legal</h3>
         <ul>
           <li><a href="/policy/privacy">Privacy</a></li>
           <li><a href="/policy/terms">Terms</a></li>
-          <li><a href="/policy/cookies">Cookies (we use none by default)</a></li>
+          <li><a href="/policy/cookies">Cookies (none by default)</a></li>
         </ul>
       </nav>
       <nav class="card" aria-label="Company">
@@ -175,10 +234,37 @@
     <p class="muted" style="margin-top:12px">© <span id="y">2025</span> SPRAXXX. All dignity reserved.</p>
   </footer>
 
-  <!-- Tiny JS, with a CSP nonce. Replace NONCE_VALUE server-side. -->
+  <!-- Stripe loader (keep your existing Stripe flow; this is just minimal hooks) -->
+  <script nonce="NONCE_VALUE" src="https://js.stripe.com/v3/"></script>
   <script nonce="NONCE_VALUE">
-    // Update year without shipping a framework
-    (function(){ try{ document.getElementById('y').textContent = new Date().getFullYear(); }catch(e){} }());
+    // Replace with your real publishable key at build time
+    const STRIPE_PUBLISHABLE_KEY = window.STRIPE_PUBLISHABLE_KEY || "pk_live_REPLACE_ME";
+    const stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
+
+    // Optional: map buttons to Checkout Sessions created server-side.
+    async function go(priceId){
+      try{
+        // If you already create sessions server-side, call your endpoint here:
+        // const res = await fetch('/api/create-checkout-session', {
+        //   method:'POST', headers:{'Content-Type':'application/json'},
+        //   body: JSON.stringify({ price: priceId })
+        // });
+        // const { id: sessionId } = await res.json();
+
+        // Or, if you use pre-created Session IDs, redirect here:
+        // await stripe.redirectToCheckout({ sessionId: 'cs_live_...' });
+
+        // Placeholder no-op; wire this to your existing code:
+        console.log('Stripe button clicked for', priceId);
+      }catch(e){ console.error(e); alert('Payment init failed.'); }
+    }
+
+    document.querySelectorAll('button[data-price]').forEach(btn=>{
+      btn.addEventListener('click', ()=> go(btn.dataset.price));
+    });
+
+    // Update year
+    try{ document.getElementById('y').textContent = new Date().getFullYear(); }catch(_){}
   </script>
 </body>
 </html>
