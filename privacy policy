@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy — SPRAXXX</title>
+  <meta name="description" content="SPRAXXX Privacy Policy. We protect your data, your dignity, and your identity.">
+  <link rel="stylesheet" href="/static/style.css"> <!-- optional: reuse your global CSS -->
+</head>
+<body>
+  <header class="wrap">
+    <nav class="nav">
+      <a class="brand" href="/">
+        <img src="/static/logo.svg" alt="" role="presentation">
+        <span>SPRAXXX</span>
+      </a>
+      <div class="menu">
+        <a href="/">Home</a>
+        <a href="/policy/privacy/" aria-current="page">Privacy</a>
+        <a href="/policy/terms/">Terms</a>
+        <a href="/policy/cookies/">Cookies</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" class="wrap">
+    <h1>Privacy Policy</h1>
+    <p class="muted"><em>Effective date: September 2025</em></p>
+
+    <section>
+      <h2>1. Our Commitment</h2>
+      <p>
+        At <strong>SPRAXXX</strong>, privacy is not a feature — it’s the foundation.
+        We do not sell, trade, or rent your personal information. Your data belongs to you.
+      </p>
+    </section>
+
+    <section>
+      <h2>2. What We Collect</h2>
+      <ul>
+        <li>Account information (email, username, payment details if you subscribe).</li>
+        <li>Minimal technical logs (only what’s necessary for security & uptime).</li>
+        <li>No trackers, no pixels, no third-party advertising scripts.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>3. How We Use Your Data</h2>
+      <p>
+        - To provide services you request (email wallet, VPN, identity verification).<br>
+        - To maintain site security and prevent fraud.<br>
+        - To comply with applicable laws (without overreach).
+      </p>
+    </section>
+
+    <section>
+      <h2>4. Your Rights</h2>
+      <p>
+        You have the right to access, correct, export, or delete your data at any time.
+        Requests can be made via <a href="/contact/">our contact page</a>.
+      </p>
+    </section>
+
+    <section>
+      <h2>5. Changes to This Policy</h2>
+      <p>
+        We may update this Privacy Policy to reflect improvements or legal changes.
+        We’ll always note the “Effective Date” above.
+      </p>
+    </section>
+
+    <section>
+      <h2>6. Contact Us</h2>
+      <p>
+        Questions? Reach us at <a href="mailto:privacy@spraxxx.com">privacy@spraxxx.com</a>.
+      </p>
+    </section>
+  </main>
+
+  <footer class="wrap footer">
+    <p class="muted">© <span id="y">2025</span> SPRAXXX. All dignity reserved.</p>
+  </footer>
+
+  <script>
+    // Update year automatically
+    try { document.getElementById('y').textContent = new Date().getFullYear(); } catch(e){}
+  </script>
+</body>
+</html>
