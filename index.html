@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- Base -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SPRAXXX — Own your name. Lock your inbox. Vanish your footprints.</title>
@@ -12,7 +11,7 @@
   <meta name="color-scheme" content="dark light">
   <meta name="format-detection" content="telephone=no, email=no, address=no">
 
-  <!-- Robots -->
+  <!-- Robots / Canonical -->
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <link rel="canonical" href="https://spraxxx.com/">
 
@@ -72,7 +71,7 @@
     style-src 'self' 'unsafe-inline';
     script-src 'self' 'nonce-NONCE_VALUE' https://js.stripe.com;
     connect-src 'self' https://api.stripe.com;
-    frame-src https://js.stripe.com https://hooks.stripe.com;
+    frame-src https://js.stripe.com https://hooks.stripe.com https://checkout.stripe.com;
     base-uri 'none';
     form-action 'self' https://checkout.stripe.com;
     frame-ancestors 'none';
@@ -97,6 +96,8 @@
         <a href="/status" rel="nofollow">Status</a>
         <a href="/docs">Docs</a>
         <a href="/court">Divine Court</a>
+        <!-- Added the TV link (three X’s) -->
+        <a href="https://spraxxx.tv" target="_blank" rel="noopener noreferrer">spraxxx.tv</a>
         <a href="/login" class="btn">Sign in</a>
       </div>
     </nav>
@@ -106,41 +107,80 @@
     <section class="hero" aria-label="Intro">
       <p class="kicker">Identity • Dignity • Finance</p>
       <h1>Own your name. Lock your inbox. Vanish your footprints.</h1>
-      <p>
-        Verified identity, private email, and a human-first VPN. No trackers. No pixels. Just tools that put <em>you</em> in control.
-      </p>
+      <p>Verified identity, private email, and a human-first VPN. No trackers. No pixels. Just tools that put <em>you</em> in control.</p>
       <div class="cta">
         <a class="btn primary" href="/join">Join the waitlist</a>
         <a class="btn" href="/whitepaper">Read how it works</a>
       </div>
     </section>
 
-    <!-- NETWORK: the three properties -->
+    <!-- Network tiles: .tv .ai .net -->
     <section class="section" aria-label="SPRAXXX Network">
       <div class="card">
         <h3 class="mono" style="margin-top:0">The SPRAXXX Network</h3>
         <p class="muted">One brand • three properties. Same dignity-first philosophy.</p>
         <div class="grid">
           <article class="card tile" aria-labelledby="tv">
-            <h3 id="tv">spraxx.tv</h3>
+            <h3 id="tv">spraxxx.tv</h3>
             <p class="muted">Broadcasts, drops, and live programming.</p>
-            <p class="ext"><a href="https://spraxx.tv" target="_blank" rel="noopener noreferrer">Visit spraxx.tv →</a></p>
+            <p class="ext"><a href="https://spraxxx.tv" target="_blank" rel="noopener noreferrer">Visit spraxxx.tv →</a></p>
           </article>
           <article class="card tile" aria-labelledby="ai">
-            <h3 id="ai">spraxx.ai</h3>
+            <h3 id="ai">spraxxx.ai</h3>
             <p class="muted">IAM companions, GDI, and the Divine Court engine.</p>
-            <p class="ext"><a href="https://spraxx.ai" target="_blank" rel="noopener noreferrer">Visit spraxx.ai →</a></p>
+            <p class="ext"><a href="https://spraxxx.ai" target="_blank" rel="noopener noreferrer">Visit spraxxx.ai →</a></p>
           </article>
           <article class="card tile" aria-labelledby="net">
-            <h3 id="net">spraxx.net</h3>
+            <h3 id="net">spraxxx.net</h3>
             <p class="muted">Infra, status pages, and transparency map hosting.</p>
-            <p class="ext"><a href="https://spraxx.net" target="_blank" rel="noopener noreferrer">Visit spraxx.net →</a></p>
+            <p class="ext"><a href="https://spraxxx.net" target="_blank" rel="noopener noreferrer">Visit spraxxx.net →</a></p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- PRODUCT HIGHLIGHTS (unchanged spirit; tightened copy) -->
+    <!-- Plans with working Stripe hooks (Payment Links OR Checkout Sessions) -->
+    <section class="section" aria-label="Plans">
+      <div class="card">
+        <h3 class="mono">Choose your plan</h3>
+        <div class="grid">
+          <!-- If you use Stripe Payment Links, set data-link to your buy.stripe.com URL.
+               If you use Checkout Sessions, set data-price to your Price ID.
+               If you already have sessionId buttons, set data-session. All three paths are supported below. -->
+          <div class="card">
+            <h3>Starter</h3>
+            <p class="muted">Free · Essential tools</p>
+            <a class="btn checkout"
+               data-link=""              <!-- e.g. https://buy.stripe.com/abcd1234 -->
+               data-price=""             <!-- e.g. price_12345 -->
+               data-session=""           <!-- e.g. cs_live_... -->
+               href="#">Get started</a>
+          </div>
+
+          <div class="card">
+            <h3>Member</h3>
+            <p class="muted">$5/mo · More control</p>
+            <a class="btn primary checkout"
+               data-link=""              <!-- fill if using Payment Links -->
+               data-price="price_MEMBER" <!-- keep your existing ID if you had one -->
+               data-session=""           <!-- or use a pre-created session id -->
+               href="#">Subscribe</a>
+          </div>
+
+          <div class="card">
+            <h3>Pro</h3>
+            <p class="muted">$15/mo · All features</p>
+            <a class="btn checkout"
+               data-link=""               <!-- fill if using Payment Links -->
+               data-price="price_PRO"     <!-- keep your existing ID if you had one -->
+               data-session=""            <!-- or use a pre-created session id -->
+               href="#">Level up</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Highlights (unchanged spirit) -->
     <section class="section" aria-label="Highlights">
       <div class="grid">
         <article class="card" aria-labelledby="idv">
@@ -161,43 +201,6 @@
         </article>
       </div>
     </section>
-
-    <!-- TRUST -->
-    <section class="section" aria-label="Trust & Transparency">
-      <div class="card">
-        <h3 class="mono">Trust, by design</h3>
-        <ul>
-          <li>🔒 Zero-knowledge where possible; revocation built-in.</li>
-          <li>🗺️ <a href="/transparency">Transparency Map</a>: node locations & applicable laws.</li>
-          <li>📜 <a href="/policy/privacy">Privacy</a> • <a href="/policy/terms">Terms</a> • <a href="/gdpr">Data Requests</a></li>
-          <li>🪲 <a href="/security">Security</a> & <a href="/bounty">Bug bounty</a> (responsible disclosure).</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- STRIPE: keep your existing integration; these are hooks only -->
-    <section class="section" aria-label="Plans">
-      <div class="card">
-        <h3 class="mono">Choose your plan</h3>
-        <div class="grid">
-          <div class="card">
-            <h3>Starter</h3>
-            <p class="muted">Free · Essential tools</p>
-            <button class="btn" id="plan-starter" data-price="price_STARTER">Get started</button>
-          </div>
-          <div class="card">
-            <h3>Member</h3>
-            <p class="muted">$5/mo · More control</p>
-            <button class="btn primary" id="plan-member" data-price="price_MEMBER">Subscribe</button>
-          </div>
-          <div class="card">
-            <h3>Pro</h3>
-            <p class="muted">$15/mo · All features</p>
-            <button class="btn" id="plan-pro" data-price="price_PRO">Level up</button>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer class="wrap footer" role="contentinfo">
@@ -209,9 +212,9 @@
       <nav class="card" aria-label="Network">
         <h3 class="mono">Network</h3>
         <ul>
-          <li><a href="https://spraxx.tv" target="_blank" rel="noopener noreferrer">spraxx.tv</a></li>
-          <li><a href="https://spraxx.ai" target="_blank" rel="noopener noreferrer">spraxx.ai</a></li>
-          <li><a href="https://spraxx.net" target="_blank" rel="noopener noreferrer">spraxx.net</a></li>
+          <li><a href="https://spraxxx.tv" target="_blank" rel="noopener noreferrer">spraxxx.tv</a></li>
+          <li><a href="https://spraxxx.ai" target="_blank" rel="noopener noreferrer">spraxxx.ai</a></li>
+          <li><a href="https://spraxxx.net" target="_blank" rel="noopener noreferrer">spraxxx.net</a></li>
         </ul>
       </nav>
       <nav class="card" aria-label="Legal">
@@ -234,36 +237,58 @@
     <p class="muted" style="margin-top:12px">© <span id="y">2025</span> SPRAXXX. All dignity reserved.</p>
   </footer>
 
-  <!-- Stripe loader (keep your existing Stripe flow; this is just minimal hooks) -->
+  <!-- Stripe v3 (keeps your existing flow) -->
   <script nonce="NONCE_VALUE" src="https://js.stripe.com/v3/"></script>
   <script nonce="NONCE_VALUE">
-    // Replace with your real publishable key at build time
+    // If you already set this globally, this won’t override it.
     const STRIPE_PUBLISHABLE_KEY = window.STRIPE_PUBLISHABLE_KEY || "pk_live_REPLACE_ME";
     const stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
 
-    // Optional: map buttons to Checkout Sessions created server-side.
-    async function go(priceId){
-      try{
-        // If you already create sessions server-side, call your endpoint here:
-        // const res = await fetch('/api/create-checkout-session', {
-        //   method:'POST', headers:{'Content-Type':'application/json'},
-        //   body: JSON.stringify({ price: priceId })
-        // });
-        // const { id: sessionId } = await res.json();
-
-        // Or, if you use pre-created Session IDs, redirect here:
-        // await stripe.redirectToCheckout({ sessionId: 'cs_live_...' });
-
-        // Placeholder no-op; wire this to your existing code:
-        console.log('Stripe button clicked for', priceId);
-      }catch(e){ console.error(e); alert('Payment init failed.'); }
+    // Helper: POST JSON
+    async function postJSON(url, data){
+      return fetch(url, {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify(data)
+      }).then(r=>r.json());
     }
 
-    document.querySelectorAll('button[data-price]').forEach(btn=>{
-      btn.addEventListener('click', ()=> go(btn.dataset.price));
+    // Unified checkout handler:
+    // 1) If data-link is set -> go to Payment Link
+    // 2) Else if data-session is set -> redirectToCheckout(sessionId)
+    // 3) Else if data-price is set -> call your server to create a session, then redirect
+    async function handleCheckout(el){
+      const payLink = el.dataset.link;
+      const sessionId = el.dataset.session;
+      const priceId = el.dataset.price;
+
+      try{
+        if (payLink) {
+          window.location.assign(payLink);
+          return;
+        }
+        if (sessionId) {
+          await stripe.redirectToCheckout({ sessionId });
+          return;
+        }
+        if (priceId) {
+          // Use your existing endpoint name here if different:
+          const { id } = await postJSON('/api/create-checkout-session', { price: priceId }); // keep your working route
+          await stripe.redirectToCheckout({ sessionId: id });
+          return;
+        }
+        alert('No Stripe configuration found on this button.');
+      }catch(e){
+        console.error(e);
+        alert('Payment init failed.');
+      }
+    }
+
+    document.querySelectorAll('.checkout').forEach(el=>{
+      el.addEventListener('click', (e)=>{ e.preventDefault(); handleCheckout(el); });
     });
 
-    // Update year
+    // Update year without frameworks
     try{ document.getElementById('y').textContent = new Date().getFullYear(); }catch(_){}
   </script>
 </body>
