@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SPRAXXX — AI Landing</title>
+  <meta name="description" content="SPRAXXX: identity, dignity, and real connection. Get early access." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="wrap">
+    <h1>SPRAXXX</h1>
+    <p class="tag">Identity • Dignity • Brotherhood</p>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <h2>Be first to know</h2>
+      <p>No spam. Just key updates from SPRAXXX.</p>
+
+      <form id="email-form" action="https://formspree.io/f/xyzdaqzl" method="POST" novalidate>
+        <div class="hp" aria-hidden="true">
+          <input type="text" id="company" name="company" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <input
+          id="email"
+          name="email"
+          type="email"
+          placeholder="you@example.com"
+          required
+        />
+
+        <button id="email-submit" type="submit">Notify me</button>
+        <p id="form-msg" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="wrap foot">
+    <small>© <span id="year"></span> SPRAXXX. All rights reserved.</small>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+  <script src="js/form.js" defer></script>
+</body>
+</html>
