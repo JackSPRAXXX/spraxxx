@@ -1,188 +1,184 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>SPRAXXX — Own your name. Lock your inbox. Vanish your footprints.</title>
+  <!-- Base -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta property="og:title" content="SPRAXXX — Verified Identity • Private Email • Human-First VPN">
-  <meta property="og:description" content="SPRAXXX gives you a spraxxx.com email identity, private VPN access, and a verified ID token. Built in Canada. Built for dignity.">
+  <title>SPRAXXX — Own your name. Lock your inbox. Vanish your footprints.</title>
+  <meta name="description" content="Identity, dignity, and privacy tools. Verified identity, private email, and a human-first VPN without trackers or bloat.">
+
+  <!-- Privacy + UX -->
+  <meta name="referrer" content="no-referrer"> <!-- stop leaking referrers -->
+  <meta name="color-scheme" content="dark light">
+  <meta name="format-detection" content="telephone=no, email=no, address=no">
+
+  <!-- Robots -->
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://spraxxx.tv/">
+
+  <!-- Social -->
+  <meta property="og:title" content="SPRAXXX">
+  <meta property="og:description" content="Own your name. Lock your inbox. Vanish your footprints.">
+  <meta property="og:url" content="https://spraxxx.tv/">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://spraxxx.com/">
-  <meta property="og:image" content="https://spraxxx.com/assets/og-cover.jpg">
+  <meta property="og:image" content="https://spraxxx.tv/static/og-cover.jpg">
   <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="icon" href="/assets/favicon.png">
+  <!-- Icons -->
+  <link rel="icon" href="/static/favicon.ico" sizes="any">
+  <link rel="icon" href="/static/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/static/apple-touch-icon.png">
 
+  <!-- Critical CSS (no external CSS to avoid tracking; keep tiny) -->
   <style>
-    :root { --bg:#0b0b0c; --ink:#f2f2f2; --muted:#b9b9c0; --brand:#9dff6f; --card:#141417; --stroke:#222228; }
+    :root{--w:920px;--pad:clamp(16px,3vw,28px);--radius:12px;font-synthesis-weight:none;text-rendering:optimizeLegibility}
     *{box-sizing:border-box}
-    body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
-    a{color:var(--brand);text-decoration:none}
-    .wrap{max-width:1100px;margin:0 auto;padding:20px}
-    header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:8px 0}
-    header nav a{margin:0 10px;color:var(--muted)}
-    .hero{display:grid;gap:16px;padding:40px 0}
-    .hero h1{font-size:clamp(28px,6vw,52px);line-height:1.05;margin:8px 0}
-    .hero p{font-size:clamp(16px,2.8vw,20px);color:var(--muted);max-width:780px}
-    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
-    .btn{background:var(--brand);color:#0b0b0c;font-weight:800;border:0;border-radius:12px;padding:12px 16px;display:inline-block}
-    .btn.ghost{background:transparent;color:var(--brand);border:1px solid var(--stroke)}
-    .grid{display:grid;gap:16px}
-    @media(min-width:780px){ .grid.cols-3{grid-template-columns:repeat(3,1fr)} .grid.cols-2{grid-template-columns:repeat(2,1fr)} }
-    .card{background:var(--card);border:1px solid var(--stroke);border-radius:14px;padding:16px}
-    .card h3{margin:0 0 8px 0}
-    .muted{color:var(--muted)}
-    .section{padding:28px 0}
-    .badge{display:inline-block;font-size:12px;background:#101014;border:1px solid var(--stroke);padding:4px 8px;border-radius:999px;color:var(--muted)}
-    footer{border-top:1px solid var(--stroke);margin-top:24px;padding:18px 0;color:var(--muted);font-size:14px}
-    .price{font-size:32px;font-weight:900}
-    .tiny{font-size:12px;color:var(--muted)}
-    .list{margin:10px 0 0 0;padding:0 0 0 18px}
-    .list li{margin:6px 0}
-    form input, form textarea{width:100%;background:#0f0f12;border:1px solid var(--stroke);color:var(--ink);padding:12px;border-radius:10px}
-    form button{margin-top:10px}
-    .note{font-size:13px;color:var(--muted)}
-    .status{display:flex;gap:12px;flex-wrap:wrap}
-    .pill{border:1px solid var(--stroke);padding:6px 10px;border-radius:999px;color:var(--muted);font-size:13px}
+    html,body{margin:0;height:100%}
+    body{font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,sans-serif;background:#0a0b0d;color:#e7e9ee}
+    a{color:inherit;text-decoration:underline;text-decoration-thickness:from-font}
+    a:focus-visible,button:focus-visible{outline:2px solid #8ae;outline-offset:2px}
+    header,main,footer{display:block}
+    .wrap{max-width:var(--w);margin:0 auto;padding:0 var(--pad)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+    .brand{display:flex;gap:10px;align-items:center;font-weight:700;letter-spacing:.3px}
+    .brand img{width:28px;height:28px}
+    .menu a{margin-left:18px;text-decoration:none;padding:8px 10px;border-radius:8px}
+    .menu a[aria-current="page"]{background:#15171b}
+    .hero{padding:clamp(40px,8vw,110px) 0}
+    .hero h1{font-size:clamp(28px,5vw,48px);line-height:1.1;margin:0 0 12px}
+    .hero p{font-size:clamp(16px,2.4vw,22px);opacity:.9;margin:0 0 22px;max-width:62ch}
+    .cta{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:8px;border:1px solid #2a2e36;background:#121419;padding:12px 16px;border-radius:10px;text-decoration:none}
+    .btn.primary{background:#2363eb;border-color:#2363eb}
+    .btn:hover{filter:brightness(1.05)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin:28px 0 10px}
+    .card{background:#0f1115;border:1px solid #1b2027;border-radius:var(--radius);padding:18px}
+    .card h3{margin:0 0 8px;font-size:18px}
+    .muted{opacity:.8}
+    .section{padding:48px 0}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
+    .kicker{letter-spacing:.12em;text-transform:uppercase;font-size:12px;opacity:.7;margin-bottom:8px}
+    .footer{border-top:1px solid #1b2027;padding:28px 0 50px;margin-top:36px;font-size:14px}
+    /* Respect motion settings */
+    @media (prefers-reduced-motion: reduce){*{scroll-behavior:auto} .btn{transition:none}}
   </style>
+
+  <!-- OPTIONAL: Meta CSP (use real HTTP header for production). If you keep this, give your inline <script> a nonce. -->
+  <!-- Replace NONCE_VALUE server-side. For dev only. -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    img-src 'self' data:;
+    font-src 'self';
+    style-src 'self' 'unsafe-inline';
+    script-src 'self' 'nonce-NONCE_VALUE';
+    connect-src 'self';
+    base-uri 'none';
+    form-action 'self';
+    frame-ancestors 'none';
+    upgrade-insecure-requests;
+  ">
 </head>
+
 <body>
-  <div class="wrap">
-    <header>
-      <div style="display:flex;align-items:center;gap:10px">
-        <img src="/assets/logo.svg" alt="SPRAXXX" width="32" height="32" onerror="this.style.display='none'">
-        <strong>SPRAXXX</strong>
-      </div>
-      <nav>
-        <a href="#products">Products</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#updates">Updates</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
+  <a class="mono" href="#main" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;"
+     onfocus="this.style.cssText='position:static;display:inline-block;margin:8px;padding:8px;background:#15171b;border:1px solid #2a2e36;border-radius:8px'">
+    Skip to content
+  </a>
 
-    <section class="hero">
-      <span class="badge">Identity • Email • VPN • Media</span>
+  <header class="wrap" role="banner">
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="/" aria-label="SPRAXXX home">
+        <img src="/static/logo.svg" alt="" role="presentation">
+        <span>SPRAXXX</span>
+      </a>
+      <div class="menu" role="navigation">
+        <a href="/products" >Products</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/status" rel="nofollow">Status</a>
+        <a href="/docs">Docs</a>
+        <a href="/court">Divine Court</a>
+        <a href="/login" class="btn">Sign in</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" class="wrap" role="main">
+    <section class="hero" aria-label="Intro">
+      <p class="kicker">Identity • Dignity • Finance</p>
       <h1>Own your name. Lock your inbox. Vanish your footprints.</h1>
-      <p>SPRAXXX gives everyday people a verified email identity, private VPN access, and a human-first ID token—so you can live online without selling your soul to platforms. Built in Canada. Built for dignity.</p>
+      <p>Verified identity, private email, and a human-first VPN. No trackers. No pixels. Just tools that put <em>you</em> in control.</p>
       <div class="cta">
-        <a class="btn" href="#pricing">See Pricing</a>
-        <a class="btn ghost" href="https://spraxxx.tv" target="_blank" rel="noopener">Watch on .TV</a>
-      </div>
-      <div class="status" style="margin-top:10px">
-        <span class="pill">No ads</span>
-        <span class="pill">Cancel anytime</span>
-        <span class="pill">Email + VPN day one</span>
+        <a class="btn primary" href="/join">Join the waitlist</a>
+        <a class="btn" href="/whitepaper">Read how it works</a>
       </div>
     </section>
 
-    <section id="products" class="section">
-      <h2>Products</h2>
-      <div class="grid cols-2">
-        <div class="card">
-          <h3>Verified Identity</h3>
-          <p class="muted">A tamper-evident identity token that proves <em>you are you</em> without oversharing.</p>
-          <ul class="list">
-            <li>Time-stamped attestations</li>
-            <li>QR for quick verification</li>
-            <li>Revocable by you, not by platforms</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Private Email</h3>
-          <p class="muted">A trust-by-design mailbox with aliases that forward to Gmail (instant value at signup).</p>
-          <ul class="list">
-            <li>Aliases & catch-all</li>
-            <li>Auto-receipts + signed proofs</li>
-            <li>Easy migration from Gmail/Outlook</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Human-First VPN</h3>
-          <p class="muted">Simple, honest privacy routing with fair speeds and no games.</p>
-          <ul class="list">
-            <li>One-tap connect</li>
-            <li>No activity logs</li>
-            <li>Canada-first exits + global expansion</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Media on .TV</h3>
-          <p class="muted">Your voice, your stories. Short explainers, community spotlights, and live sessions.</p>
-          <div class="note">See <a href="https://spraxxx.tv" target="_blank" rel="noopener">spraxxx.tv</a></div>
-        </div>
+    <section class="section" aria-label="Highlights">
+      <div class="grid">
+        <article class="card" aria-labelledby="idv">
+          <h3 id="idv">Verified Identity (You, on your terms)</h3>
+          <p class="muted">ID proofs as revocable credentials. Store proofs, not docs. We can’t leak what we don’t hold.</p>
+        </article>
+        <article class="card" aria-labelledby="mail">
+          <h3 id="mail">Private Email Wallet</h3>
+          <p class="muted">One inbox, burner aliases, no tracking pixels, SPF/DKIM/DMARC by default. Your address, your rules.</p>
+        </article>
+        <article class="card" aria-labelledby="vpn">
+          <h3 id="vpn">Human-First VPN</h3>
+          <p class="muted">Transparent node map with jurisdiction notes and zero-activity logging. Open audits, published incidents.</p>
+        </article>
+        <article class="card" aria-labelledby="court">
+          <h3 id="court">Divine Court</h3>
+          <p class="muted">Testimony → harm → remedy on a public ledger. Due-process guardrails. No doxxing, no dogpiles.</p>
+        </article>
       </div>
     </section>
 
-    <!-- PRICING -->
-    <section id="pricing" class="section">
-      <h2>Pricing</h2>
-      <div class="grid cols-3">
-
-        <!-- Free -->
-        <div class="card">
-          <h3>Starter</h3>
-          <div class="price">$0</div>
-          <ul class="list">
-            <li>1 email alias (forward to Gmail)</li>
-            <li>Monthly updates</li>
-            <li>Community support</li>
-          </ul>
-          <a class="btn" href="#contact">Join Free</a>
-        </div>
-
-        <!-- Member $5 -->
-        <div class="card">
-          <h3>Member</h3>
-          <div class="price">$5 / mo</div>
-          <ul class="list">
-            <li>10 aliases (forward to Gmail)</li>
-            <li>Basic VPN access</li>
-            <li>ID token (starter)</li>
-          </ul>
-          <a class="btn" href="https://buy.stripe.com/9B6dR86eqeE86os4vz8IU01" target="_blank" rel="noopener">
-            Get Member
-          </a>
-        </div>
-
-        <!-- Pro $15 -->
-        <div class="card">
-          <h3>Pro</h3>
-          <div class="price">$15 / mo</div>
-          <ul class="list">
-            <li>Unlimited aliases</li>
-            <li>Full VPN + multi-region</li>
-            <li>Verifiable ID token</li>
-          </ul>
-          <a class="btn" href="https://buy.stripe.com/dRmbJ0eKW7bG7swe698IU00" target="_blank" rel="noopener">
-            Go Pro
-          </a>
-        </div>
-
+    <section class="section" aria-label="Trust & Transparency">
+      <div class="card">
+        <h3 class="mono">Trust, by design</h3>
+        <ul>
+          <li>🔒 Zero-knowledge where possible; revocation built-in.</li>
+          <li>🗺️ <a href="/transparency">Transparency Map</a>: node locations & applicable laws.</li>
+          <li>📜 <a href="/policy/privacy">Privacy Policy</a> • <a href="/policy/terms">Terms</a> • <a href="/gdpr">Data Requests</a></li>
+          <li>🪲 <a href="/security">Security</a> & <a href="/bounty">Bug bounty</a> with disclosure policy.</li>
+        </ul>
       </div>
-      <p class="tiny">Prices in CAD. Cancel anytime. Refunds within 7 days if you’re unhappy—no questions asked.</p>
     </section>
+  </main>
 
-    <section id="contact" class="section">
-      <h2>Contact & Waitlist</h2>
-      <form action="https://formspree.io/f/xyzdaqzl" method="POST">
-        <input type="email" name="email" placeholder="Email address" required>
-        <input type="text" name="name" placeholder="Your name (optional)">
-        <textarea name="message" rows="3" placeholder="What do you need? (VPN, Email, ID, Media)"></textarea>
-        <button class="btn" type="submit">Send</button>
-        <p class="note">No spam. No resale. Ever.</p>
-      </form>
-    </section>
+  <footer class="wrap footer" role="contentinfo">
+    <div class="grid">
+      <div class="card">
+        <strong>SPRAXXX</strong><br>
+        <span class="muted">Canada-based. Global-minded.</span>
+      </div>
+      <nav class="card" aria-label="Legal">
+        <h3 class="mono">Legal</h3>
+        <ul>
+          <li><a href="/policy/privacy">Privacy</a></li>
+          <li><a href="/policy/terms">Terms</a></li>
+          <li><a href="/policy/cookies">Cookies (we use none by default)</a></li>
+        </ul>
+      </nav>
+      <nav class="card" aria-label="Company">
+        <h3 class="mono">Company</h3>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/careers">Careers</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+    <p class="muted" style="margin-top:12px">© <span id="y">2025</span> SPRAXXX. All dignity reserved.</p>
+  </footer>
 
-    <footer>
-      <div>© <span id="y"></span> SPRAXXX. Built in Canada.</div>
-      <div><a href="/legal/privacy.md">Privacy</a> • <a href="/legal/terms.md">Terms</a></div>
-    </footer>
-  </div>
-
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
+  <!-- Tiny JS, with a CSP nonce. Replace NONCE_VALUE server-side. -->
+  <script nonce="NONCE_VALUE">
+    // Update year without shipping a framework
+    (function(){ try{ document.getElementById('y').textContent = new Date().getFullYear(); }catch(e){} }());
   </script>
 </body>
 </html>
