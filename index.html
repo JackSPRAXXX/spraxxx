@@ -1,49 +1,240 @@
-
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SPRAXXX — AI Landing</title>
-  <meta name="description" content="SPRAXXX: identity, dignity, and real connection. Get early access." />
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SPRAXXX – Verified Identity • Private Email • Human-First VPN</title>
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="SPRAXXX – Verified Identity, Private Email, Human-First VPN">
+  <meta property="og:description" content="Own your name. Lock your inbox. Vanish your footprints. SPRAXXX is identity + privacy that serves people, not platforms.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://spraxxx.com/">
+  <meta property="og:image" content="https://spraxxx.com/assets/og-cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicon & PWA -->
+  <link rel="icon" href="/assets/favicon.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+
+  <link rel="preload" href="/styles/main.css" as="style">
+  <link rel="stylesheet" href="/styles/main.css">
+  <style>
+    :root { --bg:#0b0b0c; --ink:#f2f2f2; --muted:#b9b9c0; --brand:#9dff6f; --card:#141417; --stroke:#222228; }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+    a{color:var(--brand);text-decoration:none}
+    .wrap{max-width:1100px;margin:0 auto;padding:20px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:8px 0}
+    header nav a{margin:0 10px;color:var(--muted)}
+    .hero{display:grid;gap:16px;padding:40px 0}
+    .hero h1{font-size:clamp(28px,6vw,52px);line-height:1.05;margin:8px 0}
+    .hero p{font-size:clamp(16px,2.8vw,20px);color:var(--muted);max-width:720px}
+    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
+    .btn{background:var(--brand);color:#0b0b0c;font-weight:700;border:0;border-radius:10px;padding:12px 16px}
+    .btn.ghost{background:transparent;color:var(--brand);border:1px solid var(--stroke)}
+    .grid{display:grid;gap:16px}
+    @media(min-width:780px){ .grid.cols-3{grid-template-columns:repeat(3,1fr)} .grid.cols-2{grid-template-columns:repeat(2,1fr)} }
+    .card{background:var(--card);border:1px solid var(--stroke);border-radius:14px;padding:16px}
+    .card h3{margin:0 0 8px 0}
+    .muted{color:var(--muted)}
+    .section{padding:28px 0}
+    .badge{display:inline-block;font-size:12px;background:#101014;border:1px solid var(--stroke);padding:4px 8px;border-radius:999px;color:var(--muted)}
+    footer{border-top:1px solid var(--stroke);margin-top:24px;padding:18px 0;color:var(--muted);font-size:14px}
+    .price{font-size:32px;font-weight:800}
+    .tiny{font-size:12px;color:var(--muted)}
+    .list{margin:10px 0 0 0;padding:0 0 0 18px}
+    .list li{margin:6px 0}
+    form input, form textarea{width:100%;background:#0f0f12;border:1px solid var(--stroke);color:var(--ink);padding:12px;border-radius:10px}
+    form button{margin-top:10px}
+    .note{font-size:13px;color:var(--muted)}
+  </style>
+
+  <!-- JSON-LD for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"SPRAXXX",
+    "url":"https://spraxxx.com",
+    "logo":"https://spraxxx.com/assets/logo.svg",
+    "sameAs":["https://spraxxx.tv","https://spraxxx.ai"]
+  }
+  </script>
+
+  <!-- Cloudflare Web Analytics (paste your token if you have one) -->
+  <!-- <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token":"YOUR_TOKEN"}'></script> -->
 </head>
 <body>
-  <header class="wrap">
-    <h1>SPRAXXX</h1>
-    <p class="tag">Identity • Dignity • Brotherhood</p>
-  </header>
+  <div class="wrap">
+    <header>
+      <div style="display:flex;align-items:center;gap:10px">
+        <img src="/assets/logo.svg" alt="SPRAXXX" width="32" height="32">
+        <strong>SPRAXXX</strong>
+      </div>
+      <nav>
+        <a href="#products">Products</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#updates">Updates</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
 
-  <main class="wrap">
     <section class="hero">
-      <h2>Be first to know</h2>
-      <p>No spam. Just key updates from SPRAXXX.</p>
+      <span class="badge">Identity • Email • VPN • Media</span>
+      <h1>Own your name. Lock your inbox. Vanish your footprints.</h1>
+      <p>SPRAXXX gives everyday people verified identity, private email, and a human-first VPN—so you can live online without selling your soul to platforms. Built in Canada. Built for dignity.</p>
+      <div class="cta">
+        <a class="btn" href="#pricing">See Pricing</a>
+        <a class="btn ghost" href="https://spraxxx.tv" target="_blank" rel="noopener">Watch on .TV</a>
+      </div>
+      <!-- Optional: lightweight hero media -->
+      <!-- <video src="/assets/demo-hero.mp4" muted playsinline autoplay loop style="width:100%;border-radius:14px;border:1px solid var(--stroke)"></video> -->
+    </section>
 
-      <form id="email-form" action="https://formspree.io/f/xyzdaqzl" method="POST" novalidate>
-        <div class="hp" aria-hidden="true">
-          <input type="text" id="company" name="company" tabindex="-1" autocomplete="off" />
+    <section id="proof" class="section">
+      <div class="grid cols-3">
+        <div class="card">
+          <h3>Real People, Real Control</h3>
+          <p class="muted">“I finally stopped chasing logins. My name is mine again.” — J.</p>
         </div>
+        <div class="card">
+          <h3>Lightweight & Fast</h3>
+          <p class="muted">No bloat, no tracking pixels, no creepy scripts. Just the tools you need.</p>
+        </div>
+        <div class="card">
+          <h3>Transparent by Design</h3>
+          <p class="muted">Clear pricing, human support, and plain-language policies.</p>
+        </div>
+      </div>
+    </section>
 
-        <input
-          id="email"
-          name="email"
-          type="email"
-          placeholder="you@example.com"
-          required
-        />
+    <section id="products" class="section">
+      <h2>Products</h2>
+      <div class="grid cols-2">
+        <div class="card">
+          <h3>Verified Identity</h3>
+          <p class="muted">A tamper-evident identity token that proves <em>you are you</em> without oversharing. Perfect for sign-ups, rentals, gigs, and more.</p>
+          <ul class="list">
+            <li>Time-stamped attestations</li>
+            <li>QR for quick verification</li>
+            <li>Revocable by you, not by platforms</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Private Email</h3>
+          <p class="muted">A trust-by-design mailbox with anti-phish tools and burner aliases you can shred anytime.</p>
+          <ul class="list">
+            <li>Aliases & catch-all</li>
+            <li>Auto-receipts + signed proofs</li>
+            <li>Easy migration from Gmail/Outlook</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Human-First VPN</h3>
+          <p class="muted">Simple, honest privacy routing with fair speeds and no games.</p>
+          <ul class="list">
+            <li>One-tap connect</li>
+            <li>No activity logs</li>
+            <li>Canada-first exits + global expansion</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Media on .TV</h3>
+          <p class="muted">Your voice, your stories. Short explainers, community spotlights, and live sessions.</p>
+          <div class="note">See <a href="https://spraxxx.tv" target="_blank" rel="noopener">spraxxx.tv</a></div>
+        </div>
+      </div>
+    </section>
 
-        <button id="email-submit" type="submit">Notify me</button>
-        <p id="form-msg" role="status" aria-live="polite"></p>
+    <section id="pricing" class="section">
+      <h2>Pricing</h2>
+      <div class="grid cols-3">
+        <div class="card">
+          <h3>Starter</h3>
+          <div class="price">$0</div>
+          <ul class="list">
+            <li>1 email alias</li>
+            <li>Monthly updates</li>
+            <li>Community support</li>
+          </ul>
+          <a class="btn" href="#contact">Join Free</a>
+        </div>
+        <div class="card">
+          <h3>Member</h3>
+          <div class="price">$5 / mo</div>
+          <ul class="list">
+            <li>Primary inbox + 10 aliases</li>
+            <li>Basic VPN</li>
+            <li>ID attestation (lite)</li>
+          </ul>
+          <a class="btn" href="#contact">Get Started</a>
+        </div>
+        <div class="card">
+          <h3>Pro</h3>
+          <div class="price">$15 / mo</div>
+          <ul class="list">
+            <li>Unlimited aliases</li>
+            <li>Full VPN + multi-region</li>
+            <li>Verifiable ID token</li>
+          </ul>
+          <a class="btn" href="#contact">Go Pro</a>
+        </div>
+      </div>
+      <p class="tiny">Prices in CAD. Taxes may apply. Cancel anytime.</p>
+    </section>
+
+    <section id="updates" class="section">
+      <h2>Updates</h2>
+      <div class="grid cols-2">
+        <div class="card">
+          <h3>2025-09-16</h3>
+          <p class="muted">Public launch of the unified site. Minimal, fast, and honest.</p>
+        </div>
+        <div class="card">
+          <h3>Roadmap</h3>
+          <ul class="list">
+            <li>Self-serve email onboarding</li>
+            <li>One-tap VPN for iOS/Android</li>
+            <li>Identity verifications with QR</li>
+          </ul>
+        </div>
+      </div>
+      <p class="tiny">More posts at <a href="/blog/">/blog/</a> (static markdown).</p>
+    </section>
+
+    <section id="faq" class="section">
+      <h2>FAQ</h2>
+      <div class="grid cols-2">
+        <div class="card">
+          <h3>What makes SPRAXXX different?</h3>
+          <p class="muted">We serve people, not ad networks. Tools are simple, pricing is clear, and identity is yours.</p>
+        </div>
+        <div class="card">
+          <h3>Do I need new devices?</h3>
+          <p class="muted">No. It works on the phone you have. Start with email & updates, add VPN and ID when you’re ready.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>Contact & Waitlist</h2>
+      <form action="https://formspree.io/f/xyzdaqzl" method="POST">
+        <input type="email" name="email" placeholder="Email address" required>
+        <input type="text" name="name" placeholder="Your name (optional)">
+        <textarea name="message" rows="3" placeholder="What do you need? (VPN, Email, ID, Media)"></textarea>
+        <button class="btn" type="submit">Send</button>
+        <p class="note">No spam. No resale. Ever.</p>
       </form>
     </section>
-  </main>
 
-  <footer class="wrap foot">
-    <small>© <span id="year"></span> SPRAXXX. All rights reserved.</small>
-  </footer>
+    <footer>
+      <div>© <span id="y"></span> SPRAXXX. Built in Canada.</div>
+      <div><a href="/legal/privacy.md">Privacy</a> • <a href="/legal/terms.md">Terms</a></div>
+    </footer>
+  </div>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-  <script src="js/form.js" defer></script>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+  <!-- <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js')}</script> -->
 </body>
 </html>
