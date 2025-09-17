@@ -3,244 +3,104 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SPRAXXX — Identity Keys & Verified Email • The Beginning of No‑More‑Virus</title>
-  <meta name="description" content="SPRAXXX is the home base for Identity Keys and Verified Email—private by default, verified by design. One hub at SPRAXXX.com that routes to .ai, .tv, .net, and .xxx (coming soon)." />
+  <title>SPRAXXX — Verify once. Live free forever.</title>
+  <meta name="description" content="SPRAXXX.com — the hub for Identity Keys and Verified Email. Verify once. Live free forever." />
   <meta name="robots" content="index,follow" />
   <meta name="color-scheme" content="dark light" />
   <meta name="theme-color" content="#0b0c11" media="(prefers-color-scheme: dark)">
-  <meta property="og:title" content="SPRAXXX — Identity Keys & Verified Email" />
-  <meta property="og:description" content="Private by default. Verified by design. Identity‑grade email with portable keys and receipts." />
-  <meta property="og:url" content="https://spraxxx.com" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="/assets/og.png" />
-  <meta name="twitter:card" content="summary_large_image" />
   <link rel="canonical" href="https://spraxxx.com/" />
   <link rel="icon" href="/assets/favicon.png" sizes="32x32" />
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
-
   <style>
-    :root{ --bg:#0b0c11; --panel:#111422; --ink:#e9f1ff; --muted:#a2b0c6; --brand:#90f2ff; --brand2:#8cffc1; --ring:#90f2ff55; --danger:#ff6b6b; --radius:16px; --shadow:0 12px 40px rgba(0,0,0,.35); --max:1100px }
+    :root{ --bg:#0b0c11; --panel:#0f1220; --ink:#e9f1ff; --muted:#9fb0c8; --brand:#90f2ff; --brand2:#8cffc1; --radius:16px; --max:900px }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{ margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, sans-serif; color:var(--ink); background: radial-gradient(1200px 600px at 70% -10%, #1a1f38 0%, transparent 60%), var(--bg); -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility }
     a{color:var(--brand); text-decoration:none}
     a:hover{text-decoration:underline}
-    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{outline:3px solid var(--brand); outline-offset:2px}
-    .wrap{max-width:var(--max); margin:0 auto; padding:20px}
-    header{position:sticky; top:0; backdrop-filter: blur(8px); background:#0b0c11cc; border-bottom:1px solid #1d2336; z-index:10}
-    .nav{display:flex; align-items:center; justify-content:space-between; gap:12px}
+    a:focus-visible, button:focus-visible, input:focus-visible{outline:3px solid var(--brand); outline-offset:2px}
+    .wrap{max-width:var(--max); margin:0 auto; padding:24px}
+    header{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:18px 24px; position:sticky; top:0; background:#0b0c11cc; border-bottom:1px solid #1b2240; backdrop-filter: blur(8px); z-index:10}
     .logo{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.5px}
-    .logo-badge{width:34px; height:34px; border-radius:9px; background:linear-gradient(135deg, var(--brand), var(--brand2)); box-shadow:var(--shadow)}
-    .navlinks{display:flex; gap:12px; flex-wrap:wrap}
-    .btn{display:inline-flex; gap:10px; align-items:center; justify-content:center; padding:12px 16px; border-radius:12px; border:1px solid #243050; background:#12162a; color:var(--ink); box-shadow: var(--shadow); transition: transform .06s ease}
-    .btn:hover{transform: translateY(-1px)}
-    .btn.primary{background:linear-gradient(135deg, #182038 0%, #101524 100%); border:1px solid #2a3a64; box-shadow: 0 0 0 6px var(--ring)}
-    .btn.ghost{background:transparent; border:1px solid #243050}
-    .chip{font-size:12px; padding:6px 10px; border-radius:999px; border:1px solid #22304e; color:var(--muted)}
-    .hero{padding:60px 20px 20px}
-    .grid{display:grid; gap:18px}
-    .two{grid-template-columns: repeat(2, minmax(0,1fr))}
+    .badge{width:28px; height:28px; border-radius:8px; background:linear-gradient(135deg, var(--brand), var(--brand2))}
+    nav{display:flex; gap:10px; flex-wrap:wrap}
+    .chip{font-size:12px; padding:6px 10px; border-radius:999px; border:1px solid #253256; color:var(--muted)}
+    .hero{padding:60px 24px}
+    .headline{font-size: clamp(28px, 5vw, 56px); line-height:1.05; margin:10px 0 6px}
+    .tag{color:#c7d8ff; font-weight:600; letter-spacing:.4px}
+    .panel{background:linear-gradient(180deg, #11152a 0%, #0d1020 100%); border:1px solid #1e294a; border-radius:18px; padding:18px}
+    .grid{display:grid; gap:16px}
+    .two{grid-template-columns: repeat(2, minmax(0, 1fr))}
     @media (max-width:900px){ .two{grid-template-columns:1fr} }
-    .panel{background: linear-gradient(180deg, #121627 0%, #0f1322 100%); border:1px solid #1f2946; border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
-    .panel.alt{background: linear-gradient(180deg, #0f1221 0%, #0b0f1d 100%)}
-    .head{font-size: clamp(26px, 4.6vw, 48px); line-height:1.05; margin:10px 0}
-    .sub{color:var(--muted); font-size: clamp(14px, 2.2vw, 18px)}
-    .kpis{display:flex; gap:14px; flex-wrap:wrap}
-    .kpi{flex:1 1 140px; padding:12px 14px; border:1px dashed #263155; border-radius:12px; color:#c6d7ff}
-    .pillrow{display:flex; gap:8px; flex-wrap:wrap; margin:10px 0}
-    .list{display:grid; gap:10px}
-    .list li{background:#0e1325; border:1px solid #1e2b4d; padding:12px 14px; border-radius:12px}
-    .code{font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; background:#0b0f1e; border:1px solid #1a2647; padding:14px; border-radius:12px; overflow:auto}
-    .divider{height:1px; background: linear-gradient(90deg, transparent, #29406c, transparent); margin:24px 0}
-    footer{padding:30px 20px; color:#9fb2d8; border-top:1px solid #1a2140}
-    .tiny{font-size:12px; color:#8ea2c9}
-    .icon{width:18px; height:18px; display:inline-block; border-radius:4px; background: linear-gradient(135deg, var(--brand), var(--brand2)); box-shadow: inset 0 0 0 2px #0e1430, 0 0 0 1px #172046}
-    @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important } }
+    .verify{display:grid; gap:10px}
+    .field{width:100%; padding:14px; border-radius:12px; border:1px solid #233055; background:#0e1325; color:var(--ink)}
+    .btn{display:inline-flex; align-items:center; justify-content:center; padding:12px 16px; border-radius:12px; border:1px solid #2a3a64; background:linear-gradient(135deg, #182038, #101524); color:var(--ink); cursor:pointer}
+    .btn.ghost{background:transparent; border:1px solid #2a3a64}
+    .muted{color:var(--muted); font-size:14px}
+    .divider{height:1px; background:linear-gradient(90deg, transparent, #2a3d68, transparent); margin:24px 0}
+    footer{padding:30px 24px; color:#9fb2d8; border-top:1px solid #1a2140}
   </style>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "SPRAXXX",
-    "url": "https://spraxxx.com/",
-    "sameAs": ["https://spraxxx.ai","https://spraxxx.tv","https://spraxxx.net"],
-    "description": "Identity Keys and Verified Email. Private by default, verified by design.",
-    "logo": "https://spraxxx.com/assets/og.png"
-  }
-  </script>
 </head>
 <body>
-  <a href="#main" class="tiny" style="position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden">Skip to content</a>
-
-  <header role="banner">
-    <div class="wrap nav">
-      <div class="logo" aria-label="SPRAXXX home">
-        <span class="logo-badge" aria-hidden="true"></span>
-        <a href="/" class="tiny" aria-label="Go to homepage"><strong>SPRAXXX</strong></a>
-      </div>
-      <nav class="navlinks" aria-label="Primary">
-        <a class="chip" href="https://spraxxx.ai" target="_blank" rel="noopener noreferrer">.ai</a>
-        <a class="chip" href="https://spraxxx.tv" target="_blank" rel="noopener noreferrer">.tv</a>
-        <a class="chip" href="https://spraxxx.net" target="_blank" rel="noopener noreferrer">.net</a>
-        <a class="chip" aria-disabled="true" href="#" onclick="return false" title="Coming soon">.xxx • soon</a>
-        <a class="btn ghost" href="#docs">Docs</a>
-        <a class="btn primary" href="#verify" aria-label="Get Verified">Get Verified</a>
-      </nav>
-    </div>
+  <header>
+    <div class="logo"><span class="badge" aria-hidden="true"></span><span>SPRAXXX</span></div>
+    <nav aria-label="Sites">
+      <a class="chip" href="https://spraxxx.ai" target="_blank" rel="noopener">.ai</a>
+      <a class="chip" href="https://spraxxx.tv" target="_blank" rel="noopener">.tv</a>
+      <a class="chip" href="https://spraxxx.net" target="_blank" rel="noopener">.net</a>
+      <a class="chip" aria-disabled="true" href="#" onclick="return false" title="Coming soon">.xxx</a>
+    </nav>
   </header>
 
-  <main id="main">
-    <section class="wrap hero" aria-labelledby="hero-title">
-      <div class="grid two">
-        <div class="panel">
-          <div class="pillrow" aria-label="Value statements">
-            <span class="chip">Identity Keys</span>
-            <span class="chip">Verified Email</span>
-            <span class="chip">Private by default</span>
-          </div>
-          <h1 id="hero-title" class="head">SPRAXXX: Identity‑grade keys and verified email for builders, advocates, and communities.</h1>
-          <p class="sub">This is the hub. <strong>SPRAXXX.com</strong> routes to our family: <a href="https://spraxxx.ai">.ai</a> for APIs and data models, <a href="https://spraxxx.tv">.tv</a> for broadcasts, <a href="https://spraxxx.net">.net</a> for network services, and <em>.xxx</em> (coming soon) for high‑assurance identity flows. Our aim: the <strong>beginning of no‑more‑virus</strong> in your inbox—through signed identity, proof‑portable receipts, and human override.</p>
-          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:14px">
-            <a class="btn primary" href="#verify">Get Verified</a>
-            <a class="btn" href="#keys">How Keys Work</a>
-            <a class="btn ghost" href="#routes">All Domains</a>
-          </div>
-          <div class="kpis" style="margin-top:14px" role="list" aria-label="Key points">
-            <div class="kpi" role="listitem"><strong>0 trackers</strong><br/><span class="tiny">No 3rd‑party analytics</span></div>
-            <div class="kpi" role="listitem"><strong>Portable proofs</strong><br/><span class="tiny">Receipts & fingerprints</span></div>
-            <div class="kpi" role="listitem"><strong>Appeals > automation</strong><br/><span class="tiny">Human override</span></div>
-          </div>
-        </div>
-
-        <div class="grid" aria-label="Product features">
-          <div class="panel alt">
-            <h2 style="margin:8px 0; display:flex; align-items:center; gap:10px"><span class="icon" aria-hidden="true"></span> <span>Identity Keys</span></h2>
-            <p class="sub">Issue signed, revocable identity keys to people and projects. Offline‑friendly, QR‑first, proof‑portable.</p>
-            <div class="code" aria-label="API example">
-              <code>POST /v1/keys/issue<br/>GET /v1/keys/verify</code>
-            </div>
-          </div>
-          <div class="panel alt">
-            <h2 style="margin:8px 0; display:flex; align-items:center; gap:10px"><span class="icon" aria-hidden="true"></span> <span>Verified Email</span></h2>
-            <p class="sub">Trust‑by‑design mail: DKIM/DMARC aligned, with human‑readable receipts and content fingerprints.</p>
-            <ul class="list">
-              <li>Signed headers + content receipts</li>
-              <li>Revocation and dispute trails</li>
-              <li>Exportable proofs for auditors</li>
-            </ul>
-          </div>
-          <div class="panel alt">
-            <h2 style="margin:8px 0; display:flex; align-items:center; gap:10px"><span class="icon" aria-hidden="true"></span> <span>Virus‑resistant by design</span></h2>
-            <p class="sub">We can’t eliminate all malware on the internet, but we can make inbox attack‑surface boring: verified senders, signed attachments, and quarantine by policy.</p>
-          </div>
-        </div>
-      </div>
+  <main class="wrap">
+    <section class="hero">
+      <div class="tag">Verify once. Live free forever.</div>
+      <h1 class="headline">Identity Keys & Verified Email</h1>
+      <p class="muted">SPRAXXX.com is the hub. Simple, fast, and centered on verification—just like <strong>spraxxx.net</strong>, with a cleaner front door.</p>
     </section>
 
-    <div class="wrap"><div class="divider" role="presentation"></div></div>
-
-    <section id="verify" class="wrap" aria-labelledby="verify-title">
-      <div class="grid two">
-        <div class="panel">
-          <h2 id="verify-title" class="head" style="font-size:28px">Get Verified</h2>
-          <p class="sub">Identity verification for keys and email routing. Use Stripe‑powered verification or bring your own attesters.</p>
-          <ol class="list" style="list-style:decimal inside">
-            <li>Confirm real person or org (Stripe Identity or attester set).</li>
-            <li>Issue a <strong>SPRAXXX Identity Key</strong> (portable, revocable).</li>
-            <li>Bind key to your mail domain and client. Start sending <em>with receipts</em>.</li>
-          </ol>
-          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px">
-            <a class="btn primary" href="https://buy.stripe.com/9B68wOfP03ZueUYbY18IU03" rel="noopener noreferrer">Verify with Stripe</a>
-            <a class="btn ghost" href="#docs">Developer Docs</a>
-          </div>
-          <p class="tiny" style="margin-top:8px">Note: Stripe links are live per mapping; replace with your IDs as needed.</p>
-        </div>
-        <div class="panel">
-          <h3 style="margin-top:0">What you get</h3>
-          <ul class="list">
-            <li><strong>Keypair & credential</strong> (did:sprx style identifier)</li>
-            <li><strong>Mail signing profile</strong> (aligned with SPF/DKIM/DMARC)</li>
-            <li><strong>Receipts API</strong> for evidence and disputes</li>
-          </ul>
+    <section class="grid two" aria-labelledby="verify-title">
+      <div class="panel">
+        <h2 id="verify-title">Verify a Credential</h2>
+        <form class="verify" action="#" method="POST" aria-describedby="verify-help">
+          <label class="muted" for="cred">Credential ID</label>
+          <input id="cred" class="field" name="credential" placeholder="did:sprxxx:abc123 or receipt hash" required />
+          <button class="btn" type="submit">Verify</button>
+          <p id="verify-help" class="muted">Or scan a SPRAXXX QR below.</p>
+        </form>
+        <div class="divider"></div>
+        <div class="grid">
+          <button class="btn ghost" type="button" aria-label="Open QR Scanner" onclick="alert('QR scanner coming soon')">Open QR Scanner</button>
+          <small class="muted">Signed attestations. Revocable keys. Human override.</small>
         </div>
       </div>
-    </section>
-
-    <div class="wrap"><div class="divider" role="presentation"></div></div>
-
-    <section id="keys" class="wrap" aria-labelledby="keys-title">
-      <div class="grid two">
-        <div class="panel">
-          <h2 id="keys-title" class="head" style="font-size:28px">How Identity Keys Work</h2>
-          <p class="sub">Simple moving parts. No soul‑selling. You can host it yourself.</p>
-          <div class="code" aria-label="API example">
-<pre><code>POST /v1/keys/issue \
- -H "Authorization: Bearer &lt;token&gt;" \
- -H "Content-Type: application/json" \
- -d '{
-   "subject":"did:sprxxx:123",   
-   "claims":{"name":"Maple","role":"Ministry content creation laborer"},
-   "expiry":"2026-12-31"
- }'
-</code></pre>
-          </div>
-          <p class="tiny">API host is placeholder. Wire when backend is ready.</p>
-        </div>
-        <div class="panel">
-          <h3 style="margin-top:0">Guardrails that matter</h3>
-          <ul class="list">
-            <li><strong>Identity‑first:</strong> Signed attestations, not vibes.</li>
-            <li><strong>Proof trails:</strong> Fingerprints & immutable receipts.</li>
-            <li><strong>Human override:</strong> Appeals outrank automation.</li>
-            <li><strong>Zero tracking pixels:</strong> People ≠ ad inventory.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <div class="wrap"><div class="divider" role="presentation"></div></div>
-
-    <section id="routes" class="wrap" aria-labelledby="routes-title">
-      <div class="grid two">
-        <div class="panel">
-          <h2 id="routes-title" class="head" style="font-size:28px">Where things live</h2>
-          <ul class="list">
-            <li><strong>SPRAXXX.com</strong> — Hub & keys</li>
-            <li><strong>SPRAXXX.ai</strong> — APIs, models, assistants</li>
-            <li><strong>SPRAXXX.tv</strong> — Broadcasts & community calls</li>
-            <li><strong>SPRAXXX.net</strong> — Mail & network utilities</li>
-            <li><strong>SPRAXXX.xxx</strong> — High‑assurance flows (coming soon)</li>
-          </ul>
-        </div>
-        <div class="panel alt">
-          <h3 style="margin-top:0">Roadmap Highlights</h3>
-          <ul class="list">
-            <li>🔒 Encrypted case bundles & shareable proofs</li>
-            <li>🧾 Verifiable receipts for testimony/uploads</li>
-            <li>🧭 Ethics modes (Court / Clinic / Outreach)</li>
-          </ul>
-        </div>
+      <div class="panel">
+        <h2>What this does</h2>
+        <ul class="muted" style="line-height:1.6">
+          <li>Checks signature on the credential or receipt</li>
+          <li>Surfaces revocation/dispute status</li>
+          <li>Shows mail‑safe status for verified senders</li>
+        </ul>
+        <div class="divider"></div>
+        <h3 style="margin-top:0">Developers</h3>
+        <pre class="muted" style="overflow:auto; background:#0b0f1e; border:1px solid #1a2647; padding:12px; border-radius:12px">POST /v1/verify
+{
+  "subject":"did:sprxxx:123",
+  "proof":"&lt;receipt-hash&gt;"
+}</pre>
       </div>
     </section>
   </main>
 
-  <footer role="contentinfo">
-    <div class="wrap">
-      <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap">
-        <div class="tiny">© <span id="y"></span> SPRAXXX — All rights reserved. Built with love and receipts.</div>
-        <nav aria-label="Footer">
-          <div style="display:flex; gap:10px; flex-wrap:wrap">
-            <a class="tiny" href="/legal">Legal</a>
-            <a class="tiny" href="/privacy">Privacy</a>
-            <a class="tiny" href="/status">Status</a>
-          </div>
-        </nav>
+  <footer>
+    <div class="wrap" style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap">
+      <div class="muted">© <span id="y"></span> SPRAXXX — enough of their sh*t, it’s our turn.</div>
+      <div style="display:flex; gap:10px">
+        <a class="muted" href="/privacy">Privacy</a>
+        <a class="muted" href="/status">Status</a>
       </div>
     </div>
   </footer>
-
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
