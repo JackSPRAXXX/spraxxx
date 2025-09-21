@@ -11,13 +11,13 @@
   <link rel="canonical" href="https://spraxxx.com/" />
   <link rel="icon" href="/assets/favicon.png" sizes="32x32" />
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
-  <!-- Perf hints (swap to real domains when live) -->
   <link rel="preconnect" href="https://js.stripe.com" crossorigin>
   <style>
     :root{
       --bg:#0b0c11; --panel:#0f1220; --ink:#e9f1ff; --muted:#9fb0c8;
       --brand:#90f2ff; --brand2:#8cffc1; --gold:#ffd389;
       --line:#1c2748; --radius:16px; --max:1120px; --shadow:0 6px 30px rgba(0,0,0,.25);
+      --success:#8cffc1; --warn:#ffd389; --error:#ff9aa2;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -36,7 +36,6 @@
       outline:3px solid var(--brand); outline-offset:2px; border-radius:10px;
     }
 
-    /* Header */
     header{
       position:sticky; top:0; z-index:20;
       backdrop-filter:saturate(150%) blur(10px);
@@ -58,7 +57,6 @@
       border:1px dashed #385080; color:#cde8ff; background:rgba(24,32,56,.35)
     }
 
-    /* Hero */
     .hero{position:relative; overflow:hidden}
     .hero-inner{display:grid; grid-template-columns:1.15fr .85fr; gap:28px; align-items:center; padding:58px 0 28px}
     @media (max-width:1000px){ .hero-inner{grid-template-columns:1fr; padding:42px 0 10px} }
@@ -92,11 +90,8 @@
     }
     .globe:after{ inset:auto auto -140px -80px; width:480px; height:480px; animation-duration:22s; opacity:.45 }
     @keyframes float { 0%,100%{ transform:translateY(-8px)} 50%{ transform:translateY(8px)} }
-    @media (prefers-reduced-motion:reduce){
-      .globe:before,.globe:after{animation:none}
-    }
+    @media (prefers-reduced-motion:reduce){ .globe:before,.globe:after{animation:none} }
 
-    /* Panels / sections */
     .section{padding:36px 0}
     .panel{
       background:linear-gradient(180deg, #11152a 0%, #0d1020 100%);
@@ -109,17 +104,14 @@
 
     .divider{height:1px; background:linear-gradient(90deg, transparent, #2a3d68, transparent); margin:20px 0}
 
-    /* Verify card */
     .verify{display:grid; gap:12px}
     .label{color:var(--muted); font-size:14px}
     .field{width:100%; padding:14px; border-radius:12px; border:1px solid #233055; background:#0e1325; color:var(--ink)}
     .ghost{background:transparent}
 
-    /* Value props */
     .value{display:flex; gap:12px; align-items:flex-start; padding:14px; border-radius:14px; border:1px solid #1b2647}
     .value svg{flex:0 0 auto}
 
-    /* Pricing */
     .plans{display:grid; gap:16px; grid-template-columns:repeat(3, minmax(0,1fr))}
     @media (max-width:1000px){ .plans{grid-template-columns:1fr} }
     .plan{
@@ -132,16 +124,13 @@
     .plan ul{margin:0; padding-left:16px; color:var(--muted); line-height:1.6}
     .tagline{font-size:13px; color:#cdd9ff}
 
-    /* FAQ */
     details{border:1px solid #223055; border-radius:14px; padding:12px 14px; background:#0e1325}
     summary{cursor:pointer; font-weight:700}
     details p{color:var(--muted)}
 
-    /* Footer */
     footer{padding:30px 0; color:#9fb2d8; border-top:1px solid var(--line)}
     .foot{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap}
 
-    /* Ribbon */
     .ribbon{
       display:flex; justify-content:center; padding:10px; border-bottom:1px dashed #2c3d6e;
       background:linear-gradient(180deg, rgba(25,34,64,.35), rgba(12,16,32,.35));
@@ -151,15 +140,33 @@
       background:radial-gradient(closest-side, #e9f1ff, transparent); filter:blur(.5px); margin-top:3px;
     }
 
-    /* Modal */
-    .modal{position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:50}
-    .modal[open]{display:flex}
-    .backdrop{position:absolute; inset:0; background:rgba(6,8,18,.72); backdrop-filter:blur(4px)}
-    .sheet{position:relative; width:min(680px, 90vw); border-radius:18px; border:1px solid #2a3a64; padding:16px;
-      background:linear-gradient(180deg,#101426,#0d1020); box-shadow:var(--shadow);
+    /* Victory highlight */
+    .victory{
+      background:
+        linear-gradient(180deg, rgba(16,20,40,.9), rgba(12,16,32,.95)),
+        radial-gradient(800px 300px at 85% -20%, rgba(144,242,255,.15), transparent 60%),
+        radial-gradient(800px 300px at 5% 120%, rgba(140,255,193,.12), transparent 60%);
+      border:1px solid #2a3d68;
+      box-shadow: 0 18px 80px rgba(0,0,0,.35);
     }
+    .stats{display:grid; gap:12px; grid-template-columns:repeat(3, minmax(0,1fr))}
+    @media (max-width:900px){ .stats{grid-template-columns:1fr} }
+    .stat{
+      border:1px solid #223055; border-radius:14px; padding:14px;
+      background:linear-gradient(180deg,#121730,#0d1022);
+    }
+    .stat .big{font-size:26px; font-weight:900; letter-spacing:.2px}
+    .pill{display:inline-block; padding:4px 10px; font-size:12px; border-radius:999px; border:1px solid #32507a; color:#cde8ff}
 
-    /* Accessibility helpers for skip link */
+    /* Contact form */
+    .contact-grid{display:grid; gap:16px; grid-template-columns:1.1fr .9fr}
+    @media (max-width:1000px){ .contact-grid{grid-template-columns:1fr} }
+    .msg{font-size:14px; margin-top:8px}
+    .msg.ok{color:var(--success)}
+    .msg.err{color:var(--error)}
+    .req{color:#ffd389}
+
+    /* Accessibility */
     .skip{position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden}
     .skip:focus{position:static; width:auto; height:auto; padding:8px 10px; background:#162040; border-radius:8px}
   </style>
@@ -167,7 +174,6 @@
 <body>
   <a href="#main" class="skip">Skip to content</a>
 
-  <!-- Coming Soon ribbon -->
   <div class="ribbon" role="status" aria-live="polite">
     <span class="spark" aria-hidden="true"></span>
     <span>SPRAXXX.com is coming online — core flows are in flight.</span>
@@ -202,14 +208,12 @@
             Your <strong>@spraxxx.me</strong> mailbox and identity key — ready for the real world.
           </p>
           <div class="actions">
-            <!-- Swap hrefs to Stripe/Payment Link when ready -->
             <a class="btn primary" href="#buy" data-checkout="citizen">Get Verified</a>
             <a class="btn" href="#how">How it works</a>
             <a class="btn gold" href="#verify">Verify a receipt</a>
           </div>
           <p class="note">Apple Pay • Google Pay • Card — Customer Portal included</p>
         </div>
-        <!-- Decorative globe panel -->
         <div class="globe" aria-hidden="true"></div>
       </div>
     </section>
@@ -383,6 +387,110 @@
         </details>
       </div>
     </section>
+
+    <!-- VICTORY REPORT -->
+    <section id="victory" class="section">
+      <div class="wrap panel victory">
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap">
+          <h2 style="margin:0">🎉 Victory Short — Where We Are</h2>
+          <span class="pill">Day by day • Brick by brick</span>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="grid two" style="align-items:start">
+          <div>
+            <h3 style="margin:0 0 10px 0">The Crown Jewels (Domains)</h3>
+            <ul class="note" style="line-height:1.7">
+              <li><strong>spraxxx.com</strong> — hub / checkout</li>
+              <li><strong>spraxxx.ai</strong> — AI celebrities &amp; identity</li>
+              <li><strong>spraxxx.tv</strong> — live media &amp; community</li>
+              <li><strong>spraxxx.net</strong> — docs, APIs, status</li>
+              <li><strong>spraxxx.me</strong> — personal handles &amp; inbox</li>
+              <li><strong>spraxxx.xxx</strong> — reserved (future)</li>
+            </ul>
+          </div>
+          <div>
+            <h3 style="margin:0 0 10px 0">Worth (Conservative)</h3>
+            <ul class="note" style="line-height:1.7">
+              <li><strong>Present bundle:</strong> ~$12k–$30k (up to ~$40k packaged)</li>
+              <li><strong>Six months:</strong> ~$50k–$100k (ecosystem running)</li>
+              <li><strong>One year:</strong> mid-six figures possible (traction-based)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="stats" role="list">
+          <div class="stat" role="listitem">
+            <div class="big">Now</div>
+            <div class="note">Glossy hub online, plans written, verify demo, .ai/.tv/.net live.</div>
+          </div>
+          <div class="stat" role="listitem">
+            <div class="big">+6 Months</div>
+            <div class="note">Stripe live, waitlist/handles, steady .tv cadence, basic docs.</div>
+          </div>
+          <div class="stat" role="listitem">
+            <div class="big">+12 Months</div>
+            <div class="note">Subscribers, receipts in the wild, partner pilots, dev API usage.</div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+        <p class="note" style="margin:0"><em>“From namespace to Nation.”</em> The inbox that signs its name.</p>
+      </div>
+    </section>
+
+    <!-- BUSINESS DEVELOPMENT CONTACT -->
+    <section id="business" class="section">
+      <div class="wrap contact-grid">
+        <div class="panel">
+          <h2 style="margin-top:0">Business Development</h2>
+          <p class="note">Entrepreneurs and investors — if you’re interested in partnerships, pilots, or funding conversations, reach out below. We’ll reply from a Mail-Safe verified address.</p>
+
+          <!-- Replace FORMSPREE_ENDPOINT with your real Formspree endpoint -->
+          <form id="bd-form" class="verify" method="POST">
+            <label class="label" for="bd_name">Name <span class="req" aria-hidden="true">*</span></label>
+            <input id="bd_name" name="name" class="field" placeholder="Your name" required />
+
+            <label class="label" for="bd_email">Email <span class="req" aria-hidden="true">*</span></label>
+            <input id="bd_email" name="_replyto" type="email" class="field" placeholder="you@example.com" required />
+
+            <label class="label" for="bd_role">I am</label>
+            <select id="bd_role" name="role" class="field">
+              <option>Entrepreneur</option>
+              <option>Investor</option>
+              <option>Partner / BD</option>
+              <option>Other</option>
+            </select>
+
+            <label class="label" for="bd_msg">Interest / Comment</label>
+            <textarea id="bd_msg" name="message" class="field" rows="5" placeholder="Tell us how you’d like to build with SPRAXXX"></textarea>
+
+            <!-- Useful metadata -->
+            <input type="hidden" name="_subject" value="SPRAXXX — Business Development Inquiry" />
+            <input type="hidden" name="page" value="spraxxx.com" />
+
+            <button class="btn primary" type="submit">Contact</button>
+            <div id="bd_status" class="msg" role="status" aria-live="polite"></div>
+          </form>
+          <p class="note" style="margin-top:10px">Prefer direct email? <a href="mailto:hello@spraxxx.com?subject=Business%20Development">hello@spraxxx.com</a></p>
+        </div>
+
+        <div class="panel">
+          <h2 style="margin-top:0">Why partner now?</h2>
+          <ul class="note" style="line-height:1.7; margin:0">
+            <li>Own the **verified inbox** in your niche (creators, orgs, communities).</li>
+            <li>Receipts + identity rails: **fraud-resistant commerce** primitives.</li>
+            <li>Clear brand namespace across major TLDs — **rare footprint**.</li>
+            <li>API-first: connect your product, sign your mail, ship receipts.</li>
+          </ul>
+          <div class="divider"></div>
+          <p class="note">We’re lining up pilot cohorts (creator tools, local commerce, membership clubs). Your ideas welcome.</p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
@@ -433,10 +541,10 @@
   </dialog>
 
   <script>
-    // Year
+    // YEAR
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Simple modal helpers
+    // MODALS
     function openModal(kind){
       const id = kind === 'qr' ? 'modal-qr' : 'modal-demo';
       const el = document.getElementById(id);
@@ -450,15 +558,44 @@
       else if (el) el.removeAttribute('open');
     }
 
-    // Placeholder checkout buttons — replace data-checkout with your Stripe links
+    // CHECKOUT PLACEHOLDERS (swap with real Stripe links)
     for (const btn of document.querySelectorAll('[data-checkout]')){
       btn.addEventListener('click', (e) => {
         const plan = e.currentTarget.getAttribute('data-checkout');
-        // TODO: swap with Stripe Payment Link or Checkout Session redirect
-        // window.location.href = 'https://buy.stripe.com/your_link_for_'+plan;
+        // TODO: Replace with your Stripe Payment Link
+        // Example:
+        // if (plan === 'citizen') window.location.href = 'https://buy.stripe.com/your_citizen_link';
+        // if (plan === 'creator') window.location.href = 'https://buy.stripe.com/your_creator_link';
         console.log('Checkout clicked:', plan);
       });
     }
+
+    // FORMSPREE SUBMIT (AJAX) — replace endpoint with your real Formspree ID
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/your_form_id'; // <-- REPLACE THIS
+    const form = document.getElementById('bd-form');
+    const status = document.getElementById('bd_status');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      status.textContent = 'Sending…';
+      status.className = 'msg';
+      try {
+        const data = new FormData(form);
+        const res = await fetch(FORMSPREE_ENDPOINT, { method: 'POST', body: data, headers: { 'Accept': 'application/json' }});
+        if (res.ok) {
+          form.reset();
+          status.textContent = 'Thanks — we’ll be in touch from a Mail-Safe verified address.';
+          status.className = 'msg ok';
+        } else {
+          const j = await res.json().catch(()=>({}));
+          status.textContent = j.errors?.[0]?.message || 'Hmm, something went wrong. Try again or email hello@spraxxx.com.';
+          status.className = 'msg err';
+        }
+      } catch (err) {
+        status.textContent = 'Network error — please try again or email hello@spraxxx.com.';
+        status.className = 'msg err';
+      }
+    });
   </script>
 </body>
 </html>
