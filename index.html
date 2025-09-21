@@ -4,103 +4,461 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SPRAXXX — Verify once. Live free forever.</title>
-  <meta name="description" content="SPRAXXX.com — the hub for Identity Keys and Verified Email. Verify once. Live free forever." />
+  <meta name="description" content="SPRAXXX.com — Identity Keys + Mail-Safe Verified Email. Verify once. Live free forever." />
   <meta name="robots" content="index,follow" />
   <meta name="color-scheme" content="dark light" />
   <meta name="theme-color" content="#0b0c11" media="(prefers-color-scheme: dark)">
   <link rel="canonical" href="https://spraxxx.com/" />
   <link rel="icon" href="/assets/favicon.png" sizes="32x32" />
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <!-- Perf hints (swap to real domains when live) -->
+  <link rel="preconnect" href="https://js.stripe.com" crossorigin>
   <style>
-    :root{ --bg:#0b0c11; --panel:#0f1220; --ink:#e9f1ff; --muted:#9fb0c8; --brand:#90f2ff; --brand2:#8cffc1; --radius:16px; --max:900px }
+    :root{
+      --bg:#0b0c11; --panel:#0f1220; --ink:#e9f1ff; --muted:#9fb0c8;
+      --brand:#90f2ff; --brand2:#8cffc1; --gold:#ffd389;
+      --line:#1c2748; --radius:16px; --max:1120px; --shadow:0 6px 30px rgba(0,0,0,.25);
+    }
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{ margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, sans-serif; color:var(--ink); background: radial-gradient(1200px 600px at 70% -10%, #1a1f38 0%, transparent 60%), var(--bg); -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility }
+    body{
+      margin:0; color:var(--ink);
+      background:
+        radial-gradient(1200px 600px at 70% -10%, #192140 0%, transparent 60%),
+        radial-gradient(900px 480px at 10% 120%, #112033 0%, transparent 60%),
+        var(--bg);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, sans-serif;
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    }
     a{color:var(--brand); text-decoration:none}
     a:hover{text-decoration:underline}
-    a:focus-visible, button:focus-visible, input:focus-visible{outline:3px solid var(--brand); outline-offset:2px}
-    .wrap{max-width:var(--max); margin:0 auto; padding:24px}
-    header{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:18px 24px; position:sticky; top:0; background:#0b0c11cc; border-bottom:1px solid #1b2240; backdrop-filter: blur(8px); z-index:10}
-    .logo{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.5px}
-    .badge{width:28px; height:28px; border-radius:8px; background:linear-gradient(135deg, var(--brand), var(--brand2))}
+    a:focus-visible, button:focus-visible, input:focus-visible, [role="button"]:focus-visible{
+      outline:3px solid var(--brand); outline-offset:2px; border-radius:10px;
+    }
+
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:20;
+      backdrop-filter:saturate(150%) blur(10px);
+      background:linear-gradient(180deg, rgba(11,12,17,.75), rgba(11,12,17,.35));
+      border-bottom:1px solid var(--line);
+    }
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 24px}
+    .bar{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 0}
+    .logo{display:flex; align-items:center; gap:12px; font-weight:900; letter-spacing:.4px}
+    .badge{width:28px; height:28px; border-radius:9px; box-shadow:0 0 0 1px #0b0c11 inset;
+      background:conic-gradient(from 120deg at 50% 50%, var(--brand), var(--brand2), var(--brand));
+    }
     nav{display:flex; gap:10px; flex-wrap:wrap}
-    .chip{font-size:12px; padding:6px 10px; border-radius:999px; border:1px solid #253256; color:var(--muted)}
-    .hero{padding:60px 24px}
-    .headline{font-size: clamp(28px, 5vw, 56px); line-height:1.05; margin:10px 0 6px}
-    .tag{color:#c7d8ff; font-weight:600; letter-spacing:.4px}
-    .panel{background:linear-gradient(180deg, #11152a 0%, #0d1020 100%); border:1px solid #1e294a; border-radius:18px; padding:18px}
+    .chip{font-size:12px; padding:6px 10px; border-radius:999px; border:1px solid var(--line); color:var(--muted)}
+    .cta-mini{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:12px;
+      border:1px solid #2a3a64; background:linear-gradient(135deg,#182038,#101524); color:var(--ink);
+    }
+    .soon{display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; font-size:12px;
+      border:1px dashed #385080; color:#cde8ff; background:rgba(24,32,56,.35)
+    }
+
+    /* Hero */
+    .hero{position:relative; overflow:hidden}
+    .hero-inner{display:grid; grid-template-columns:1.15fr .85fr; gap:28px; align-items:center; padding:58px 0 28px}
+    @media (max-width:1000px){ .hero-inner{grid-template-columns:1fr; padding:42px 0 10px} }
+    .headline{font-size: clamp(30px, 5.6vw, 62px); line-height:1.04; margin:8px 0 10px; letter-spacing:-.02em}
+    .tag{color:#c7d8ff; font-weight:700; letter-spacing:.4px}
+    .sub{color:var(--muted); font-size:18px; max-width:52ch}
+    .actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:16px}
+    .btn{display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:14px 18px; border-radius:14px; cursor:pointer; user-select:none;
+      border:1px solid #2a3a64; box-shadow:var(--shadow);
+      background:linear-gradient(135deg, #182038, #101524); color:var(--ink); font-weight:650;
+      transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+    }
+    .btn.primary{background:linear-gradient(135deg, #1f2b48, #0f1424)}
+    .btn.gold{background:linear-gradient(135deg, #2a2217, #141008); border-color:#3d331f}
+    .btn:hover{transform:translateY(-1px)}
+    .btn:active{transform:translateY(0)}
+    .note{font-size:13px; color:var(--muted)}
+    .globe{
+      position:relative; border-radius:20px; border:1px solid var(--line); min-height:320px;
+      background:
+        radial-gradient(220px 220px at 60% 40%, rgba(144,242,255,.18), transparent 60%),
+        radial-gradient(240px 240px at 30% 70%, rgba(140,255,193,.15), transparent 60%),
+        #0c1020;
+      overflow:hidden;
+    }
+    .globe:before, .globe:after{
+      content:""; position:absolute; inset:-120px -60px auto auto; width:520px; height:520px; border-radius:50%;
+      background:radial-gradient(closest-side, rgba(144,242,255,.25), rgba(140,255,193,.18) 55%, transparent 60%);
+      filter:blur(20px); opacity:.55; animation: float 18s ease-in-out infinite;
+    }
+    .globe:after{ inset:auto auto -140px -80px; width:480px; height:480px; animation-duration:22s; opacity:.45 }
+    @keyframes float { 0%,100%{ transform:translateY(-8px)} 50%{ transform:translateY(8px)} }
+    @media (prefers-reduced-motion:reduce){
+      .globe:before,.globe:after{animation:none}
+    }
+
+    /* Panels / sections */
+    .section{padding:36px 0}
+    .panel{
+      background:linear-gradient(180deg, #11152a 0%, #0d1020 100%);
+      border:1px solid var(--line); border-radius:18px; padding:18px;
+    }
     .grid{display:grid; gap:16px}
-    .two{grid-template-columns: repeat(2, minmax(0, 1fr))}
-    @media (max-width:900px){ .two{grid-template-columns:1fr} }
-    .verify{display:grid; gap:10px}
+    .two{grid-template-columns:1.1fr .9fr}
+    .three{grid-template-columns:repeat(3, minmax(0,1fr))}
+    @media (max-width:1000px){ .two,.three{grid-template-columns:1fr} }
+
+    .divider{height:1px; background:linear-gradient(90deg, transparent, #2a3d68, transparent); margin:20px 0}
+
+    /* Verify card */
+    .verify{display:grid; gap:12px}
+    .label{color:var(--muted); font-size:14px}
     .field{width:100%; padding:14px; border-radius:12px; border:1px solid #233055; background:#0e1325; color:var(--ink)}
-    .btn{display:inline-flex; align-items:center; justify-content:center; padding:12px 16px; border-radius:12px; border:1px solid #2a3a64; background:linear-gradient(135deg, #182038, #101524); color:var(--ink); cursor:pointer}
-    .btn.ghost{background:transparent; border:1px solid #2a3a64}
-    .muted{color:var(--muted); font-size:14px}
-    .divider{height:1px; background:linear-gradient(90deg, transparent, #2a3d68, transparent); margin:24px 0}
-    footer{padding:30px 24px; color:#9fb2d8; border-top:1px solid #1a2140}
+    .ghost{background:transparent}
+
+    /* Value props */
+    .value{display:flex; gap:12px; align-items:flex-start; padding:14px; border-radius:14px; border:1px solid #1b2647}
+    .value svg{flex:0 0 auto}
+
+    /* Pricing */
+    .plans{display:grid; gap:16px; grid-template-columns:repeat(3, minmax(0,1fr))}
+    @media (max-width:1000px){ .plans{grid-template-columns:1fr} }
+    .plan{
+      border:1px solid #233055; border-radius:18px; padding:18px;
+      background:linear-gradient(180deg, #121730, #0d1022);
+      display:flex; flex-direction:column; gap:14px;
+    }
+    .plan h3{margin:0}
+    .price{font-size:28px; font-weight:800}
+    .plan ul{margin:0; padding-left:16px; color:var(--muted); line-height:1.6}
+    .tagline{font-size:13px; color:#cdd9ff}
+
+    /* FAQ */
+    details{border:1px solid #223055; border-radius:14px; padding:12px 14px; background:#0e1325}
+    summary{cursor:pointer; font-weight:700}
+    details p{color:var(--muted)}
+
+    /* Footer */
+    footer{padding:30px 0; color:#9fb2d8; border-top:1px solid var(--line)}
+    .foot{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap}
+
+    /* Ribbon */
+    .ribbon{
+      display:flex; justify-content:center; padding:10px; border-bottom:1px dashed #2c3d6e;
+      background:linear-gradient(180deg, rgba(25,34,64,.35), rgba(12,16,32,.35));
+      color:#d9f7ff; font-weight:700; gap:8px;
+    }
+    .spark{display:inline-block; width:10px; height:10px; border-radius:50%;
+      background:radial-gradient(closest-side, #e9f1ff, transparent); filter:blur(.5px); margin-top:3px;
+    }
+
+    /* Modal */
+    .modal{position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:50}
+    .modal[open]{display:flex}
+    .backdrop{position:absolute; inset:0; background:rgba(6,8,18,.72); backdrop-filter:blur(4px)}
+    .sheet{position:relative; width:min(680px, 90vw); border-radius:18px; border:1px solid #2a3a64; padding:16px;
+      background:linear-gradient(180deg,#101426,#0d1020); box-shadow:var(--shadow);
+    }
+
+    /* Accessibility helpers for skip link */
+    .skip{position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden}
+    .skip:focus{position:static; width:auto; height:auto; padding:8px 10px; background:#162040; border-radius:8px}
   </style>
 </head>
 <body>
+  <a href="#main" class="skip">Skip to content</a>
+
+  <!-- Coming Soon ribbon -->
+  <div class="ribbon" role="status" aria-live="polite">
+    <span class="spark" aria-hidden="true"></span>
+    <span>SPRAXXX.com is coming online — core flows are in flight.</span>
+    <span class="soon">“Verify once. Live free forever.”</span>
+  </div>
+
   <header>
-    <div class="logo"><span class="badge" aria-hidden="true"></span><span>SPRAXXX</span></div>
-    <nav aria-label="Sites">
-      <a class="chip" href="https://spraxxx.ai" target="_blank" rel="noopener">.ai</a>
-      <a class="chip" href="https://spraxxx.tv" target="_blank" rel="noopener">.tv</a>
-      <a class="chip" href="https://spraxxx.net" target="_blank" rel="noopener">.net</a>
-      <a class="chip" aria-disabled="true" href="#" onclick="return false" title="Coming soon">.xxx</a>
-    </nav>
+    <div class="wrap bar">
+      <div class="logo">
+        <span class="badge" aria-hidden="true"></span>
+        <span aria-label="SPRAXXX">SPRAXXX</span>
+      </div>
+      <nav aria-label="Sites">
+        <a class="chip" href="https://spraxxx.ai" target="_blank" rel="noopener">.ai</a>
+        <a class="chip" href="https://spraxxx.tv" target="_blank" rel="noopener">.tv</a>
+        <a class="chip" href="https://spraxxx.net" target="_blank" rel="noopener">.net</a>
+        <span class="chip" aria-disabled="true" title="Reserved">.xxx</span>
+        <a class="cta-mini" href="#pricing" role="button" aria-label="View pricing">Pricing</a>
+      </nav>
+    </div>
   </header>
 
-  <main class="wrap">
+  <main id="main">
+    <!-- HERO -->
     <section class="hero">
-      <div class="tag">Verify once. Live free forever.</div>
-      <h1 class="headline">Identity Keys & Verified Email</h1>
-      <p class="muted">SPRAXXX.com is the hub. Simple, fast, and centered on verification—just like <strong>spraxxx.net</strong>, with a cleaner front door.</p>
+      <div class="wrap hero-inner">
+        <div>
+          <div class="tag">Verify once. Live free forever.</div>
+          <h1 class="headline">The inbox that <em>signs its name</em>.</h1>
+          <p class="sub">
+            Identity Keys + Mail-Safe™ Verified Email. Real humans. Real receipts. Revocable by design.
+            Your <strong>@spraxxx.me</strong> mailbox and identity key — ready for the real world.
+          </p>
+          <div class="actions">
+            <!-- Swap hrefs to Stripe/Payment Link when ready -->
+            <a class="btn primary" href="#buy" data-checkout="citizen">Get Verified</a>
+            <a class="btn" href="#how">How it works</a>
+            <a class="btn gold" href="#verify">Verify a receipt</a>
+          </div>
+          <p class="note">Apple Pay • Google Pay • Card — Customer Portal included</p>
+        </div>
+        <!-- Decorative globe panel -->
+        <div class="globe" aria-hidden="true"></div>
+      </div>
     </section>
 
-    <section class="grid two" aria-labelledby="verify-title">
-      <div class="panel">
-        <h2 id="verify-title">Verify a Credential</h2>
-        <form class="verify" action="#" method="POST" aria-describedby="verify-help">
-          <label class="muted" for="cred">Credential ID</label>
-          <input id="cred" class="field" name="credential" placeholder="did:sprxxx:abc123 or receipt hash" required />
-          <button class="btn" type="submit">Verify</button>
-          <p id="verify-help" class="muted">Or scan a SPRAXXX QR below.</p>
-        </form>
-        <div class="divider"></div>
-        <div class="grid">
-          <button class="btn ghost" type="button" aria-label="Open QR Scanner" onclick="alert('QR scanner coming soon')">Open QR Scanner</button>
-          <small class="muted">Signed attestations. Revocable keys. Human override.</small>
+    <!-- VALUE PROPS -->
+    <section class="section">
+      <div class="wrap grid three" aria-label="Key benefits">
+        <div class="value">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 12l4 4L19 6" stroke="url(#g1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#90f2ff"/><stop offset="1" stop-color="#8cffc1"/></linearGradient></defs>
+          </svg>
+          <div>
+            <strong>Mail-Safe™</strong>
+            <div class="tagline">Cryptographic sender proofs. Spoof can’t wear our badge.</div>
+          </div>
+        </div>
+        <div class="value">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 3l7 4v5c0 5-7 9-7 9s-7-4-7-9V7l7-4z" stroke="url(#g2)" stroke-width="2" fill="none"/>
+            <defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8cffc1"/><stop offset="1" stop-color="#90f2ff"/></linearGradient></defs>
+          </svg>
+          <div>
+            <strong>Identity Key</strong>
+            <div class="tagline">One key. Many doors — inbox, login, receipts, QR passes.</div>
+          </div>
+        </div>
+        <div class="value">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 12h6m4 0h6M12 4v6m0 4v6" stroke="url(#g3)" stroke-width="2" stroke-linecap="round"/>
+            <defs><linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#90f2ff"/><stop offset="1" stop-color="#ffd389"/></linearGradient></defs>
+          </svg>
+          <div>
+            <strong>Human Override</strong>
+            <div class="tagline">Revocation + dispute center. Receipts carry accountability.</div>
+          </div>
         </div>
       </div>
-      <div class="panel">
-        <h2>What this does</h2>
-        <ul class="muted" style="line-height:1.6">
-          <li>Checks signature on the credential or receipt</li>
-          <li>Surfaces revocation/dispute status</li>
-          <li>Shows mail‑safe status for verified senders</li>
-        </ul>
-        <div class="divider"></div>
-        <h3 style="margin-top:0">Developers</h3>
-        <pre class="muted" style="overflow:auto; background:#0b0f1e; border:1px solid #1a2647; padding:12px; border-radius:12px">POST /v1/verify
+    </section>
+
+    <!-- VERIFY + DEV PREVIEW -->
+    <section id="verify" class="section">
+      <div class="wrap grid two">
+        <div class="panel">
+          <h2>Verify a Credential or Receipt</h2>
+          <form class="verify" action="#" method="POST" aria-describedby="vhelp" onsubmit="event.preventDefault(); openModal('demo');">
+            <label class="label" for="cred">Paste credential ID or receipt hash</label>
+            <input id="cred" class="field" name="credential" placeholder="did:sprxxx:abc123 or h:0x9f…e1" required />
+            <button class="btn" type="submit">Verify (demo)</button>
+            <p id="vhelp" class="note">QR scanner and live registry are wiring up. This demo shows the signed summary.</p>
+          </form>
+          <div class="divider"></div>
+          <div class="grid">
+            <button class="btn ghost" type="button" onclick="openModal('qr')">Open QR Scanner (soon)</button>
+            <small class="note">Signed attestations • Revocable keys • Human override</small>
+          </div>
+        </div>
+        <div class="panel">
+          <h2>Developers</h2>
+          <p class="note">Short and sweet. Full docs will live on <a href="https://spraxxx.net" target="_blank" rel="noopener">spraxxx.net</a>.</p>
+<pre aria-label="API sample" style="overflow:auto; background:#0b0f1e; border:1px solid #1a2647; padding:12px; border-radius:12px"><code>POST /v1/verify
 {
-  "subject":"did:sprxxx:123",
-  "proof":"&lt;receipt-hash&gt;"
-}</pre>
+  "subject": "did:sprxxx:123",
+  "proof":   "&lt;receipt-hash&gt;"
+}</code></pre>
+          <div class="divider"></div>
+          <a class="btn" href="#docs" role="button" aria-label="Open docs">View Docs (soon)</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="section">
+      <div class="wrap panel">
+        <h2>How it works</h2>
+        <div class="grid three" style="margin-top:8px">
+          <div class="panel" style="padding:14px">
+            <strong>1) Verify once</strong>
+            <p class="note">ID + selfie, or community witness. Privacy-first.</p>
+          </div>
+          <div class="panel" style="padding:14px">
+            <strong>2) Get your key + @spraxxx.me</strong>
+            <p class="note">We store the public key. You keep the secret. Always.</p>
+          </div>
+          <div class="panel" style="padding:14px">
+            <strong>3) Use it everywhere</strong>
+            <p class="note">Mail-Safe sending, signed receipts, and QR passes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="section">
+      <div class="wrap">
+        <h2>Plans &amp; Pricing</h2>
+        <p class="note">Stripe checkout hooks are placeholders — swap in your Payment Links or Checkout Sessions.</p>
+        <div class="plans" role="list">
+          <article class="plan" role="listitem" aria-label="Citizen plan">
+            <h3>Citizen</h3>
+            <div class="price">$5<span class="note">/mo</span> <span class="note">or $50/yr</span></div>
+            <ul>
+              <li>@spraxxx.me verified inbox (10GB)</li>
+              <li>5 aliases • Mail-Safe sending</li>
+              <li>QR pass &amp; signed receipts</li>
+              <li>Revocation &amp; dispute center</li>
+            </ul>
+            <a class="btn primary" href="#buy" data-checkout="citizen">Start Citizen</a>
+          </article>
+
+          <article class="plan" role="listitem" aria-label="Creator plan">
+            <h3>Creator</h3>
+            <div class="price">$15<span class="note">/mo</span></div>
+            <ul>
+              <li>Everything in Citizen</li>
+              <li>Custom domain connect</li>
+              <li>50GB • Signed newsletters (≤50k/mo)</li>
+              <li>API keys • Priority support</li>
+            </ul>
+            <a class="btn" href="#buy" data-checkout="creator">Start Creator</a>
+          </article>
+
+          <article class="plan" role="listitem" aria-label="Org plan">
+            <h3>Org</h3>
+            <div class="price">Custom <span class="note">/seat</span></div>
+            <ul>
+              <li>Multi-seat, SSO/SAML</li>
+              <li>Policy rules &amp; audit logs</li>
+              <li>Bulk verification &amp; webhooks</li>
+              <li>Deliverability SLAs</li>
+            </ul>
+            <a class="btn gold" href="mailto:hello@spraxxx.com?subject=SPRAXXX%20Org" rel="noopener">Talk to us</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUST / BADGES -->
+    <section class="section">
+      <div class="wrap grid three">
+        <div class="panel">
+          <strong>Transport Security</strong>
+          <p class="note">TLS everywhere. MTA-STS + DANE (rolling out).</p>
+        </div>
+        <div class="panel">
+          <strong>Sender Auth</strong>
+          <p class="note">SPF, DKIM, DMARC aligned with signed receipts.</p>
+        </div>
+        <div class="panel">
+          <strong>Transparency</strong>
+          <p class="note">Public revocation &amp; dispute outcomes (privacy-safe).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+      <div class="wrap grid">
+        <h2>FAQ</h2>
+        <details>
+          <summary>What if I lose my key?</summary>
+          <p>We publish your revocation, rotate, and re-issue with recovery proofs. Your secret key stays yours.</p>
+        </details>
+        <details>
+          <summary>Can I bring my own domain?</summary>
+          <p>Yes — Creator plan connects your domain with DNS proofs and Mail-Safe signing.</p>
+        </details>
+        <details>
+          <summary>How do disputes work?</summary>
+          <p>Receipts carry context. Our dispute center reviews evidence and updates the public registry.</p>
+        </details>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="wrap" style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap">
-      <div class="muted">© <span id="y"></span> SPRAXXX — enough of their sh*t, it’s our turn.</div>
+    <div class="wrap foot">
+      <div class="note">© <span id="y"></span> SPRAXXX — enough of their sh*t, it’s our turn.</div>
       <div style="display:flex; gap:10px">
-        <a class="muted" href="/privacy">Privacy</a>
-        <a class="muted" href="/status">Status</a>
+        <a class="note" href="/privacy">Privacy</a>
+        <a class="note" href="/terms">Terms</a>
+        <a class="note" href="/status">Status</a>
       </div>
     </div>
   </footer>
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+
+  <!-- Receipt demo modal -->
+  <dialog class="modal" id="modal-demo" aria-label="Receipt verification demo">
+    <div class="backdrop" onclick="closeModal('demo')" aria-hidden="true"></div>
+    <div class="sheet" role="document" aria-describedby="demo-desc">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:10px">
+        <strong>Signed receipt (demo)</strong>
+        <button class="btn ghost" onclick="closeModal('demo')" aria-label="Close">Close</button>
+      </div>
+      <p id="demo-desc" class="note">This is a placeholder preview. Live registry wiring is in progress.</p>
+<pre style="overflow:auto; background:#0b0f1e; border:1px solid #1a2647; padding:12px; border-radius:12px"><code>{
+  "receiptId": "h:0x9f…e1",
+  "from": "jacques@spraxxx.me",
+  "to": "you@example.com",
+  "timestamp": "2025-09-21T12:00:00Z",
+  "signature": "ed25519:…",
+  "policy": "Mail-Safe v1",
+  "status": "valid"
+}</code></pre>
+    </div>
+  </dialog>
+
+  <!-- QR modal (placeholder) -->
+  <dialog class="modal" id="modal-qr" aria-label="QR scanner">
+    <div class="backdrop" onclick="closeModal('qr')" aria-hidden="true"></div>
+    <div class="sheet">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:10px">
+        <strong>QR Scanner (coming soon)</strong>
+        <button class="btn ghost" onclick="closeModal('qr')" aria-label="Close">Close</button>
+      </div>
+      <p class="note">Camera permissions and on-device verify will appear here.</p>
+      <div class="panel" style="text-align:center">
+        <div aria-hidden="true" style="height:180px; border-radius:14px; border:1px dashed #32507a; display:flex; align-items:center; justify-content:center">⧉</div>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    // Year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Simple modal helpers
+    function openModal(kind){
+      const id = kind === 'qr' ? 'modal-qr' : 'modal-demo';
+      const el = document.getElementById(id);
+      if (el && typeof el.showModal === 'function') el.showModal();
+      else if (el) el.setAttribute('open','');
+    }
+    function closeModal(kind){
+      const id = kind === 'qr' ? 'modal-qr' : 'modal-demo';
+      const el = document.getElementById(id);
+      if (el && typeof el.close === 'function') el.close();
+      else if (el) el.removeAttribute('open');
+    }
+
+    // Placeholder checkout buttons — replace data-checkout with your Stripe links
+    for (const btn of document.querySelectorAll('[data-checkout]')){
+      btn.addEventListener('click', (e) => {
+        const plan = e.currentTarget.getAttribute('data-checkout');
+        // TODO: swap with Stripe Payment Link or Checkout Session redirect
+        // window.location.href = 'https://buy.stripe.com/your_link_for_'+plan;
+        console.log('Checkout clicked:', plan);
+      });
+    }
+  </script>
 </body>
 </html>
