@@ -3,15 +3,104 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SPRAXXX — Verify once. Live free forever.</title>
-  <meta name="description" content="SPRAXXX.com — Identity Keys + Mail-Safe Verified Email. Verify once. Live free forever." />
+  <title>SPRAXXX — Verified Email, Identity Keys & Mail-Safe Receipts</title>
+  <meta name="description" content="Verify once. Live free forever. SPRAXXX provides Mail-Safe™ verified email, identity keys, signed receipts, and human override. The inbox that signs its name." />
   <meta name="robots" content="index,follow" />
   <meta name="color-scheme" content="dark light" />
   <meta name="theme-color" content="#0b0c11" media="(prefers-color-scheme: dark)">
   <link rel="canonical" href="https://spraxxx.com/" />
   <link rel="icon" href="/assets/favicon.png" sizes="32x32" />
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"/>
+
+  <!-- Open Graph + Twitter -->
+  <meta property="og:site_name" content="SPRAXXX"/>
+  <meta property="og:title" content="SPRAXXX — Verified Email & Identity Keys"/>
+  <meta property="og:description" content="Verify once. Live free forever. Mail-Safe™ verified email and identity keys for humans, creators, and organizations."/>
+  <meta property="og:url" content="https://spraxxx.com/"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://spraxxx.com/assets/og.jpg"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="SPRAXXX — Verified Email & Identity Keys"/>
+  <meta name="twitter:description" content="The inbox that signs its name. Mail-Safe™ sending, signed receipts, human override."/>
+  <meta name="twitter:image" content="https://spraxxx.com/assets/og.jpg"/>
+
+  <!-- Preload hero asset (adjust path if needed) -->
+  <link rel="preload" as="image" href="/assets/og.jpg" imagesrcset="/assets/og.jpg 1200w"/>
   <link rel="preconnect" href="https://js.stripe.com" crossorigin>
+
+  <!-- JSON-LD: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"SPRAXXX",
+    "url":"https://spraxxx.com/",
+    "logo":"https://spraxxx.com/assets/logo.png",
+    "sameAs":["https://spraxxx.ai","https://spraxxx.tv","https://spraxxx.net"],
+    "contactPoint":[{
+      "@type":"ContactPoint",
+      "contactType":"business development",
+      "email":"hello@spraxxx.com",
+      "areaServed":"Worldwide",
+      "availableLanguage":["en"]
+    }]
+  }
+  </script>
+
+  <!-- JSON-LD: WebSite + SearchAction -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "url":"https://spraxxx.com/",
+    "name":"SPRAXXX",
+    "potentialAction":{
+      "@type":"SearchAction",
+      "target":"https://spraxxx.com/search?q={query}",
+      "query-input":"required name=query"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: Products (Citizen & Creator) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Product",
+    "name":"Mail-Safe Verified Email (Citizen)",
+    "brand":{"@type":"Brand","name":"SPRAXXX"},
+    "description":"Verified @spraxxx.me inbox with Mail-Safe™ sending, signed receipts, revocation controls.",
+    "offers":{"@type":"Offer","price":"5.00","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://spraxxx.com/#pricing"}
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Product",
+    "name":"Mail-Safe Verified Email (Creator)",
+    "brand":{"@type":"Brand","name":"SPRAXXX"},
+    "description":"Everything in Citizen plus custom domain connect, 50GB, signed newsletters, API keys, priority support.",
+    "offers":{"@type":"Offer","price":"15.00","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://spraxxx.com/#pricing"}
+  }
+  </script>
+
+  <!-- JSON-LD: FAQPage (matches on-page FAQ) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"What if I lose my key?","acceptedAnswer":{"@type":"Answer","text":"We publish your revocation, rotate, and re-issue with recovery proofs. Your secret key stays yours."}},
+      {"@type":"Question","name":"Can I bring my own domain?","acceptedAnswer":{"@type":"Answer","text":"Yes — Creator plan connects your domain with DNS proofs and Mail-Safe signing."}},
+      {"@type":"Question","name":"How do disputes work?","acceptedAnswer":{"@type":"Answer","text":"Receipts carry context. Our dispute center reviews evidence and updates the public registry."}}
+    ]
+  }
+  </script>
+
   <style>
     :root{
       --bg:#0b0c11; --panel:#0f1220; --ink:#e9f1ff; --muted:#9fb0c8;
@@ -35,28 +124,19 @@
     a:focus-visible, button:focus-visible, input:focus-visible, [role="button"]:focus-visible{
       outline:3px solid var(--brand); outline-offset:2px; border-radius:10px;
     }
-
-    header{
-      position:sticky; top:0; z-index:20;
-      backdrop-filter:saturate(150%) blur(10px);
-      background:linear-gradient(180deg, rgba(11,12,17,.75), rgba(11,12,17,.35));
-      border-bottom:1px solid var(--line);
-    }
+    header{position:sticky; top:0; z-index:20; backdrop-filter:saturate(150%) blur(10px);
+      background:linear-gradient(180deg, rgba(11,12,17,.75), rgba(11,12,17,.35)); border-bottom:1px solid var(--line)}
     .wrap{max-width:var(--max); margin:0 auto; padding:0 24px}
     .bar{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 0}
     .logo{display:flex; align-items:center; gap:12px; font-weight:900; letter-spacing:.4px}
     .badge{width:28px; height:28px; border-radius:9px; box-shadow:0 0 0 1px #0b0c11 inset;
-      background:conic-gradient(from 120deg at 50% 50%, var(--brand), var(--brand2), var(--brand));
-    }
+      background:conic-gradient(from 120deg at 50% 50%, var(--brand), var(--brand2), var(--brand));}
     nav{display:flex; gap:10px; flex-wrap:wrap}
     .chip{font-size:12px; padding:6px 10px; border-radius:999px; border:1px solid var(--line); color:var(--muted)}
     .cta-mini{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:12px;
-      border:1px solid #2a3a64; background:linear-gradient(135deg,#182038,#101524); color:var(--ink);
-    }
+      border:1px solid #2a3a64; background:linear-gradient(135deg,#182038,#101524); color:var(--ink);}
     .soon{display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; font-size:12px;
-      border:1px dashed #385080; color:#cde8ff; background:rgba(24,32,56,.35)
-    }
-
+      border:1px dashed #385080; color:#cde8ff; background:rgba(24,32,56,.35)}
     .hero{position:relative; overflow:hidden}
     .hero-inner{display:grid; grid-template-columns:1.15fr .85fr; gap:28px; align-items:center; padding:58px 0 28px}
     @media (max-width:1000px){ .hero-inner{grid-template-columns:1fr; padding:42px 0 10px} }
@@ -64,111 +144,63 @@
     .tag{color:#c7d8ff; font-weight:700; letter-spacing:.4px}
     .sub{color:var(--muted); font-size:18px; max-width:52ch}
     .actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:16px}
-    .btn{display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding:14px 18px; border-radius:14px; cursor:pointer; user-select:none;
-      border:1px solid #2a3a64; box-shadow:var(--shadow);
-      background:linear-gradient(135deg, #182038, #101524); color:var(--ink); font-weight:650;
-      transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
-    }
+    .btn{display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:14px 18px; border-radius:14px; cursor:pointer; user-select:none; border:1px solid #2a3a64; box-shadow:var(--shadow);
+      background:linear-gradient(135deg, #182038, #101524); color:var(--ink); font-weight:650; transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;}
     .btn.primary{background:linear-gradient(135deg, #1f2b48, #0f1424)}
     .btn.gold{background:linear-gradient(135deg, #2a2217, #141008); border-color:#3d331f}
     .btn:hover{transform:translateY(-1px)}
     .btn:active{transform:translateY(0)}
     .note{font-size:13px; color:var(--muted)}
-    .globe{
-      position:relative; border-radius:20px; border:1px solid var(--line); min-height:320px;
-      background:
-        radial-gradient(220px 220px at 60% 40%, rgba(144,242,255,.18), transparent 60%),
-        radial-gradient(240px 240px at 30% 70%, rgba(140,255,193,.15), transparent 60%),
-        #0c1020;
-      overflow:hidden;
-    }
-    .globe:before, .globe:after{
-      content:""; position:absolute; inset:-120px -60px auto auto; width:520px; height:520px; border-radius:50%;
-      background:radial-gradient(closest-side, rgba(144,242,255,.25), rgba(140,255,193,.18) 55%, transparent 60%);
-      filter:blur(20px); opacity:.55; animation: float 18s ease-in-out infinite;
-    }
+    .globe{position:relative; border-radius:20px; border:1px solid var(--line); min-height:320px;
+      background:radial-gradient(220px 220px at 60% 40%, rgba(144,242,255,.18), transparent 60%), radial-gradient(240px 240px at 30% 70%, rgba(140,255,193,.15), transparent 60%), #0c1020; overflow:hidden;}
+    .globe:before,.globe:after{content:""; position:absolute; inset:-120px -60px auto auto; width:520px; height:520px; border-radius:50%;
+      background:radial-gradient(closest-side, rgba(144,242,255,.25), rgba(140,255,193,.18) 55%, transparent 60%); filter:blur(20px); opacity:.55; animation: float 18s ease-in-out infinite;}
     .globe:after{ inset:auto auto -140px -80px; width:480px; height:480px; animation-duration:22s; opacity:.45 }
     @keyframes float { 0%,100%{ transform:translateY(-8px)} 50%{ transform:translateY(8px)} }
     @media (prefers-reduced-motion:reduce){ .globe:before,.globe:after{animation:none} }
-
     .section{padding:36px 0}
-    .panel{
-      background:linear-gradient(180deg, #11152a 0%, #0d1020 100%);
-      border:1px solid var(--line); border-radius:18px; padding:18px;
-    }
+    .panel{background:linear-gradient(180deg, #11152a 0%, #0d1020 100%); border:1px solid var(--line); border-radius:18px; padding:18px;}
     .grid{display:grid; gap:16px}
     .two{grid-template-columns:1.1fr .9fr}
     .three{grid-template-columns:repeat(3, minmax(0,1fr))}
     @media (max-width:1000px){ .two,.three{grid-template-columns:1fr} }
-
     .divider{height:1px; background:linear-gradient(90deg, transparent, #2a3d68, transparent); margin:20px 0}
-
     .verify{display:grid; gap:12px}
     .label{color:var(--muted); font-size:14px}
     .field{width:100%; padding:14px; border-radius:12px; border:1px solid #233055; background:#0e1325; color:var(--ink)}
     .ghost{background:transparent}
-
     .value{display:flex; gap:12px; align-items:flex-start; padding:14px; border-radius:14px; border:1px solid #1b2647}
     .value svg{flex:0 0 auto}
-
     .plans{display:grid; gap:16px; grid-template-columns:repeat(3, minmax(0,1fr))}
     @media (max-width:1000px){ .plans{grid-template-columns:1fr} }
-    .plan{
-      border:1px solid #233055; border-radius:18px; padding:18px;
-      background:linear-gradient(180deg, #121730, #0d1022);
-      display:flex; flex-direction:column; gap:14px;
-    }
+    .plan{border:1px solid #233055; border-radius:18px; padding:18px; background:linear-gradient(180deg, #121730, #0d1022); display:flex; flex-direction:column; gap:14px;}
     .plan h3{margin:0}
     .price{font-size:28px; font-weight:800}
     .plan ul{margin:0; padding-left:16px; color:var(--muted); line-height:1.6}
     .tagline{font-size:13px; color:#cdd9ff}
-
     details{border:1px solid #223055; border-radius:14px; padding:12px 14px; background:#0e1325}
     summary{cursor:pointer; font-weight:700}
     details p{color:var(--muted)}
-
     footer{padding:30px 0; color:#9fb2d8; border-top:1px solid var(--line)}
     .foot{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap}
-
-    .ribbon{
-      display:flex; justify-content:center; padding:10px; border-bottom:1px dashed #2c3d6e;
-      background:linear-gradient(180deg, rgba(25,34,64,.35), rgba(12,16,32,.35));
-      color:#d9f7ff; font-weight:700; gap:8px;
-    }
-    .spark{display:inline-block; width:10px; height:10px; border-radius:50%;
-      background:radial-gradient(closest-side, #e9f1ff, transparent); filter:blur(.5px); margin-top:3px;
-    }
-
-    /* Victory highlight */
-    .victory{
-      background:
-        linear-gradient(180deg, rgba(16,20,40,.9), rgba(12,16,32,.95)),
-        radial-gradient(800px 300px at 85% -20%, rgba(144,242,255,.15), transparent 60%),
-        radial-gradient(800px 300px at 5% 120%, rgba(140,255,193,.12), transparent 60%);
-      border:1px solid #2a3d68;
-      box-shadow: 0 18px 80px rgba(0,0,0,.35);
-    }
+    .ribbon{display:flex; justify-content:center; padding:10px; border-bottom:1px dashed #2c3d6e; background:linear-gradient(180deg, rgba(25,34,64,.35), rgba(12,16,32,.35)); color:#d9f7ff; font-weight:700; gap:8px;}
+    .spark{display:inline-block; width:10px; height:10px; border-radius:50%; background:radial-gradient(closest-side, #e9f1ff, transparent); filter:blur(.5px); margin-top:3px;}
+    .victory{background:linear-gradient(180deg, rgba(16,20,40,.9), rgba(12,16,32,.95)), radial-gradient(800px 300px at 85% -20%, rgba(144,242,255,.15), transparent 60%), radial-gradient(800px 300px at 5% 120%, rgba(140,255,193,.12), transparent 60%); border:1px solid #2a3d68; box-shadow: 0 18px 80px rgba(0,0,0,.35);}
     .stats{display:grid; gap:12px; grid-template-columns:repeat(3, minmax(0,1fr))}
     @media (max-width:900px){ .stats{grid-template-columns:1fr} }
-    .stat{
-      border:1px solid #223055; border-radius:14px; padding:14px;
-      background:linear-gradient(180deg,#121730,#0d1022);
-    }
+    .stat{border:1px solid #223055; border-radius:14px; padding:14px; background:linear-gradient(180deg,#121730,#0d1022);}
     .stat .big{font-size:26px; font-weight:900; letter-spacing:.2px}
     .pill{display:inline-block; padding:4px 10px; font-size:12px; border-radius:999px; border:1px solid #32507a; color:#cde8ff}
-
-    /* Contact form */
     .contact-grid{display:grid; gap:16px; grid-template-columns:1.1fr .9fr}
     @media (max-width:1000px){ .contact-grid{grid-template-columns:1fr} }
     .msg{font-size:14px; margin-top:8px}
     .msg.ok{color:var(--success)}
     .msg.err{color:var(--error)}
     .req{color:#ffd389}
-
-    /* Accessibility */
     .skip{position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden}
     .skip:focus{position:static; width:auto; height:auto; padding:8px 10px; background:#162040; border-radius:8px}
+    /* breadcrumb minor spacing */
+    .crumb {padding:8px 24px 0}
   </style>
 </head>
 <body>
@@ -187,14 +219,30 @@
         <span aria-label="SPRAXXX">SPRAXXX</span>
       </div>
       <nav aria-label="Sites">
-        <a class="chip" href="https://spraxxx.ai" target="_blank" rel="noopener">.ai</a>
-        <a class="chip" href="https://spraxxx.tv" target="_blank" rel="noopener">.tv</a>
-        <a class="chip" href="https://spraxxx.net" target="_blank" rel="noopener">.net</a>
+        <a class="chip" href="https://spraxxx.ai" target="_blank" rel="noopener" title="SPRAXXX AI — Personas & Identity">.ai</a>
+        <a class="chip" href="https://spraxxx.tv" target="_blank" rel="noopener" title="SPRAXXX TV — Media & Community">.tv</a>
+        <a class="chip" href="https://spraxxx.net" target="_blank" rel="noopener" title="SPRAXXX Network — Docs & Status">.net</a>
         <span class="chip" aria-disabled="true" title="Reserved">.xxx</span>
         <a class="cta-mini" href="#pricing" role="button" aria-label="View pricing">Pricing</a>
       </nav>
     </div>
   </header>
+
+  <!-- Breadcrumb (SEO-friendly) -->
+  <nav aria-label="Breadcrumb" class="wrap crumb">
+    <ol itemscope itemtype="https://schema.org/BreadcrumbList" style="list-style:none; padding-left:0; display:flex; gap:8px">
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="https://spraxxx.com/"><span itemprop="name">Home</span></a>
+        <meta itemprop="position" content="1"/>
+      </li>
+    </ol>
+  </nav>
+
+  <!-- Site search (placeholder action) -->
+  <form class="wrap" role="search" aria-label="Site search" action="/search" method="get" style="display:flex; gap:8px; padding:8px 24px 0">
+    <input name="q" class="field" placeholder="Search SPRAXXX (pricing, verify, docs)" aria-label="Search query"/>
+    <button class="btn" type="submit">Search</button>
+  </form>
 
   <main id="main">
     <!-- HERO -->
@@ -203,12 +251,16 @@
         <div>
           <div class="tag">Verify once. Live free forever.</div>
           <h1 class="headline">The inbox that <em>signs its name</em>.</h1>
-          <p class="sub">
-            Identity Keys + Mail-Safe™ Verified Email. Real humans. Real receipts. Revocable by design.
-            Your <strong>@spraxxx.me</strong> mailbox and identity key — ready for the real world.
-          </p>
+          <p class="sub">Identity Keys + Mail-Safe™ Verified Email. Real humans. Real receipts. Revocable by design.
+            Your <strong>@spraxxx.me</strong> mailbox and identity key — ready for the real world.</p>
           <div class="actions">
-            <a class="btn primary" href="#buy" data-checkout="citizen">Get Verified</a>
+            <!-- Hero CTA now goes straight to Stripe ($5) with UTM -->
+            <a class="btn primary"
+               href="https://buy.stripe.com/bJe4gy1Ya0NifZ27HL8IU06?utm_source=home&utm_medium=hero_btn&utm_campaign=signup"
+               data-checkout="citizen"
+               rel="nofollow noopener">
+              Start Verified Email — Citizen
+            </a>
             <a class="btn" href="#how">How it works</a>
             <a class="btn gold" href="#verify">Verify a receipt</a>
           </div>
@@ -222,34 +274,16 @@
     <section class="section">
       <div class="wrap grid three" aria-label="Key benefits">
         <div class="value">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M5 12l4 4L19 6" stroke="url(#g1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#90f2ff"/><stop offset="1" stop-color="#8cffc1"/></linearGradient></defs>
-          </svg>
-          <div>
-            <strong>Mail-Safe™</strong>
-            <div class="tagline">Cryptographic sender proofs. Spoof can’t wear our badge.</div>
-          </div>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l4 4L19 6" stroke="url(#g1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#90f2ff"/><stop offset="1" stop-color="#8cffc1"/></linearGradient></defs></svg>
+          <div><strong>Mail-Safe™</strong><div class="tagline">Cryptographic sender proofs. Spoof can’t wear our badge.</div></div>
         </div>
         <div class="value">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M12 3l7 4v5c0 5-7 9-7 9s-7-4-7-9V7l7-4z" stroke="url(#g2)" stroke-width="2" fill="none"/>
-            <defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8cffc1"/><stop offset="1" stop-color="#90f2ff"/></linearGradient></defs>
-          </svg>
-          <div>
-            <strong>Identity Key</strong>
-            <div class="tagline">One key. Many doors — inbox, login, receipts, QR passes.</div>
-          </div>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l7 4v5c0 5-7 9-7 9s-7-4-7-9V7l7-4z" stroke="url(#g2)" stroke-width="2" fill="none"/><defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8cffc1"/><stop offset="1" stop-color="#90f2ff"/></linearGradient></defs></svg>
+          <div><strong>Identity Key</strong><div class="tagline">One key. Many doors — inbox, login, receipts, QR passes.</div></div>
         </div>
         <div class="value">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M4 12h6m4 0h6M12 4v6m0 4v6" stroke="url(#g3)" stroke-width="2" stroke-linecap="round"/>
-            <defs><linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#90f2ff"/><stop offset="1" stop-color="#ffd389"/></linearGradient></defs>
-          </svg>
-          <div>
-            <strong>Human Override</strong>
-            <div class="tagline">Revocation + dispute center. Receipts carry accountability.</div>
-          </div>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h6m4 0h6M12 4v6m0 4v6" stroke="url(#g3)" stroke-width="2" stroke-linecap="round"/><defs><linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#90f2ff"/><stop offset="1" stop-color="#ffd389"/></linearGradient></defs></svg>
+          <div><strong>Human Override</strong><div class="tagline">Revocation + dispute center. Receipts carry accountability.</div></div>
         </div>
       </div>
     </section>
@@ -290,18 +324,9 @@
       <div class="wrap panel">
         <h2>How it works</h2>
         <div class="grid three" style="margin-top:8px">
-          <div class="panel" style="padding:14px">
-            <strong>1) Verify once</strong>
-            <p class="note">ID + selfie, or community witness. Privacy-first.</p>
-          </div>
-          <div class="panel" style="padding:14px">
-            <strong>2) Get your key + @spraxxx.me</strong>
-            <p class="note">We store the public key. You keep the secret. Always.</p>
-          </div>
-          <div class="panel" style="padding:14px">
-            <strong>3) Use it everywhere</strong>
-            <p class="note">Mail-Safe sending, signed receipts, and QR passes.</p>
-          </div>
+          <div class="panel" style="padding:14px"><strong>1) Verify once</strong><p class="note">ID + selfie, or community witness. Privacy-first.</p></div>
+          <div class="panel" style="padding:14px"><strong>2) Get your key + @spraxxx.me</strong><p class="note">We store the public key. You keep the secret. Always.</p></div>
+          <div class="panel" style="padding:14px"><strong>3) Use it everywhere</strong><p class="note">Mail-Safe sending, signed receipts, and QR passes.</p></div>
         </div>
       </div>
     </section>
@@ -310,7 +335,7 @@
     <section id="pricing" class="section">
       <div class="wrap">
         <h2>Plans &amp; Pricing</h2>
-        <p class="note">Stripe checkout hooks are placeholders — swap in your Payment Links or Checkout Sessions.</p>
+        <p class="note">Stripe checkout is live.</p>
         <div class="plans" role="list">
           <article class="plan" role="listitem" aria-label="Citizen plan">
             <h3>Citizen</h3>
@@ -321,7 +346,12 @@
               <li>QR pass &amp; signed receipts</li>
               <li>Revocation &amp; dispute center</li>
             </ul>
-            <a class="btn primary" href="#buy" data-checkout="citizen">Start Citizen</a>
+            <a class="btn primary"
+               href="https://buy.stripe.com/bJe4gy1Ya0NifZ27HL8IU06?utm_source=home&utm_medium=pricing_btn&utm_campaign=signup"
+               data-checkout="citizen"
+               rel="nofollow noopener">
+              Start Citizen
+            </a>
           </article>
 
           <article class="plan" role="listitem" aria-label="Creator plan">
@@ -333,7 +363,12 @@
               <li>50GB • Signed newsletters (≤50k/mo)</li>
               <li>API keys • Priority support</li>
             </ul>
-            <a class="btn" href="#buy" data-checkout="creator">Start Creator</a>
+            <a class="btn"
+               href="https://buy.stripe.com/3cI28q46i3ZudQU2nr8IU05?utm_source=home&utm_medium=pricing_btn&utm_campaign=signup"
+               data-checkout="creator"
+               rel="nofollow noopener">
+              Start Creator
+            </a>
           </article>
 
           <article class="plan" role="listitem" aria-label="Org plan">
@@ -354,18 +389,9 @@
     <!-- TRUST / BADGES -->
     <section class="section">
       <div class="wrap grid three">
-        <div class="panel">
-          <strong>Transport Security</strong>
-          <p class="note">TLS everywhere. MTA-STS + DANE (rolling out).</p>
-        </div>
-        <div class="panel">
-          <strong>Sender Auth</strong>
-          <p class="note">SPF, DKIM, DMARC aligned with signed receipts.</p>
-        </div>
-        <div class="panel">
-          <strong>Transparency</strong>
-          <p class="note">Public revocation &amp; dispute outcomes (privacy-safe).</p>
-        </div>
+        <div class="panel"><strong>Transport Security</strong><p class="note">TLS everywhere. MTA-STS + DANE (rolling out).</p></div>
+        <div class="panel"><strong>Sender Auth</strong><p class="note">SPF, DKIM, DMARC aligned with signed receipts.</p></div>
+        <div class="panel"><strong>Transparency</strong><p class="note">Public revocation &amp; dispute outcomes (privacy-safe).</p></div>
       </div>
     </section>
 
@@ -373,18 +399,9 @@
     <section class="section">
       <div class="wrap grid">
         <h2>FAQ</h2>
-        <details>
-          <summary>What if I lose my key?</summary>
-          <p>We publish your revocation, rotate, and re-issue with recovery proofs. Your secret key stays yours.</p>
-        </details>
-        <details>
-          <summary>Can I bring my own domain?</summary>
-          <p>Yes — Creator plan connects your domain with DNS proofs and Mail-Safe signing.</p>
-        </details>
-        <details>
-          <summary>How do disputes work?</summary>
-          <p>Receipts carry context. Our dispute center reviews evidence and updates the public registry.</p>
-        </details>
+        <details><summary>What if I lose my key?</summary><p>We publish your revocation, rotate, and re-issue with recovery proofs. Your secret key stays yours.</p></details>
+        <details><summary>Can I bring my own domain?</summary><p>Yes — Creator plan connects your domain with DNS proofs and Mail-Safe signing.</p></details>
+        <details><summary>How do disputes work?</summary><p>Receipts carry context. Our dispute center reviews evidence and updates the public registry.</p></details>
       </div>
     </section>
 
@@ -395,9 +412,7 @@
           <h2 style="margin:0">🎉 Victory Short — Where We Are</h2>
           <span class="pill">Day by day • Brick by brick</span>
         </div>
-
         <div class="divider"></div>
-
         <div class="grid two" style="align-items:start">
           <div>
             <h3 style="margin:0 0 10px 0">The Crown Jewels (Domains)</h3>
@@ -419,24 +434,12 @@
             </ul>
           </div>
         </div>
-
         <div class="divider"></div>
-
         <div class="stats" role="list">
-          <div class="stat" role="listitem">
-            <div class="big">Now</div>
-            <div class="note">Glossy hub online, plans written, verify demo, .ai/.tv/.net live.</div>
-          </div>
-          <div class="stat" role="listitem">
-            <div class="big">+6 Months</div>
-            <div class="note">Stripe live, waitlist/handles, steady .tv cadence, basic docs.</div>
-          </div>
-          <div class="stat" role="listitem">
-            <div class="big">+12 Months</div>
-            <div class="note">Subscribers, receipts in the wild, partner pilots, dev API usage.</div>
-          </div>
+          <div class="stat" role="listitem"><div class="big">Now</div><div class="note">Glossy hub online, plans written, verify demo, .ai/.tv/.net live.</div></div>
+          <div class="stat" role="listitem"><div class="big">+6 Months</div><div class="note">Stripe live, waitlist/handles, steady .tv cadence, basic docs.</div></div>
+          <div class="stat" role="listitem"><div class="big">+12 Months</div><div class="note">Subscribers, receipts in the wild, partner pilots, dev API usage.</div></div>
         </div>
-
         <div class="divider"></div>
         <p class="note" style="margin:0"><em>“From namespace to Nation.”</em> The inbox that signs its name.</p>
       </div>
@@ -448,42 +451,30 @@
         <div class="panel">
           <h2 style="margin-top:0">Business Development</h2>
           <p class="note">Entrepreneurs and investors — if you’re interested in partnerships, pilots, or funding conversations, reach out below. We’ll reply from a Mail-Safe verified address.</p>
-
-          <!-- Replace FORMSPREE_ENDPOINT with your real Formspree endpoint -->
           <form id="bd-form" class="verify" method="POST">
             <label class="label" for="bd_name">Name <span class="req" aria-hidden="true">*</span></label>
             <input id="bd_name" name="name" class="field" placeholder="Your name" required />
-
             <label class="label" for="bd_email">Email <span class="req" aria-hidden="true">*</span></label>
             <input id="bd_email" name="_replyto" type="email" class="field" placeholder="you@example.com" required />
-
             <label class="label" for="bd_role">I am</label>
             <select id="bd_role" name="role" class="field">
-              <option>Entrepreneur</option>
-              <option>Investor</option>
-              <option>Partner / BD</option>
-              <option>Other</option>
+              <option>Entrepreneur</option><option>Investor</option><option>Partner / BD</option><option>Other</option>
             </select>
-
             <label class="label" for="bd_msg">Interest / Comment</label>
             <textarea id="bd_msg" name="message" class="field" rows="5" placeholder="Tell us how you’d like to build with SPRAXXX"></textarea>
-
-            <!-- Useful metadata -->
             <input type="hidden" name="_subject" value="SPRAXXX — Business Development Inquiry" />
             <input type="hidden" name="page" value="spraxxx.com" />
-
             <button class="btn primary" type="submit">Contact</button>
             <div id="bd_status" class="msg" role="status" aria-live="polite"></div>
           </form>
           <p class="note" style="margin-top:10px">Prefer direct email? <a href="mailto:hello@spraxxx.com?subject=Business%20Development">hello@spraxxx.com</a></p>
         </div>
-
         <div class="panel">
           <h2 style="margin-top:0">Why partner now?</h2>
           <ul class="note" style="line-height:1.7; margin:0">
-            <li>Own the **verified inbox** in your niche (creators, orgs, communities).</li>
-            <li>Receipts + identity rails: **fraud-resistant commerce** primitives.</li>
-            <li>Clear brand namespace across major TLDs — **rare footprint**.</li>
+            <li>Own the <strong>verified inbox</strong> in your niche (creators, orgs, communities).</li>
+            <li>Receipts + identity rails: <strong>fraud-resistant commerce</strong> primitives.</li>
+            <li>Clear brand namespace across major TLDs — <strong>rare footprint</strong>.</li>
             <li>API-first: connect your product, sign your mail, ship receipts.</li>
           </ul>
           <div class="divider"></div>
@@ -495,11 +486,14 @@
 
   <footer>
     <div class="wrap foot">
-      <div class="note">© <span id="y"></span> SPRAXXX — enough of their sh*t, it’s our turn.</div>
+      <div class="note">
+        © <span id="y"></span> SPRAXXX — enough of their sh*t, it’s our turn.
+        <br><small>Build: 2025-09-21T21:58Z</small>
+      </div>
       <div style="display:flex; gap:10px">
-        <a class="note" href="/privacy">Privacy</a>
-        <a class="note" href="/terms">Terms</a>
-        <a class="note" href="/status">Status</a>
+        <a class="note" href="/privacy" title="Privacy Policy">Privacy</a>
+        <a class="note" href="/terms" title="Terms of Service">Terms</a>
+        <a class="note" href="/status" title="System Status">Status</a>
       </div>
     </div>
   </footer>
@@ -558,20 +552,17 @@
       else if (el) el.removeAttribute('open');
     }
 
-    // CHECKOUT PLACEHOLDERS (swap with real Stripe links)
+    // STRIPE PAYMENT LINKS — progressive enhancement
     for (const btn of document.querySelectorAll('[data-checkout]')){
       btn.addEventListener('click', (e) => {
         const plan = e.currentTarget.getAttribute('data-checkout');
-        // TODO: Replace with your Stripe Payment Link
-        // Example:
-        // if (plan === 'citizen') window.location.href = 'https://buy.stripe.com/your_citizen_link';
-        // if (plan === 'creator') window.location.href = 'https://buy.stripe.com/your_creator_link';
-        console.log('Checkout clicked:', plan);
+        if (plan === 'citizen') window.location.href = 'https://buy.stripe.com/bJe4gy1Ya0NifZ27HL8IU06?utm_source=home&utm_medium=js_redirect&utm_campaign=signup';
+        if (plan === 'creator') window.location.href = 'https://buy.stripe.com/3cI28q46i3ZudQU2nr8IU05?utm_source=home&utm_medium=js_redirect&utm_campaign=signup';
       });
     }
 
-    // FORMSPREE SUBMIT (AJAX) — replace endpoint with your real Formspree ID
-    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/your_form_id'; // <-- REPLACE THIS
+    // FORMSPREE ENDPOINT — replace with your real Formspree ID
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
     const form = document.getElementById('bd-form');
     const status = document.getElementById('bd_status');
 
