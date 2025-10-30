@@ -2,130 +2,221 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SPRAXXX — Verified Email, Identity Keys & Mail-Safe Receipts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Verify once. Live free forever. SPRAXXX provides Mail-Safe™ verified email, identity keys, signed receipts, and human override. The inbox that signs its name." />
   <meta name="robots" content="index,follow" />
   <meta name="color-scheme" content="dark light" />
   <meta name="theme-color" content="#0b0c11" media="(prefers-color-scheme: dark)">
   <link rel="canonical" href="https://spraxxx.com/" />
+  <meta name="referrer" content="no-referrer" />
+
+  <!-- Social -->
+  <meta property="og:title" content="SPRAXXX — Verified Email, Identity Keys & Mail-Safe Receipts" />
+  <meta property="og:description" content="Verify once. Live free forever. The inbox that signs its name." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://spraxxx.com/" />
+  <meta property="og:image" content="https://spraxxx.com/assets/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SPRAXXX — Verified Email, Identity Keys & Mail-Safe Receipts" />
+  <meta name="twitter:description" content="Mail-Safe™ verified email with signed receipts & human override." />
+  <meta name="twitter:image" content="https://spraxxx.com/assets/og.jpg" />
 
   <!-- Icons -->
   <link rel="icon" href="/assets/favicon.png" sizes="32x32" />
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"/>
 
+  <!-- Perf hints -->
+  <link rel="preconnect" href="https://m.stripe.network" crossorigin>
+  <link rel="preconnect" href="https://js.stripe.com" crossorigin>
+
   <style>
     :root{
       --bg:#0b0c11; --panel:#0f1220; --ink:#e9f1ff; --muted:#9fb0c8;
       --brand:#90f2ff; --brand2:#8cffc1; --gold:#ffd389;
-      --line:#1c2748; --radius:16px; --max:1120px; --shadow:0 6px 30px rgba(0,0,0,.25)
+      --line:#1c2748; --radius:16px; --max:1120px; --shadow:0 6px 30px rgba(0,0,0,.25);
+      --ring:0 0 0 3px rgba(144,242,255,.35)
     }
-    *{box-sizing:border-box} html,body{height:100%}
+    *{box-sizing:border-box}
+    html,body{height:100%}
     body{
       margin:0; color:var(--ink);
-      background: radial-gradient(1200px 600px at 70% -10%, #192140 0%, transparent 60%),
-                  radial-gradient(900px 480px at 10% 120%, #112033 0%, transparent 60%),
-                  var(--bg);
+      background:
+        radial-gradient(1200px 600px at 70% -10%, #192140 0%, transparent 60%),
+        radial-gradient(900px 480px at 10% 120%, #112033 0%, transparent 60%),
+        var(--bg);
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
       -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
     }
-    a{color:var(--brand); text-decoration:none; font-weight:600;}
-    a:hover{text-decoration:underline;}
+    a{color:var(--brand); text-decoration:none; font-weight:600}
+    a:hover{text-decoration:underline}
+    a:focus-visible, .btn:focus-visible { outline: none; box-shadow: var(--ring) }
+
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 24px}
+    .skip-link{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
+    .skip-link:focus{left:16px;top:12px;width:auto;height:auto;background:#13182a;color:#fff;padding:8px 12px;border-radius:10px;border:1px solid var(--line);z-index:1000}
+
     header{position:sticky; top:0; z-index:20; backdrop-filter:saturate(150%) blur(10px);
       background:linear-gradient(180deg, rgba(11,12,17,.75), rgba(11,12,17,.35)); border-bottom:1px solid var(--line)}
-    .wrap{max-width:var(--max); margin:0 auto; padding:0 24px}
     .bar{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 0}
     .logo{display:flex; align-items:center; gap:12px; font-weight:900; letter-spacing:.4px}
     .badge{width:28px; height:28px; border-radius:9px; box-shadow:0 0 0 1px #0b0c11 inset;
-      background:conic-gradient(from 120deg at 50% 50%, var(--brand), var(--brand2), var(--brand));}
+      background:conic-gradient(from 120deg at 50% 50%, var(--brand), var(--brand2), var(--brand))}
     nav{display:flex; gap:10px; flex-wrap:wrap}
+
     .hero{position:relative; overflow:hidden; padding:60px 0}
     .headline{font-size:clamp(30px, 5.6vw, 62px); line-height:1.1; margin:8px 0 16px}
     .sub{color:var(--muted); font-size:18px; max-width:52ch; margin-bottom:24px}
+
     .btn{display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:14px 22px;
       border-radius:14px; cursor:pointer; user-select:none; border:1px solid #2a3a64; box-shadow:var(--shadow);
-      background:linear-gradient(135deg, #182038, #101524); color:var(--ink); font-weight:650; transition: transform .15s ease, box-shadow .15s ease;}
+      background:linear-gradient(135deg, #182038, #101524); color:var(--ink); font-weight:650;
+      transition: transform .15s ease, box-shadow .15s ease}
+    .btn:hover{transform:translateY(-1px)}
     .btn.primary{background:linear-gradient(135deg, #1f2b48, #0f1424)}
     .btn.gold{background:linear-gradient(135deg, #2a2217, #141008); border-color:#3d331f}
+
     .section{padding:36px 0}
-    .panel{background:linear-gradient(180deg, #11152a 0%, #0d1020 100%); border:1px solid var(--line); border-radius:18px; padding:18px; margin-bottom:20px;}
+    .panel{background:linear-gradient(180deg, #11152a 0%, #0d1020 100%); border:1px solid var(--line); border-radius:18px; padding:18px; margin-bottom:20px}
+
     .plans{display:grid; gap:16px; grid-template-columns:repeat(3, minmax(0,1fr))}
     @media(max-width:1000px){.plans{grid-template-columns:1fr}}
+
     footer{padding:30px 0; color:var(--muted); border-top:1px solid var(--line); text-align:center}
+
+    @media (prefers-reduced-motion: reduce){
+      *{transition:none!important; animation:none!important; scroll-behavior:auto!important}
+      .btn:hover{transform:none}
+    }
   </style>
+
+  <!-- JSON-LD: Organization + Service (edit currency if needed) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"SPRAXXX",
+    "url":"https://spraxxx.com/",
+    "logo":"https://spraxxx.com/assets/og.jpg",
+    "sameAs":["https://spraxxx.ai","https://spraxxx.tv","https://spraxxx.net"]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Service",
+    "name":"SPRAXXX Verified Email",
+    "serviceType":"Verified Email & Identity Keys",
+    "provider":{"@type":"Organization","name":"SPRAXXX","url":"https://spraxxx.com/"},
+    "offers":{
+      "@type":"Offer",
+      "price":"50.00",
+      "priceCurrency":"CAD",
+      "url":"https://buy.stripe.com/bJe4gy1Ya0NifZ27HL8IU06",
+      "availability":"https://schema.org/InStock"
+    }
+  }
+  </script>
 </head>
 <body>
-  <header>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header role="banner">
     <div class="wrap bar">
-      <div class="logo">
-        <span class="badge"></span>
-        <span>SPRAXXX</span>
+      <div class="logo" aria-label="SPRAXXX">
+        <span class="badge" aria-hidden="true"></span>
+        <span aria-hidden="true">SPRAXXX</span>
       </div>
-      <nav>
-        <a href="https://spraxxx.ai" target="_blank">.ai</a>
-        <a href="https://spraxxx.tv" target="_blank">.tv</a>
-        <a href="https://spraxxx.net" target="_blank">.net</a>
-        <span style="opacity:.5">.xxx</span>
+      <nav aria-label="SPRAXXX domains">
+        <a href="https://spraxxx.ai" target="_blank" rel="noopener noreferrer">.ai</a>
+        <a href="https://spraxxx.tv" target="_blank" rel="noopener noreferrer">.tv</a>
+        <a href="https://spraxxx.net" target="_blank" rel="noopener noreferrer">.net</a>
+        <span style="opacity:.6" aria-disabled="true" title="Coming soon">.xxx</span>
       </nav>
     </div>
   </header>
 
-  <main class="wrap">
+  <main id="main" class="wrap">
     <!-- TOP CTA -->
-    <section class="hero">
-      <h1 class="headline">SPRAXXX Verified Email</h1>
+    <section class="hero" aria-labelledby="hero-title">
+      <h1 id="hero-title" class="headline">SPRAXXX Verified Email</h1>
       <p class="sub">Your Mail-Safe™ inbox, identity keys, and signed receipts — ready for the real world.</p>
-      <a class="btn primary" href="https://buy.stripe.com/bJe4gy1Ya0NifZ27HL8IU06" target="_blank">Get Verified Email — $50</a>
+      <a class="btn primary" href="https://buy.stripe.com/bJe4gy1Ya0NifZ27HL8IU06" target="_blank" rel="noopener noreferrer"
+         aria-label="Get Verified Email for $50 via Stripe">Get Verified Email — $50</a>
     </section>
 
     <!-- VALUE + MIDDLE CTA -->
-    <section class="section">
+    <section class="section" aria-labelledby="why-title">
       <div class="panel">
-        <h2>Why SPRAXXX?</h2>
+        <h2 id="why-title">Why SPRAXXX?</h2>
         <ul>
           <li>Mail-Safe™ cryptographic sender proofs</li>
-          <li>One identity key unlocks inbox, receipts & QR passes</li>
-          <li>Human override for revocation & dispute resolution</li>
+          <li>One identity key unlocks inbox, receipts &amp; QR passes</li>
+          <li>Human override for revocation &amp; dispute resolution</li>
         </ul>
         <p style="text-align:center; margin-top:20px;">
-          <a class="btn primary" href="https://buy.stripe.com/bJe4gy1Ya0NifZ27HL8IU06" target="_blank">Start Verified Email — $50</a>
+          <a class="btn primary" href="https://buy.stripe.com/bJe4gy1Ya0NifZ27HL8IU06" target="_blank" rel="noopener noreferrer">
+            Start Verified Email — $50
+          </a>
         </p>
       </div>
     </section>
 
     <!-- PRICING PANEL -->
-    <section class="section">
-      <h2>Plans & Pricing</h2>
-      <div class="plans">
-        <div class="panel">
-          <h3>Citizen</h3>
-          <p>$5/mo or $50/yr — includes @spraxxx.me inbox, 10GB storage, Mail-Safe™, QR passes, revocation & dispute center.</p>
-          <a class="btn primary" href="https://buy.stripe.com/bJe4gy1Ya0NifZ27HL8IU06" target="_blank">Start Citizen — $50</a>
-        </div>
-        <div class="panel">
-          <h3>Creator</h3>
-          <p>$15/mo — Everything in Citizen + custom domain, signed newsletters, 50GB, API keys, priority support.</p>
-        </div>
-        <div class="panel">
-          <h3>Org</h3>
-          <p>Custom pricing — Multi-seat, SSO/SAML, policy rules, audit logs, bulk verification & webhooks.</p>
-          <a class="btn gold" href="mailto:hello@spraxxx.com?subject=SPRAXXX%20Org">Talk to us</a>
-        </div>
+    <section class="section" aria-labelledby="plans-title">
+      <h2 id="plans-title">Plans &amp; Pricing</h2>
+      <div class="plans" role="list">
+        <article class="panel" role="listitem" aria-labelledby="plan-citizen">
+          <h3 id="plan-citizen">Citizen</h3>
+          <p>$5/mo or $50/yr — includes @spraxxx.me inbox, 10&nbsp;GB storage, Mail-Safe™, QR passes, revocation &amp; dispute center.</p>
+          <a class="btn primary" href="https://buy.stripe.com/bJe4gy1Ya0NifZ27HL8IU06" target="_blank" rel="noopener noreferrer">
+            Start Citizen — $50
+          </a>
+        </article>
+
+        <article class="panel" role="listitem" aria-labelledby="plan-creator">
+          <h3 id="plan-creator">Creator</h3>
+          <p>$15/mo — Everything in Citizen + custom domain, signed newsletters, 50&nbsp;GB, API keys, priority support.</p>
+          <!-- Hook up when ready -->
+        </article>
+
+        <article class="panel" role="listitem" aria-labelledby="plan-org">
+          <h3 id="plan-org">Org</h3>
+          <p>Custom pricing — Multi-seat, SSO/SAML, policy rules, audit logs, bulk verification &amp; webhooks.</p>
+          <a class="btn gold" href="mailto:hello@spraxxx.com?subject=SPRAXXX%20Org" aria-label="Email SPRAXXX about Org plans">Talk to us</a>
+        </article>
       </div>
     </section>
 
     <!-- BOTTOM CTA -->
-    <section class="section">
+    <section class="section" aria-labelledby="start-title">
       <div class="panel" style="text-align:center">
-        <h2>Get Started Now</h2>
+        <h2 id="start-title">Get Started Now</h2>
         <p>One click, verified forever.</p>
-        <a class="btn primary" href="https://buy.stripe.com/bJe4gy1Ya0NifZ27HL8IU06" target="_blank">Claim Your Verified Email — $50</a>
+        <a class="btn primary" href="https://buy.stripe.com/bJe4gy1Ya0NifZ27HL8IU06" target="_blank" rel="noopener noreferrer">
+          Claim Your Verified Email — $50
+        </a>
+      </div>
+    </section>
+
+    <!-- Small print / Trust -->
+    <section class="section" aria-labelledby="trust-title">
+      <div class="panel" id="trust" style="font-size:14px; color:var(--muted)">
+        <h2 id="trust-title" style="margin-top:0">Trust &amp; Safety</h2>
+        <ul>
+          <li>No data brokerage. Identity is verified, not harvested.</li>
+          <li>Disputes go to a human. Keys can be rotated with signed revocation.</li>
+          <li>Receipts are cryptographically signed and human-readable.</li>
+        </ul>
       </div>
     </section>
   </main>
 
-  <footer>
+  <footer role="contentinfo">
     <p>© <span id="year"></span> SPRAXXX — enough of their sh*t, it’s our turn.</p>
   </footer>
 
