@@ -4,16 +4,17 @@
   <meta charset="utf-8" />
   <title>SPRAXXX — Verified Email, Identity Keys & Mail-Safe Receipts</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Verify once. Live free forever. SPRAXXX provides Mail-Safe™ verified email, identity keys, signed receipts, and human override. The inbox that signs its name." />
+  <meta name="description" content="Verify once. Stay in control. SPRAXXX provides Mail-Safe™ verified email, identity keys, signed receipts, and human override. The inbox that signs its name." />
   <meta name="robots" content="index,follow" />
   <meta name="color-scheme" content="dark light" />
   <meta name="theme-color" content="#0b0c11" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)">
   <link rel="canonical" href="https://spraxxx.com/" />
   <meta name="referrer" content="no-referrer" />
 
   <!-- Social -->
   <meta property="og:title" content="SPRAXXX — Verified Email, Identity Keys & Mail-Safe Receipts" />
-  <meta property="og:description" content="Verify once. Live free forever. The inbox that signs its name." />
+  <meta property="og:description" content="Verify once. Stay in control. The inbox that signs its name." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://spraxxx.com/" />
   <meta property="og:image" content="https://spraxxx.com/assets/og.jpg" />
@@ -29,10 +30,6 @@
   <link rel="icon" href="/assets/favicon.png" sizes="32x32" />
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"/>
-
-  <!-- Perf hints -->
-  <link rel="preconnect" href="https://m.stripe.network" crossorigin>
-  <link rel="preconnect" href="https://js.stripe.com" crossorigin>
 
   <style>
     :root{
@@ -94,7 +91,7 @@
     }
   </style>
 
-  <!-- JSON-LD: Organization + Service (edit currency if needed) -->
+  <!-- JSON-LD: Organization + Service (no Stripe offers) -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -111,17 +108,11 @@
     "@type":"Service",
     "name":"SPRAXXX Verified Email",
     "serviceType":"Verified Email & Identity Keys",
-    "provider":{"@type":"Organization","name":"SPRAXXX","url":"https://spraxxx.com/"},
-    "offers":{
-      "@type":"Offer",
-      "price":"50.00",
-      "priceCurrency":"CAD",
-      "url":"https://buy.stripe.com/bJe4gy1Ya0NifZ27HL8IU06",
-      "availability":"https://schema.org/InStock"
-    }
+    "provider":{"@type":"Organization","name":"SPRAXXX","url":"https://spraxxx.com/"}
   }
   </script>
 </head>
+
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
 
@@ -145,8 +136,9 @@
     <section class="hero" aria-labelledby="hero-title">
       <h1 id="hero-title" class="headline">SPRAXXX Verified Email</h1>
       <p class="sub">Your Mail-Safe™ inbox, identity keys, and signed receipts — ready for the real world.</p>
-      <a class="btn primary" href="https://buy.stripe.com/bJe4gy1Ya0NifZ27HL8IU06" target="_blank" rel="noopener noreferrer"
-         aria-label="Get Verified Email for $50 via Stripe">Get Verified Email — $50</a>
+      <a class="btn primary" data-liveswan href="#" aria-label="Enter LiveSwan to start verification">
+        Enter LiveSwan — Start Verification
+      </a>
     </section>
 
     <!-- VALUE + MIDDLE CTA -->
@@ -158,36 +150,41 @@
           <li>One identity key unlocks inbox, receipts &amp; QR passes</li>
           <li>Human override for revocation &amp; dispute resolution</li>
         </ul>
+
         <p style="text-align:center; margin-top:20px;">
-          <a class="btn primary" href="https://buy.stripe.com/bJe4gy1Ya0NifZ27HL8IU06" target="_blank" rel="noopener noreferrer">
-            Start Verified Email — $50
+          <a class="btn primary" data-liveswan href="#" aria-label="Start on LiveSwan">
+            Start on LiveSwan
           </a>
         </p>
       </div>
     </section>
 
-    <!-- PRICING PANEL -->
+    <!-- PRICING PANEL (kept, but checkout happens inside LiveSwan) -->
     <section class="section" aria-labelledby="plans-title">
       <h2 id="plans-title">Plans &amp; Pricing</h2>
       <div class="plans" role="list">
         <article class="panel" role="listitem" aria-labelledby="plan-citizen">
           <h3 id="plan-citizen">Citizen</h3>
           <p>$5/mo or $50/yr — includes @spraxxx.me inbox, 10&nbsp;GB storage, Mail-Safe™, QR passes, revocation &amp; dispute center.</p>
-          <a class="btn primary" href="https://buy.stripe.com/bJe4gy1Ya0NifZ27HL8IU06" target="_blank" rel="noopener noreferrer">
-            Start Citizen — $50
+          <a class="btn primary" data-liveswan href="#" aria-label="Enter LiveSwan for Citizen access">
+            Enter LiveSwan
           </a>
         </article>
 
         <article class="panel" role="listitem" aria-labelledby="plan-creator">
           <h3 id="plan-creator">Creator</h3>
           <p>$15/mo — Everything in Citizen + custom domain, signed newsletters, 50&nbsp;GB, API keys, priority support.</p>
-          <!-- Hook up when ready -->
+          <a class="btn primary" data-liveswan href="#" aria-label="Enter LiveSwan for Creator access">
+            Enter LiveSwan
+          </a>
         </article>
 
         <article class="panel" role="listitem" aria-labelledby="plan-org">
           <h3 id="plan-org">Org</h3>
           <p>Custom pricing — Multi-seat, SSO/SAML, policy rules, audit logs, bulk verification &amp; webhooks.</p>
-          <a class="btn gold" href="mailto:hello@spraxxx.com?subject=SPRAXXX%20Org" aria-label="Email SPRAXXX about Org plans">Talk to us</a>
+          <a class="btn gold" href="mailto:hello@spraxxx.com?subject=SPRAXXX%20Org" aria-label="Email SPRAXXX about Org plans">
+            Talk to us
+          </a>
         </article>
       </div>
     </section>
@@ -196,9 +193,9 @@
     <section class="section" aria-labelledby="start-title">
       <div class="panel" style="text-align:center">
         <h2 id="start-title">Get Started Now</h2>
-        <p>One click, verified forever.</p>
-        <a class="btn primary" href="https://buy.stripe.com/bJe4gy1Ya0NifZ27HL8IU06" target="_blank" rel="noopener noreferrer">
-          Claim Your Verified Email — $50
+        <p>Start verification on LiveSwan.</p>
+        <a class="btn primary" data-liveswan href="#" aria-label="Enter LiveSwan to claim verified email">
+          Claim Verified Email
         </a>
       </div>
     </section>
@@ -222,6 +219,18 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // SET THIS ONCE. Ship the HUD landing page (GET), not /start (POST).
+    // Recommended (TLS clean): https://liveswan.spraxxx.com/hud/
+    // If you insist on IP: use http://IP/hud/ unless you have a cert valid for the IP.
+    const LIVE_SWAN_URL = "https://liveswan.spraxxx.com/hud/";
+
+    document.querySelectorAll("a[data-liveswan]").forEach(a => {
+      a.href = LIVE_SWAN_URL;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.referrerPolicy = "no-referrer";
+    });
   </script>
 </body>
 </html>
