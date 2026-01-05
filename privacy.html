@@ -1,91 +1,323 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Privacy Policy — SPRAXXX</title>
-  <meta name="description" content="SPRAXXX Privacy Policy. We protect your data, your dignity, and your identity.">
-  <link rel="stylesheet" href="/static/style.css"> <!-- optional: reuse your global CSS -->
+
+  <meta name="description" content="SPRAXXX Privacy Policy. We protect your data, your dignity, and your identity." />
+  <meta name="robots" content="index,follow" />
+  <meta name="referrer" content="no-referrer" />
+  <meta name="color-scheme" content="dark light" />
+  <meta name="theme-color" content="#0b0c11" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)" />
+
+  <link rel="canonical" href="https://spraxxx.com/privacy.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Privacy Policy — SPRAXXX" />
+  <meta property="og:description" content="Privacy is not a feature — it's the foundation." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://spraxxx.com/privacy.html" />
+
+  <!-- Icons -->
+  <link rel="icon" href="/assets/favicon.png" sizes="32x32" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+
+  <style>
+    :root{
+      --bg:#0b0c11;
+      --panel:#0f1220;
+      --ink:#e9f1ff;
+      --muted:#9fb0c8;
+      --brand:#90f2ff;
+      --brand2:#8cffc1;
+      --line:#1c2748;
+      --max:1120px;
+      --shadow:0 6px 30px rgba(0,0,0,.25);
+      --ring:0 0 0 3px rgba(144,242,255,.35);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+
+    body{
+      margin:0;
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 600px at 70% -10%, #192140 0%, transparent 60%),
+        radial-gradient(900px 480px at 10% 120%, #112033 0%, transparent 60%),
+        var(--bg);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+
+    a{color:var(--brand); text-decoration:none; font-weight:650}
+    a:hover{text-decoration:underline}
+    a:focus-visible{outline:none; box-shadow:var(--ring)}
+
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 24px}
+
+    .skip-link{
+      position:absolute; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden;
+    }
+    .skip-link:focus{
+      left:16px; top:12px; width:auto; height:auto;
+      background:#13182a; color:#fff;
+      padding:8px 12px; border-radius:10px;
+      border:1px solid var(--line);
+      z-index:1000;
+    }
+
+    header{
+      position:sticky; top:0; z-index:20;
+      backdrop-filter:saturate(150%) blur(10px);
+      background:linear-gradient(180deg, rgba(11,12,17,.75), rgba(11,12,17,.35));
+      border-bottom:1px solid var(--line);
+    }
+
+    .bar{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px; padding:14px 0;
+    }
+
+    .logo{
+      display:flex; align-items:center; gap:12px;
+      font-weight:900; letter-spacing:.4px;
+    }
+
+    .badge{
+      width:28px; height:28px; border-radius:9px;
+      box-shadow:0 0 0 1px #0b0c11 inset;
+      background:conic-gradient(from 120deg at 50% 50%, var(--brand), var(--brand2), var(--brand));
+      flex:0 0 auto;
+    }
+
+    nav{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+
+    main{padding:40px 0}
+    .title{font-size:clamp(26px, 4.5vw, 48px); margin:6px 0 16px}
+    .meta{color:var(--muted); font-size:14px; margin:0 0 32px}
+
+    .panel{
+      background:linear-gradient(180deg, #11152a 0%, #0d1020 100%);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:20px;
+      margin-bottom:20px;
+    }
+
+    h2{margin:24px 0 12px; font-size:22px; color:var(--ink)}
+    h3{margin:18px 0 8px; font-size:18px}
+
+    p{line-height:1.7; margin:0 0 12px}
+    ul{margin:0 0 12px 20px; line-height:1.8}
+    li{margin-bottom:8px}
+
+    .muted{color:var(--muted)}
+
+    footer{
+      padding:30px 0;
+      color:var(--muted);
+      border-top:1px solid var(--line);
+      text-align:center;
+    }
+
+    footer a{
+      color:var(--muted);
+      transition:color .15s ease;
+    }
+
+    footer a:hover{
+      color:var(--brand);
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *{transition:none!important; animation:none!important; scroll-behavior:auto!important}
+    }
+  </style>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"SPRAXXX",
+    "url":"https://spraxxx.com/",
+    "logo":"https://spraxxx.com/assets/og.jpg"
+  }
+  </script>
 </head>
+
 <body>
-  <header class="wrap">
-    <nav class="nav">
-      <a class="brand" href="/">
-        <img src="/static/logo.svg" alt="" role="presentation">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header role="banner">
+    <div class="wrap bar">
+      <div class="logo">
+        <span class="badge" aria-hidden="true"></span>
         <span>SPRAXXX</span>
-      </a>
-      <div class="menu">
-        <a href="/">Home</a>
-        <a href="/policy/privacy/" aria-current="page">Privacy</a>
-        <a href="/policy/terms/">Terms</a>
-        <a href="/policy/cookies/">Cookies</a>
-        <a href="/about/">About</a>
-        <a href="/contact/">Contact</a>
       </div>
-    </nav>
+
+      <nav aria-label="Navigation">
+        <a href="/">Home</a>
+        <a href="/privacy.html" aria-current="page">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/user-agreement.html">User Agreement</a>
+      </nav>
+    </div>
   </header>
 
   <main id="main" class="wrap">
-    <h1>Privacy Policy</h1>
-    <p class="muted"><em>Effective date: September 2025</em></p>
+    <h1 class="title">Privacy Policy</h1>
+    <p class="meta"><em>Effective date: January 2026</em></p>
 
-    <section>
+    <section class="panel">
       <h2>1. Our Commitment</h2>
       <p>
-        At <strong>SPRAXXX</strong>, privacy is not a feature — it’s the foundation.
+        At <strong>SPRAXXX</strong>, privacy is not a feature — it's the foundation.
         We do not sell, trade, or rent your personal information. Your data belongs to you.
+      </p>
+      <p>
+        We believe in radical transparency: you have the right to know exactly what we collect,
+        why we collect it, and how it's used. No fine print, no tricks, no data brokerage.
       </p>
     </section>
 
-    <section>
+    <section class="panel">
       <h2>2. What We Collect</h2>
       <ul>
-        <li>Account information (email, username, payment details if you subscribe).</li>
-        <li>Minimal technical logs (only what’s necessary for security & uptime).</li>
-        <li>No trackers, no pixels, no third-party advertising scripts.</li>
+        <li><strong>Account Information:</strong> Email address, username, and payment details (via Stripe) if you subscribe to a paid plan.</li>
+        <li><strong>Identity Verification:</strong> Data required for Mail-Safe™ verification, handled securely through our identity partner.</li>
+        <li><strong>Technical Logs:</strong> Minimal server logs necessary for security, fraud prevention, and service uptime. We retain only what's essential.</li>
+        <li><strong>No Tracking:</strong> We do not use third-party advertising pixels, social media trackers, or analytics that profile your behavior across the web.</li>
       </ul>
     </section>
 
-    <section>
+    <section class="panel">
       <h2>3. How We Use Your Data</h2>
+      <p>We use your information exclusively to:</p>
+      <ul>
+        <li>Provide services you've requested (verified email, identity keys, signed receipts, QR passes).</li>
+        <li>Maintain security and prevent fraud, spam, and abuse.</li>
+        <li>Process payments and manage subscriptions through our payment processor, Stripe.</li>
+        <li>Comply with legal obligations under applicable law, without overreach.</li>
+        <li>Communicate with you about service updates, security alerts, or your account.</li>
+      </ul>
+      <p>We will <strong>never</strong> use your data to train third-party AI models, sell to data brokers, or serve targeted advertising.</p>
+    </section>
+
+    <section class="panel">
+      <h2>4. Data Sharing</h2>
+      <p>We do not sell or rent your data. Period.</p>
+      <p>We may share limited information with:</p>
+      <ul>
+        <li><strong>Service Providers:</strong> Stripe for payment processing, infrastructure providers for hosting (all under strict data processing agreements).</li>
+        <li><strong>Legal Requirements:</strong> If required by law, court order, or government regulation — but we will challenge overly broad requests.</li>
+        <li><strong>Your Consent:</strong> If you explicitly authorize us to share data (e.g., exporting your receipts to a third-party service).</li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <h2>5. Data Security</h2>
       <p>
-        - To provide services you request (email wallet, VPN, identity verification).<br>
-        - To maintain site security and prevent fraud.<br>
-        - To comply with applicable laws (without overreach).
+        We implement industry-standard security measures including encryption in transit (TLS),
+        encrypted storage, access controls, and regular security audits. Mail-Safe™ receipts use
+        cryptographic signing to ensure authenticity and integrity.
+      </p>
+      <p>
+        While no system is 100% secure, we take your security seriously and continuously improve
+        our defenses against evolving threats.
       </p>
     </section>
 
-    <section>
-      <h2>4. Your Rights</h2>
+    <section class="panel">
+      <h2>6. Your Rights</h2>
+      <p>You have the right to:</p>
+      <ul>
+        <li><strong>Access:</strong> Request a copy of all personal data we hold about you.</li>
+        <li><strong>Correct:</strong> Update or correct inaccurate information in your account.</li>
+        <li><strong>Export:</strong> Download your data in a portable format (JSON, CSV, or mbox for email).</li>
+        <li><strong>Delete:</strong> Request deletion of your account and associated data (subject to legal retention requirements).</li>
+        <li><strong>Revoke Consent:</strong> Withdraw consent for optional data processing at any time.</li>
+      </ul>
       <p>
-        You have the right to access, correct, export, or delete your data at any time.
-        Requests can be made via <a href="/contact/">our contact page</a>.
+        To exercise these rights, contact us at <a href="mailto:privacy@spraxxx.com">privacy@spraxxx.com</a>
+        or use the account management tools in your dashboard.
       </p>
     </section>
 
-    <section>
-      <h2>5. Changes to This Policy</h2>
+    <section class="panel">
+      <h2>7. Data Retention</h2>
       <p>
-        We may update this Privacy Policy to reflect improvements or legal changes.
-        We’ll always note the “Effective Date” above.
+        We retain your data only as long as necessary to provide services or comply with legal obligations:
+      </p>
+      <ul>
+        <li><strong>Active Accounts:</strong> Data retained while your account is active.</li>
+        <li><strong>Deleted Accounts:</strong> Most data deleted within 30 days. Cryptographic receipts and revocation records may be retained for legal integrity.</li>
+        <li><strong>Financial Records:</strong> Payment records retained for 7 years per tax and accounting requirements.</li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <h2>8. International Transfers</h2>
+      <p>
+        SPRAXXX is based in Canada. If you access our services from outside Canada, your data may
+        be transferred to and processed in Canada or other jurisdictions where our service providers operate.
+      </p>
+      <p>
+        For users in the EU/EEA, we comply with GDPR requirements and use standard contractual clauses
+        for international data transfers. Org plans can request data residency options.
       </p>
     </section>
 
-    <section>
-      <h2>6. Contact Us</h2>
+    <section class="panel">
+      <h2>9. Children's Privacy</h2>
       <p>
-        Questions? Reach us at <a href="mailto:privacy@spraxxx.com">privacy@spraxxx.com</a>.
+        SPRAXXX is not intended for users under 13 years of age. We do not knowingly collect
+        personal information from children. If we learn we've collected data from a child,
+        we will delete it promptly.
+      </p>
+    </section>
+
+    <section class="panel">
+      <h2>10. Changes to This Policy</h2>
+      <p>
+        We may update this Privacy Policy to reflect service improvements, legal changes, or user feedback.
+        We'll always note the "Effective Date" at the top.
+      </p>
+      <p>
+        Material changes will be announced via email or a prominent notice on our website.
+        Continued use after changes constitutes acceptance.
+      </p>
+    </section>
+
+    <section class="panel">
+      <h2>11. Contact Us</h2>
+      <p>
+        Questions, concerns, or requests about your privacy?
+      </p>
+      <p>
+        <strong>Email:</strong> <a href="mailto:privacy@spraxxx.com">privacy@spraxxx.com</a><br>
+        <strong>Postal:</strong> SPRAXXX Privacy Office, Ontario, Canada
       </p>
     </section>
   </main>
 
-  <footer class="wrap footer">
-    <p class="muted">© <span id="y">2025</span> SPRAXXX. All dignity reserved.</p>
+  <footer role="contentinfo">
+    <p>
+      <a href="/">Home</a> •
+      <a href="/privacy.html">Privacy Policy</a> •
+      <a href="/user-agreement.html">User Agreement</a> •
+      <a href="/terms.html">Terms</a>
+    </p>
+    <p style="margin-top:12px">© <span id="year"></span> SPRAXXX — enough of their sh*t, it's our turn.</p>
   </footer>
 
   <script>
-    // Update year automatically
-    try { document.getElementById('y').textContent = new Date().getFullYear(); } catch(e){}
+    document.getElementById('year').textContent = String(new Date().getFullYear());
   </script>
 </body>
 </html>

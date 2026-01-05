@@ -245,6 +245,67 @@
     .muted{color:var(--muted)}
     .center{text-align:center}
 
+    .comparison{
+      overflow-x:auto;
+      margin-top:32px;
+    }
+
+    .comparison table{
+      width:100%;
+      border-collapse:collapse;
+      background:linear-gradient(180deg, #11152a 0%, #0d1020 100%);
+      border:1px solid var(--line);
+      border-radius:18px;
+      overflow:hidden;
+    }
+
+    .comparison th{
+      padding:16px 12px;
+      text-align:left;
+      font-weight:700;
+      border-bottom:1px solid var(--line);
+      background:rgba(144,242,255,.05);
+    }
+
+    .comparison th:first-child{
+      color:var(--muted);
+      font-weight:600;
+    }
+
+    .comparison th:not(:first-child){
+      text-align:center;
+      color:var(--brand);
+    }
+
+    .comparison td{
+      padding:14px 12px;
+      border-bottom:1px solid rgba(28,39,72,.3);
+    }
+
+    .comparison tr:last-child td{
+      border-bottom:none;
+    }
+
+    .comparison td:first-child{
+      color:var(--ink);
+      font-weight:500;
+    }
+
+    .comparison td:not(:first-child){
+      text-align:center;
+      color:var(--muted);
+    }
+
+    .comparison .check{
+      color:var(--success);
+      font-weight:700;
+    }
+
+    .comparison .dash{
+      color:var(--muted);
+      opacity:.3;
+    }
+
     footer{
       padding:30px 0;
       color:var(--muted);
@@ -441,6 +502,100 @@
             Talk to SPRAXXX
           </a>
         </article>
+      </div>
+
+      <!-- Comparison Table -->
+      <div class="comparison" role="region" aria-label="Plan comparison table">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Feature</th>
+              <th scope="col">Citizen</th>
+              <th scope="col">Creator</th>
+              <th scope="col">Org</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>@spraxxx.me verified email</td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td>Mail-Safe™ signed receipts</td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td>Identity key &amp; QR passes</td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td>Human override &amp; dispute center</td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td>Storage</td>
+              <td>10 GB</td>
+              <td>50 GB</td>
+              <td>Custom</td>
+            </tr>
+            <tr>
+              <td>Custom domain</td>
+              <td><span class="dash">—</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td>Signed newsletters</td>
+              <td><span class="dash">—</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td>API keys</td>
+              <td><span class="dash">—</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td>Priority support</td>
+              <td><span class="dash">—</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td>Multi-seat accounts</td>
+              <td><span class="dash">—</span></td>
+              <td><span class="dash">—</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td>SSO/SAML integration</td>
+              <td><span class="dash">—</span></td>
+              <td><span class="dash">—</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td>Policy rules &amp; audit logs</td>
+              <td><span class="dash">—</span></td>
+              <td><span class="dash">—</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td>Webhooks &amp; bulk verification</td>
+              <td><span class="dash">—</span></td>
+              <td><span class="dash">—</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </section>
 
