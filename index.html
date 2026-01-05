@@ -2,17 +2,19 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8" />
-  <title>SPRAXXX — Verified Email, Identity Keys & Mail-Safe Receipts</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SPRAXXX — Verified Email, Identity Keys & Mail-Safe Receipts</title>
+
   <meta name="description" content="Verify once. Stay in control. SPRAXXX provides Mail-Safe™ verified email, identity keys, signed receipts, and human override. The inbox that signs its name." />
   <meta name="robots" content="index,follow" />
-  <meta name="color-scheme" content="dark light" />
-  <meta name="theme-color" content="#0b0c11" media="(prefers-color-scheme: dark)">
-  <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)">
-  <link rel="canonical" href="https://spraxxx.com/" />
   <meta name="referrer" content="no-referrer" />
+  <meta name="color-scheme" content="dark light" />
+  <meta name="theme-color" content="#0b0c11" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)" />
 
-  <!-- Social -->
+  <link rel="canonical" href="https://spraxxx.com/" />
+
+  <!-- Open Graph -->
   <meta property="og:title" content="SPRAXXX — Verified Email, Identity Keys & Mail-Safe Receipts" />
   <meta property="og:description" content="Verify once. Stay in control. The inbox that signs its name." />
   <meta property="og:type" content="website" />
@@ -21,6 +23,7 @@
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
 
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="SPRAXXX — Verified Email, Identity Keys & Mail-Safe Receipts" />
   <meta name="twitter:description" content="Mail-Safe™ verified email with signed receipts & human override." />
@@ -29,69 +32,309 @@
   <!-- Icons -->
   <link rel="icon" href="/assets/favicon.png" sizes="32x32" />
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
-  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"/>
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+
+  <!-- Baseline CSP (stronger as real HTTP header in Cloudflare) -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    img-src 'self' https: data:;
+    style-src 'self' 'unsafe-inline';
+    script-src 'self' 'unsafe-inline';
+    base-uri 'self';
+    form-action 'self';
+    frame-ancestors 'none';
+    upgrade-insecure-requests
+  " />
 
   <style>
     :root{
-      --bg:#0b0c11; --panel:#0f1220; --ink:#e9f1ff; --muted:#9fb0c8;
-      --brand:#90f2ff; --brand2:#8cffc1; --gold:#ffd389;
-      --line:#1c2748; --radius:16px; --max:1120px; --shadow:0 6px 30px rgba(0,0,0,.25);
-      --ring:0 0 0 3px rgba(144,242,255,.35)
+      --bg:#0b0c11;
+      --panel:#0f1220;
+      --ink:#e9f1ff;
+      --muted:#9fb0c8;
+      --brand:#90f2ff;
+      --brand2:#8cffc1;
+      --gold:#ffd389;
+      --line:#1c2748;
+      --radius:16px;
+      --max:1120px;
+      --shadow:0 6px 30px rgba(0,0,0,.25);
+      --ring:0 0 0 3px rgba(144,242,255,.35);
+      --success:#8cffc1;
+      --warning:#ffd389;
     }
+
     *{box-sizing:border-box}
     html,body{height:100%}
+
     body{
-      margin:0; color:var(--ink);
+      margin:0;
+      color:var(--ink);
       background:
         radial-gradient(1200px 600px at 70% -10%, #192140 0%, transparent 60%),
         radial-gradient(900px 480px at 10% 120%, #112033 0%, transparent 60%),
         var(--bg);
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
-      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
     }
-    a{color:var(--brand); text-decoration:none; font-weight:600}
+
+    a{color:var(--brand); text-decoration:none; font-weight:650}
     a:hover{text-decoration:underline}
-    a:focus-visible, .btn:focus-visible { outline: none; box-shadow: var(--ring) }
+    a:focus-visible, button:focus-visible{outline:none; box-shadow:var(--ring)}
 
     .wrap{max-width:var(--max); margin:0 auto; padding:0 24px}
-    .skip-link{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
-    .skip-link:focus{left:16px;top:12px;width:auto;height:auto;background:#13182a;color:#fff;padding:8px 12px;border-radius:10px;border:1px solid var(--line);z-index:1000}
 
-    header{position:sticky; top:0; z-index:20; backdrop-filter:saturate(150%) blur(10px);
-      background:linear-gradient(180deg, rgba(11,12,17,.75), rgba(11,12,17,.35)); border-bottom:1px solid var(--line)}
-    .bar{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 0}
-    .logo{display:flex; align-items:center; gap:12px; font-weight:900; letter-spacing:.4px}
-    .badge{width:28px; height:28px; border-radius:9px; box-shadow:0 0 0 1px #0b0c11 inset;
-      background:conic-gradient(from 120deg at 50% 50%, var(--brand), var(--brand2), var(--brand))}
-    nav{display:flex; gap:10px; flex-wrap:wrap}
+    .sr-only{
+      position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden;
+      clip:rect(0,0,0,0); white-space:nowrap; border:0;
+    }
+
+    .skip-link{
+      position:absolute; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden;
+    }
+    .skip-link:focus{
+      left:16px; top:12px; width:auto; height:auto;
+      background:#13182a; color:#fff;
+      padding:8px 12px; border-radius:10px;
+      border:1px solid var(--line);
+      z-index:1000;
+    }
+
+    header{
+      position:sticky; top:0; z-index:20;
+      backdrop-filter:saturate(150%) blur(10px);
+      background:linear-gradient(180deg, rgba(11,12,17,.75), rgba(11,12,17,.35));
+      border-bottom:1px solid var(--line);
+    }
+
+    .bar{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px; padding:14px 0;
+    }
+
+    .logo{
+      display:flex; align-items:center; gap:12px;
+      font-weight:900; letter-spacing:.4px;
+    }
+
+    .badge{
+      width:28px; height:28px; border-radius:9px;
+      box-shadow:0 0 0 1px #0b0c11 inset;
+      background:conic-gradient(from 120deg at 50% 50%, var(--brand), var(--brand2), var(--brand));
+      flex:0 0 auto;
+    }
+
+    nav{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
 
     .hero{position:relative; overflow:hidden; padding:60px 0}
-    .headline{font-size:clamp(30px, 5.6vw, 62px); line-height:1.1; margin:8px 0 16px}
-    .sub{color:var(--muted); font-size:18px; max-width:52ch; margin-bottom:24px}
+    .headline{
+      font-size:clamp(30px, 5.6vw, 62px);
+      line-height:1.1;
+      margin:8px 0 16px;
+    }
+    .sub{color:var(--muted); font-size:18px; max-width:52ch; margin:0 0 24px}
 
-    .btn{display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:14px 22px;
-      border-radius:14px; cursor:pointer; user-select:none; border:1px solid #2a3a64; box-shadow:var(--shadow);
-      background:linear-gradient(135deg, #182038, #101524); color:var(--ink); font-weight:650;
-      transition: transform .15s ease, box-shadow .15s ease}
-    .btn:hover{transform:translateY(-1px)}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:14px 22px;
+      border-radius:14px;
+      cursor:pointer; user-select:none;
+      border:1px solid #2a3a64;
+      box-shadow:var(--shadow);
+      background:linear-gradient(135deg, #182038, #101524);
+      color:var(--ink);
+      font-weight:700;
+      transition: transform .15s ease, box-shadow .15s ease;
+      text-decoration:none;
+    }
+    .btn:hover{transform:translateY(-1px); text-decoration:none}
     .btn.primary{background:linear-gradient(135deg, #1f2b48, #0f1424)}
     .btn.gold{background:linear-gradient(135deg, #2a2217, #141008); border-color:#3d331f}
 
     .section{padding:36px 0}
-    .panel{background:linear-gradient(180deg, #11152a 0%, #0d1020 100%); border:1px solid var(--line); border-radius:18px; padding:18px; margin-bottom:20px}
 
-    .plans{display:grid; gap:16px; grid-template-columns:repeat(3, minmax(0,1fr))}
-    @media(max-width:1000px){.plans{grid-template-columns:1fr}}
+    .panel{
+      background:linear-gradient(180deg, #11152a 0%, #0d1020 100%);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:18px;
+      margin-bottom:20px;
+    }
 
-    footer{padding:30px 0; color:var(--muted); border-top:1px solid var(--line); text-align:center}
+    .plans{
+      display:grid;
+      gap:16px;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+    }
+
+    .features{
+      display:grid;
+      gap:16px;
+      grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+      margin-top:24px;
+    }
+
+    .feature-card{
+      background:linear-gradient(180deg, #11152a 0%, #0d1020 100%);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:20px;
+    }
+
+    .feature-icon{
+      width:40px;
+      height:40px;
+      border-radius:10px;
+      background:linear-gradient(135deg, var(--brand), var(--brand2));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-bottom:12px;
+      font-size:20px;
+    }
+
+    .faq-item{
+      background:linear-gradient(180deg, #11152a 0%, #0d1020 100%);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:16px 20px;
+      margin-bottom:12px;
+    }
+
+    .faq-q{
+      font-weight:700;
+      color:var(--ink);
+      margin:0 0 8px 0;
+      font-size:16px;
+    }
+
+    .faq-a{
+      color:var(--muted);
+      margin:0;
+      font-size:14px;
+      line-height:1.6;
+    }
+
+    .status-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:6px 12px;
+      border-radius:8px;
+      background:rgba(140,255,193,.1);
+      border:1px solid rgba(140,255,193,.2);
+      font-size:13px;
+      font-weight:600;
+      color:var(--success);
+    }
+
+    .status-dot{
+      width:6px;
+      height:6px;
+      border-radius:50%;
+      background:var(--success);
+      animation:pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse{
+      0%, 100%{opacity:1}
+      50%{opacity:.5}
+    }
+
+    .muted{color:var(--muted)}
+    .center{text-align:center}
+
+    .comparison{
+      overflow-x:auto;
+      margin-top:32px;
+    }
+
+    .comparison table{
+      width:100%;
+      border-collapse:collapse;
+      background:linear-gradient(180deg, #11152a 0%, #0d1020 100%);
+      border:1px solid var(--line);
+      border-radius:18px;
+      overflow:hidden;
+    }
+
+    .comparison th{
+      padding:16px 12px;
+      text-align:left;
+      font-weight:700;
+      border-bottom:1px solid var(--line);
+      background:rgba(144,242,255,.05);
+    }
+
+    .comparison th:first-child{
+      color:var(--muted);
+      font-weight:600;
+    }
+
+    .comparison th:not(:first-child){
+      text-align:center;
+      color:var(--brand);
+    }
+
+    .comparison td{
+      padding:14px 12px;
+      border-bottom:1px solid rgba(28,39,72,.3);
+    }
+
+    .comparison tr:last-child td{
+      border-bottom:none;
+    }
+
+    .comparison td:first-child{
+      color:var(--ink);
+      font-weight:500;
+    }
+
+    .comparison td:not(:first-child){
+      text-align:center;
+      color:var(--muted);
+    }
+
+    .comparison .check{
+      color:var(--success);
+      font-weight:700;
+    }
+
+    .comparison .dash{
+      color:var(--muted);
+      opacity:.3;
+    }
+
+    footer{
+      padding:30px 0;
+      color:var(--muted);
+      border-top:1px solid var(--line);
+      text-align:center;
+    }
+
+    footer a{
+      color:var(--muted);
+      transition:color .15s ease;
+    }
+
+    footer a:hover{
+      color:var(--brand);
+    }
+
+    @media(max-width:1000px){
+      .plans{grid-template-columns:1fr}
+      .hero{padding:44px 0}
+    }
 
     @media (prefers-reduced-motion: reduce){
       *{transition:none!important; animation:none!important; scroll-behavior:auto!important}
       .btn:hover{transform:none}
+      .status-dot{animation:none}
     }
   </style>
 
-  <!-- JSON-LD: Organization + Service (no Stripe offers) -->
+  <!-- JSON-LD -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -99,7 +342,11 @@
     "name":"SPRAXXX",
     "url":"https://spraxxx.com/",
     "logo":"https://spraxxx.com/assets/og.jpg",
-    "sameAs":["https://spraxxx.ai","https://spraxxx.tv","https://spraxxx.net"]
+    "sameAs":[
+      "https://spraxxx.ai",
+      "https://spraxxx.tv",
+      "https://spraxxx.net"
+    ]
   }
   </script>
   <script type="application/ld+json">
@@ -108,7 +355,43 @@
     "@type":"Service",
     "name":"SPRAXXX Verified Email",
     "serviceType":"Verified Email & Identity Keys",
-    "provider":{"@type":"Organization","name":"SPRAXXX","url":"https://spraxxx.com/"}
+    "provider":{
+      "@type":"Organization",
+      "name":"SPRAXXX",
+      "url":"https://spraxxx.com/"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {
+        "@type":"Question",
+        "name":"What is Mail-Safe™?",
+        "acceptedAnswer":{
+          "@type":"Answer",
+          "text":"Mail-Safe™ is cryptographic proof that email came from who it claims. Every message includes a signed receipt you can verify independently."
+        }
+      },
+      {
+        "@type":"Question",
+        "name":"How does human override work?",
+        "acceptedAnswer":{
+          "@type":"Answer",
+          "text":"If you lose your key or need to revoke it, a human review process can restore access. No algorithm-only lockouts."
+        }
+      },
+      {
+        "@type":"Question",
+        "name":"Can I use my own domain?",
+        "acceptedAnswer":{
+          "@type":"Answer",
+          "text":"Yes! Creator plans include custom domain support with full Mail-Safe™ signing."
+        }
+      }
+    ]
   }
   </script>
 </head>
@@ -118,15 +401,20 @@
 
   <header role="banner">
     <div class="wrap bar">
-      <div class="logo" aria-label="SPRAXXX">
+      <div class="logo">
         <span class="badge" aria-hidden="true"></span>
-        <span aria-hidden="true">SPRAXXX</span>
+        <span>SPRAXXX</span>
       </div>
+
       <nav aria-label="SPRAXXX domains">
+        <span class="status-badge" aria-label="All systems operational">
+          <span class="status-dot" aria-hidden="true"></span>
+          Operational
+        </span>
         <a href="https://spraxxx.ai" target="_blank" rel="noopener noreferrer">.ai</a>
         <a href="https://spraxxx.tv" target="_blank" rel="noopener noreferrer">.tv</a>
         <a href="https://spraxxx.net" target="_blank" rel="noopener noreferrer">.net</a>
-        <span style="opacity:.6" aria-disabled="true" title="Coming soon">.xxx</span>
+        <span class="muted" title="Coming soon">.xxx</span>
       </nav>
     </div>
   </header>
@@ -135,10 +423,35 @@
     <!-- TOP CTA -->
     <section class="hero" aria-labelledby="hero-title">
       <h1 id="hero-title" class="headline">SPRAXXX Verified Email</h1>
-      <p class="sub">Your Mail-Safe™ inbox, identity keys, and signed receipts — ready for the real world.</p>
+      <p class="sub">Mail-Safe™ inbox, identity keys, and signed receipts — built for the real world.</p>
+
       <a class="btn primary" data-liveswan href="#" aria-label="Enter LiveSwan to start verification">
         Enter LiveSwan — Start Verification
       </a>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section" aria-labelledby="features-title">
+      <h2 id="features-title" class="sr-only">Key Features</h2>
+      <div class="features">
+        <div class="feature-card">
+          <div class="feature-icon" aria-hidden="true">🔐</div>
+          <h3>Cryptographic Proofs</h3>
+          <p class="muted">Every email includes Mail-Safe™ signed receipts you can verify independently.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon" aria-hidden="true">🗝️</div>
+          <h3>One Identity Key</h3>
+          <p class="muted">Your key unlocks inbox, receipts, QR passes, and secure document signing.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon" aria-hidden="true">👤</div>
+          <h3>Human Override</h3>
+          <p class="muted">Lost your key? Real people handle revocation and dispute resolution.</p>
+        </div>
+      </div>
     </section>
 
     <!-- VALUE + MIDDLE CTA -->
@@ -149,9 +462,11 @@
           <li>Mail-Safe™ cryptographic sender proofs</li>
           <li>One identity key unlocks inbox, receipts &amp; QR passes</li>
           <li>Human override for revocation &amp; dispute resolution</li>
+          <li>No ads, no tracking, no data brokerage</li>
+          <li>Open protocols — export your data anytime</li>
         </ul>
 
-        <p style="text-align:center; margin-top:20px;">
+        <p class="center" style="margin-top:20px;">
           <a class="btn primary" data-liveswan href="#" aria-label="Start on LiveSwan">
             Start on LiveSwan
           </a>
@@ -159,11 +474,12 @@
       </div>
     </section>
 
-    <!-- PRICING PANEL (kept, but checkout happens inside LiveSwan) -->
+    <!-- PRICING PANEL -->
     <section class="section" aria-labelledby="plans-title">
       <h2 id="plans-title">Plans &amp; Pricing</h2>
-      <div class="plans" role="list">
-        <article class="panel" role="listitem" aria-labelledby="plan-citizen">
+
+      <div class="plans">
+        <article class="panel" aria-labelledby="plan-citizen">
           <h3 id="plan-citizen">Citizen</h3>
           <p>$5/mo or $50/yr — includes @spraxxx.me inbox, 10&nbsp;GB storage, Mail-Safe™, QR passes, revocation &amp; dispute center.</p>
           <a class="btn primary" data-liveswan href="#" aria-label="Enter LiveSwan for Citizen access">
@@ -171,61 +487,211 @@
           </a>
         </article>
 
-        <article class="panel" role="listitem" aria-labelledby="plan-creator">
+        <article class="panel" aria-labelledby="plan-creator">
           <h3 id="plan-creator">Creator</h3>
-          <p>$15/mo — Everything in Citizen + custom domain, signed newsletters, 50&nbsp;GB, API keys, priority support.</p>
+          <p>$15/mo — everything in Citizen + custom domain, signed newsletters, 50&nbsp;GB, API keys, priority support.</p>
           <a class="btn primary" data-liveswan href="#" aria-label="Enter LiveSwan for Creator access">
             Enter LiveSwan
           </a>
         </article>
 
-        <article class="panel" role="listitem" aria-labelledby="plan-org">
+        <article class="panel" aria-labelledby="plan-org">
           <h3 id="plan-org">Org</h3>
-          <p>Custom pricing — Multi-seat, SSO/SAML, policy rules, audit logs, bulk verification &amp; webhooks.</p>
+          <p>Custom pricing — multi-seat, SSO/SAML, policy rules, audit logs, bulk verification &amp; webhooks.</p>
           <a class="btn gold" href="mailto:hello@spraxxx.com?subject=SPRAXXX%20Org" aria-label="Email SPRAXXX about Org plans">
-            Talk to us
+            Talk to SPRAXXX
           </a>
         </article>
+      </div>
+
+      <!-- Comparison Table -->
+      <div class="comparison" role="region" aria-label="Plan comparison table">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Feature</th>
+              <th scope="col">Citizen</th>
+              <th scope="col">Creator</th>
+              <th scope="col">Org</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>@spraxxx.me verified email</td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td>Mail-Safe™ signed receipts</td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td>Identity key &amp; QR passes</td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td>Human override &amp; dispute center</td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td>Storage</td>
+              <td>10 GB</td>
+              <td>50 GB</td>
+              <td>Custom</td>
+            </tr>
+            <tr>
+              <td>Custom domain</td>
+              <td><span class="dash">—</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td>Signed newsletters</td>
+              <td><span class="dash">—</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td>API keys</td>
+              <td><span class="dash">—</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td>Priority support</td>
+              <td><span class="dash">—</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td>Multi-seat accounts</td>
+              <td><span class="dash">—</span></td>
+              <td><span class="dash">—</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td>SSO/SAML integration</td>
+              <td><span class="dash">—</span></td>
+              <td><span class="dash">—</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td>Policy rules &amp; audit logs</td>
+              <td><span class="dash">—</span></td>
+              <td><span class="dash">—</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td>Webhooks &amp; bulk verification</td>
+              <td><span class="dash">—</span></td>
+              <td><span class="dash">—</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" aria-labelledby="faq-title">
+      <h2 id="faq-title">Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <h3 class="faq-q">What is Mail-Safe™?</h3>
+        <p class="faq-a">Mail-Safe™ is cryptographic proof that email came from who it claims. Every message includes a signed receipt you can verify independently — no trust required.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="faq-q">How does human override work?</h3>
+        <p class="faq-a">If you lose your key or need to revoke it, a human review process can restore access. No algorithm-only lockouts. We verify your identity through multiple channels before issuing new credentials.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="faq-q">Can I use my own domain?</h3>
+        <p class="faq-a">Yes! Creator plans include custom domain support with full Mail-Safe™ signing. You keep your brand while getting verified email infrastructure.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="faq-q">What happens to my data?</h3>
+        <p class="faq-a">Your data stays yours. We never sell, broker, or harvest your information. Export everything anytime using open protocols.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="faq-q">Is SPRAXXX end-to-end encrypted?</h3>
+        <p class="faq-a">Mail-Safe™ provides cryptographic sender verification. For E2EE messaging between SPRAXXX users, keys are exchanged automatically. For external recipients, standard TLS applies.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="faq-q">Can I import my existing email?</h3>
+        <p class="faq-a">Yes. Creator plans include migration tools to import from Gmail, Outlook, and other IMAP providers. Historical messages won't have Mail-Safe™ signatures, but new mail will.</p>
       </div>
     </section>
 
     <!-- BOTTOM CTA -->
     <section class="section" aria-labelledby="start-title">
-      <div class="panel" style="text-align:center">
+      <div class="panel center">
         <h2 id="start-title">Get Started Now</h2>
-        <p>Start verification on LiveSwan.</p>
+        <p class="muted">Start verification on LiveSwan.</p>
         <a class="btn primary" data-liveswan href="#" aria-label="Enter LiveSwan to claim verified email">
           Claim Verified Email
         </a>
       </div>
     </section>
 
-    <!-- Small print / Trust -->
+    <!-- TRUST -->
     <section class="section" aria-labelledby="trust-title">
-      <div class="panel" id="trust" style="font-size:14px; color:var(--muted)">
+      <div class="panel" style="font-size:14px; color:var(--muted)">
         <h2 id="trust-title" style="margin-top:0">Trust &amp; Safety</h2>
         <ul>
           <li>No data brokerage. Identity is verified, not harvested.</li>
-          <li>Disputes go to a human. Keys can be rotated with signed revocation.</li>
+          <li>Disputes go to a human. Keys rotate with signed revocation.</li>
           <li>Receipts are cryptographically signed and human-readable.</li>
+          <li>Open source cryptography. Audited by independent security researchers.</li>
+          <li>GDPR compliant. Data residency options available for Org plans.</li>
         </ul>
       </div>
     </section>
   </main>
 
   <footer role="contentinfo">
-    <p>© <span id="year"></span> SPRAXXX — enough of their sh*t, it’s our turn.</p>
+    <p>
+      <a href="/privacy.html">Privacy Policy</a> •
+      <a href="/user-agreement.html">User Agreement</a> •
+      <a href="/terms.html">Terms</a>
+    </p>
+    <p style="margin-top:12px">© <span id="year"></span> SPRAXXX — enough of their sh*t, it's our turn.</p>
   </footer>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById("year").textContent = String(new Date().getFullYear());
 
-    // SET THIS ONCE. Ship the HUD landing page (GET), not /start (POST).
+    // Set once: ship the HUD landing page (GET), not /start (POST).
     // Recommended (TLS clean): https://liveswan.spraxxx.com/hud/
-    // If you insist on IP: use http://IP/hud/ unless you have a cert valid for the IP.
-    const LIVE_SWAN_URL = "https://liveswan.spraxxx.com/hud/";
+    // Optional override via ?liveswan=https%3A%2F%2Fexample.com%2Fhud%2F
+    const DEFAULT_LIVE_SWAN_URL = "https://liveswan.spraxxx.com/hud/";
 
-    document.querySelectorAll("a[data-liveswan]").forEach(a => {
+    const qp = new URLSearchParams(location.search);
+    const override = qp.get("liveswan");
+
+    function safeHttpsUrl(maybeUrl) {
+      try {
+        const u = new URL(maybeUrl);
+        return u.protocol === "https:" ? u.href : null;
+      } catch {
+        return null;
+      }
+    }
+
+    const LIVE_SWAN_URL = safeHttpsUrl(override) || DEFAULT_LIVE_SWAN_URL;
+
+    document.querySelectorAll('a[data-liveswan]').forEach((a) => {
       a.href = LIVE_SWAN_URL;
       a.target = "_blank";
       a.rel = "noopener noreferrer";
