@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SPRAXXX Blackbox Ops — Private Compute, Zero Noise</title>
+  <meta name="description" content="Private compute nodes. Pay by the hour. Cryptographically wiped. No logs. No surveillance." />
+  <meta name="robots" content="noindex,nofollow" />
+
+  <!-- External Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <!-- Main Container -->
+  <div class="container">
+
+    <!-- Header -->
+    <header>
+      <h1>SPRAXXX BLACKBOX OPS</h1>
+    </header>
+
+    <!-- Pain Point -->
+    <section class="pain-section">
+      <p class="pain">AWS billing roulette. SaaS surveillance. Enterprise onboarding hell.</p>
+      <p class="solution">Private compute. Zero noise. Pay to touch.</p>
+      <p class="promise">Isolated nodes. Fixed windows. Hard wipes. No logs kept.</p>
+    </section>
+
+    <!-- Tier Cards -->
+    <section class="tiers">
+
+      <!-- HOUR Tier -->
+      <div class="node-card" data-node="liveswan" data-tier="HOUR" data-price="$150">
+        <div class="tier-header">
+          <h2>HOUR</h2>
+          <div class="price">$150</div>
+        </div>
+        <div class="tier-features">
+          <p>60 minutes runtime</p>
+          <p>SSH/HTTPS access</p>
+          <p>Hard wipe after session</p>
+          <p>Cryptographic seal receipt</p>
+        </div>
+        <button class="cta-button" data-node="liveswan">RESERVE HOUR</button>
+      </div>
+
+      <!-- DAY Tier -->
+      <div class="node-card" data-node="angrywu" data-tier="DAY" data-price="$900">
+        <div class="tier-header">
+          <h2>DAY</h2>
+          <div class="price">$900</div>
+        </div>
+        <div class="tier-features">
+          <p>8 hours runtime</p>
+          <p>Priority CPU allocation</p>
+          <p>Snapshot download allowed</p>
+          <p>No telemetry, no logs</p>
+        </div>
+        <button class="cta-button" data-node="angrywu">RESERVE DAY</button>
+      </div>
+
+      <!-- FORGE Tier -->
+      <div class="node-card" data-node="sadblack" data-tier="FORGE" data-price="$5,000">
+        <div class="tier-header">
+          <h2>FORGE</h2>
+          <div class="price">$5,000</div>
+        </div>
+        <div class="tier-features">
+          <p>72 hours runtime</p>
+          <p>Custom node configuration</p>
+          <p>Private namespace + NDA</p>
+          <p>Dedicated hardware option</p>
+        </div>
+        <button class="cta-button" data-node="sadblack">RESERVE FORGE</button>
+      </div>
+
+    </section>
+
+    <!-- Cryptographic Seal Info -->
+    <section class="seal-info">
+      <h3>Cryptographic Session Seal</h3>
+      <p>Every session receives a tamper-proof receipt:</p>
+      <ul>
+        <li>Timestamp of session start/end</li>
+        <li>Node ID used</li>
+        <li>Wipe proof (SHA-256 hash)</li>
+        <li>Ed25519 signature</li>
+      </ul>
+      <p class="seal-promise">No content logged. Just proof it existed and proof it's gone.</p>
+    </section>
+
+    <!-- Scarcity Notice -->
+    <section class="scarcity">
+      <p class="scarcity-notice">⚠️ 3 slots per day. Closed when full.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>© <span id="year"></span> SPRAXXX — Private compute for humans who value silence.</p>
+      <p class="footer-links">
+        <a href="https://spraxxx.com">spraxxx.com</a> |
+        <a href="mailto:blackbox@spraxxx.com">blackbox@spraxxx.com</a>
+      </p>
+    </footer>
+
+  </div>
+
+  <!-- Modal for Node Reservation -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close">&times;</button>
+      <div id="modal-body">
+        <!-- Dynamically populated by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- External Scripts -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+</html>
