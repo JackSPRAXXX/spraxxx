@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SPRAXXX Blackbox Ops — Private Compute (Private Beta)</title>
+  <meta name="description" content="Private compute nodes for developers. No logs. No surveillance. Join the waitlist." />
+  <meta name="robots" content="noindex,nofollow" />
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <div class="container">
+
+    <header>
+      <h1>SPRAXXX BLACKBOX OPS</h1>
+      <p class="subtitle">Private Beta — Limited Access</p>
+    </header>
+
+    <section class="pain-section">
+      <p class="pain">AWS billing roulette. SaaS surveillance. Enterprise onboarding hell.</p>
+      <p class="solution">Private compute. Zero noise. Human control.</p>
+      <p class="promise">Isolated nodes. Fixed windows. Hard wipes. No logs kept.</p>
+    </section>
+
+    <section class="tiers">
+
+      <div class="node-card">
+        <div class="tier-header">
+          <h2>HOUR</h2>
+          <div class="badge">Coming Soon</div>
+        </div>
+        <div class="tier-features">
+          <p>60 minutes of isolated compute</p>
+          <p>SSH/HTTPS access</p>
+          <p>Cryptographic wipe proof</p>
+          <p>No content logging</p>
+        </div>
+      </div>
+
+      <div class="node-card">
+        <div class="tier-header">
+          <h2>DAY</h2>
+          <div class="badge">Coming Soon</div>
+        </div>
+        <div class="tier-features">
+          <p>8 hours of dedicated compute</p>
+          <p>Priority CPU allocation</p>
+          <p>Snapshot download option</p>
+          <p>Zero telemetry</p>
+        </div>
+      </div>
+
+      <div class="node-card">
+        <div class="tier-header">
+          <h2>FORGE</h2>
+          <div class="badge">Coming Soon</div>
+        </div>
+        <div class="tier-features">
+          <p>72 hours custom environment</p>
+          <p>Private namespace</p>
+          <p>NDA included</p>
+          <p>White-glove provisioning</p>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="waitlist-section">
+      <div class="waitlist-card">
+        <h2>Join the Private Beta</h2>
+        <p>We're building privacy-first compute infrastructure. Be among the first to access.</p>
+
+        <form class="waitlist-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required placeholder="Your name">
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="you@example.com">
+          </div>
+
+          <div class="form-group">
+            <label for="usecase">What will you use this for?</label>
+            <select id="usecase" name="usecase" required>
+              <option value="">Select...</option>
+              <option value="development">Development & Testing</option>
+              <option value="ai">AI Training & Research</option>
+              <option value="security">Security & Pentesting</option>
+              <option value="data">Data Analysis</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="tier">Interested in:</label>
+            <select id="tier" name="tier" required>
+              <option value="">Select...</option>
+              <option value="hour">HOUR (60 min sessions)</option>
+              <option value="day">DAY (8 hour sessions)</option>
+              <option value="forge">FORGE (72 hour custom)</option>
+              <option value="unsure">Not sure yet</option>
+            </select>
+          </div>
+
+          <button type="submit" class="cta-button">JOIN WAITLIST</button>
+        </form>
+
+        <p class="waitlist-note">We'll email you when private beta opens. No spam, ever.</p>
+      </div>
+    </section>
+
+    <section class="seal-info">
+      <h3>Cryptographic Session Seals</h3>
+      <p>Every session will receive a tamper-proof receipt:</p>
+      <ul>
+        <li>Proof of session existence</li>
+        <li>Proof of cryptographic wipe</li>
+        <li>Ed25519 signature</li>
+        <li>No content logged</li>
+      </ul>
+      <p class="seal-promise">Privacy by design. Transparency by default.</p>
+    </section>
+
+    <section class="values">
+      <h3>Why This Matters</h3>
+      <div class="values-grid">
+        <div class="value-card">
+          <h4>No Surveillance</h4>
+          <p>We don't log your commands, files, or activity. What you build is yours.</p>
+        </div>
+        <div class="value-card">
+          <h4>Human Override</h4>
+          <p>Disputes go to humans. Keys can be revoked. You're not trapped in automation.</p>
+        </div>
+        <div class="value-card">
+          <h4>Cryptographic Proof</h4>
+          <p>Every session gets a signed receipt. Proof of service, proof of privacy.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>© <span id="year"></span> SPRAXXX — Private compute for humans who value silence.</p>
+      <p class="footer-links">
+        <a href="https://spraxxx.com">spraxxx.com</a> |
+        <a href="mailto:hello@spraxxx.com">Contact</a>
+      </p>
+      <p class="footer-note">Not ready for public use. Private beta only.</p>
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Form submission feedback
+    const form = document.querySelector('.waitlist-form');
+    if (form) {
+      form.addEventListener('submit', function() {
+        const button = form.querySelector('.cta-button');
+        button.textContent = 'JOINING...';
+        button.disabled = true;
+      });
+    }
+  </script>
+
+</body>
+</html>
