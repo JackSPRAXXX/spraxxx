@@ -1,0 +1,141 @@
+<!-- ============================================
+     SPRAXXX Shared Footer Component
+     Include this in all SPRAXXX sites for unified UX
+     ============================================ -->
+
+<footer class="spraxxx-shared-footer">
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="https://spraxxx.com/verified-identity">Verified Identity</a></li>
+          <li><a href="https://blackbox.spraxxx.com">Blackbox Ops</a></li>
+          <li><a href="https://hux.spraxxx.com">HUX Tools</a></li>
+          <li><a href="https://spraxxx.com/docs">Interactive HUD</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Infrastructure</h4>
+        <ul>
+          <li><a href="https://term.spraxxx.com">Terminal</a></li>
+          <li><a href="https://oracle.spraxxx.com">Oracle</a></li>
+          <li><a href="https://perm.spraxxx.com">Permissions</a></li>
+          <li><a href="https://status.spraxxx.com">Status</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="https://spraxxx.com/legal/privacy">Privacy Policy</a></li>
+          <li><a href="https://spraxxx.com/legal/terms">Terms of Service</a></li>
+          <li><a href="https://spraxxx.com/legal/aup">Acceptable Use</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:hello@spraxxx.com">hello@spraxxx.com</a></li>
+          <li><a href="https://spraxxx.com#contact">Request Access</a></li>
+          <li><a href="https://status.spraxxx.com">System Status</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© <span class="footer-year"></span> SPRAXXX — Infrastructure that signs its name.</p>
+      <p class="footer-tagline">Enough of their sh*t, it's our turn.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Shared Footer Styles (inline for portability) -->
+<style>
+.spraxxx-shared-footer {
+  background: #000;
+  border-top: 1px solid #222;
+  padding: 60px 0 30px;
+  color: #fff;
+}
+
+.spraxxx-shared-footer .footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.spraxxx-shared-footer .footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.spraxxx-shared-footer .footer-col h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.spraxxx-shared-footer .footer-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.spraxxx-shared-footer .footer-col li {
+  margin-bottom: 12px;
+}
+
+.spraxxx-shared-footer .footer-col a {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.spraxxx-shared-footer .footer-col a:hover {
+  color: #00ff88;
+}
+
+.spraxxx-shared-footer .footer-bottom {
+  text-align: center;
+  padding-top: 30px;
+  border-top: 1px solid #222;
+}
+
+.spraxxx-shared-footer .footer-bottom p {
+  color: #888;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.spraxxx-shared-footer .footer-tagline {
+  color: #aaa;
+  font-style: italic;
+  font-size: 13px;
+}
+
+@media (max-width: 768px) {
+  .spraxxx-shared-footer .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+</style>
+
+<!-- Shared Footer Script (inline for portability) -->
+<script>
+(function() {
+  const yearSpan = document.querySelector('.spraxxx-shared-footer .footer-year');
+  if (yearSpan) {
+    yearSpan.textContent = new Date().getFullYear();
+  }
+})();
+</script>

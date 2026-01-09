@@ -1,0 +1,154 @@
+<!-- ============================================
+     SPRAXXX Shared Navigation Component
+     Include this in all SPRAXXX sites for unified UX
+     ============================================ -->
+
+<nav class="spraxxx-shared-nav">
+  <div class="nav-container">
+    <div class="nav-brand">
+      <a href="https://spraxxx.com">
+        <span class="brand-icon">S</span>
+        <span class="brand-text">SPRAXXX</span>
+      </a>
+    </div>
+    <div class="nav-links">
+      <a href="https://spraxxx.com#services">Services</a>
+      <a href="https://status.spraxxx.com" target="_blank" rel="noopener">Status</a>
+      <a href="https://spraxxx.com#contact" class="nav-cta">Get Access</a>
+    </div>
+    <button class="nav-toggle" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Shared Nav Styles (inline for portability) -->
+<style>
+.spraxxx-shared-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #222;
+}
+
+.spraxxx-shared-nav .nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.spraxxx-shared-nav .nav-brand a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.spraxxx-shared-nav .brand-icon {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #00ff88, #90f2ff);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  color: #000;
+}
+
+.spraxxx-shared-nav .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.spraxxx-shared-nav .nav-links a {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.spraxxx-shared-nav .nav-links a:hover {
+  color: #fff;
+}
+
+.spraxxx-shared-nav .nav-cta {
+  padding: 8px 16px;
+  background: #00ff88;
+  color: #000 !important;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.spraxxx-shared-nav .nav-toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .spraxxx-shared-nav .nav-links {
+    display: none;
+  }
+  .spraxxx-shared-nav .nav-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  .spraxxx-shared-nav .nav-toggle span {
+    width: 24px;
+    height: 2px;
+    background: #fff;
+  }
+}
+</style>
+
+<!-- Shared Nav Script (inline for portability) -->
+<script>
+(function() {
+  const toggle = document.querySelector('.spraxxx-shared-nav .nav-toggle');
+  const nav = document.querySelector('.spraxxx-shared-nav .nav-links');
+
+  if (!toggle || !nav) return;
+
+  toggle.addEventListener('click', () => {
+    const isOpen = nav.style.display === 'flex';
+    nav.style.display = isOpen ? 'none' : 'flex';
+
+    if (!isOpen) {
+      nav.style.flexDirection = 'column';
+      nav.style.position = 'absolute';
+      nav.style.top = '64px';
+      nav.style.left = '0';
+      nav.style.right = '0';
+      nav.style.background = 'rgba(0, 0, 0, 0.98)';
+      nav.style.padding = '20px';
+      nav.style.borderTop = '1px solid #222';
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+      nav.style.display = 'flex';
+      nav.style.position = 'static';
+      nav.style.flexDirection = 'row';
+    } else {
+      nav.style.display = 'none';
+    }
+  });
+})();
+</script>
